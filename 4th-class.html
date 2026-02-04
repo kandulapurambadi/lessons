@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class IV - కందులాపురం బడి</title>
+    
+    <!-- Anek Telugu Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Anek Telugu', sans-serif;
+            background-color: #006D77; /* Peacock Blue */
+            color: #FFFFFF; /* White text */
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        .page-header {
+            text-align: center;
+            padding: 25px 20px;
+            margin-bottom: 40px;
+            background: linear-gradient(135deg, #005F69, #006D77);
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            border: 3px solid #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        .school-name {
+            font-size: 3.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+            color: #FFFFFF;
+        }
+        
+        .page-title {
+            font-size: 2.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            position: relative;
+            color: #FFFFFF;
+        }
+        
+        .class-info {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            position: relative;
+            color: #FFFFFF;
+        }
+        
+        /* Back Button */
+        .back-button {
+            display: inline-block;
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background-color: #005F69;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            border: 2px solid #FFFFFF;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: #008891;
+            transform: translateX(-5px);
+        }
+        
+        .back-button i {
+            margin-right: 8px;
+        }
+        
+        /* Subjects Section */
+        .subjects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .subjects-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .subject-card {
+            background: linear-gradient(135deg, #008891, #005F69);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            border: 3px solid #FFFFFF;
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .subject-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+            border-color: #83D4E0;
+        }
+        
+        .subject-header {
+            padding: 25px;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-bottom: 2px solid #FFFFFF;
+        }
+        
+        .subject-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            color: #FFFFFF;
+        }
+        
+        .subject-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #FFFFFF;
+        }
+        
+        .subject-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: #FFFFFF;
+        }
+        
+        .subject-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .subject-description {
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            color: #FFFFFF;
+        }
+        
+        .subject-features {
+            margin-bottom: 25px;
+        }
+        
+        .features-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features-title i {
+            color: #83D4E0;
+        }
+        
+        .features-list {
+            list-style-type: none;
+        }
+        
+        .feature-item {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+            color: #FFFFFF;
+        }
+        
+        .feature-item:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #83D4E0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .subject-button {
+            display: block;
+            margin-top: auto;
+            padding: 16px;
+            background: linear-gradient(135deg, #005F69, #008891);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            border: 2px solid #FFFFFF;
+            transition: all 0.3s ease;
+        }
+        
+        .subject-button:hover {
+            background: linear-gradient(135deg, #008891, #00A3AD);
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subject-button i {
+            margin-left: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .subject-button:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* English Specific Styling */
+        .english-card {
+            background: linear-gradient(135deg, #1a759f, #168aad);
+        }
+        
+        .english-card:hover {
+            border-color: #76c893;
+        }
+        
+        .english-button {
+            background: linear-gradient(135deg, #1a759f, #168aad);
+        }
+        
+        .english-button:hover {
+            background: linear-gradient(135deg, #168aad, #1e6091);
+        }
+        
+        /* Maths Specific Styling */
+        .maths-card {
+            background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+        }
+        
+        .maths-card:hover {
+            border-color: #c77dff;
+        }
+        
+        .maths-button {
+            background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+        }
+        
+        .maths-button:hover {
+            background: linear-gradient(135deg, #7b2cbf, #5a189a);
+        }
+        
+        /* Footer */
+        .page-footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+            background-color: #005F69;
+            border-radius: 10px;
+            border: 2px solid #FFFFFF;
+        }
+        
+        .footer-text {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: #FFFFFF;
+        }
+        
+        .class-note {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 15px;
+            font-style: italic;
+            color: #FFFFFF;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .school-name {
+                font-size: 2.5rem;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+            }
+            
+            .subject-title {
+                font-size: 2rem;
+            }
+            
+            .subject-card {
+                margin-bottom: 20px;
+            }
+            
+            .subjects-container {
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .school-name {
+                font-size: 2rem;
+            }
+            
+            .page-title {
+                font-size: 1.5rem;
+            }
+            
+            .subject-title {
+                font-size: 1.7rem;
+            }
+            
+            .subject-icon {
+                font-size: 3rem;
+            }
+            
+            .subject-button {
+                font-size: 1.2rem;
+                padding: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Back Button -->
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> ప్రధాన పేజీకి తిరిగి వెళ్ళండి
+        </a>
+        
+        <!-- Page Header -->
+        <header class="page-header">
+            <h1 class="school-name">కందులాపురం బడి</h1>
+            <h2 class="page-title">4వ తరగతి | Class V</h2>
+            <p class="class-info">ఇంటరాక్టివ్ అభ్యాసం కోసం స్వాగతం | Welcome to Interactive Learning</p>
+        </header>
+        
+        <!-- Subjects Section -->
+        <div class="subjects-container">
+            <!-- English Card -->
+            <div class="subject-card english-card">
+                <div class="subject-header">
+                    <div class="subject-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h2 class="subject-title">ఇంగ్లీష్ | English</h2>
+                    <p class="subject-subtitle">భాషా నైపుణ్యాలు అభివృద్ధి చేయండి | Develop Language Skills</p>
+                </div>
+                
+                <div class="subject-content">
+                    <p class="subject-description">
+                        4వ తరగతి ఇంగ్లీష్ సిలబస్ పూర్తిగా అర్థం చేసుకోవడానికి సహాయపడే ఇంటరాక్టివ్ పాఠాలు. పదజాలం, వ్యాకరణం, చదవడం మరియు వ్రాయడం నైపుణ్యాలు అభివృద్ధి చేయండి.
+                    </p>
+                    
+                    <div class="subject-features">
+                        <h3 class="features-title">
+                            <i class="fas fa-star"></i> ప్రత్యేకతలు
+                        </h3>
+                        <ul class="features-list">
+                            <li class="feature-item">పాఠం ఆధారిత వీడియోలు</li>
+                            <li class="feature-item">ఇంటరాక్టివ్ వ్యాయామాలు</li>
+                            <li class="feature-item">ఆడియో పదాల ఉచ్చారణ</li>
+                            <li class="feature-item">చదవడం అభ్యాసం కోసం కథలు</li>
+                            <li class="feature-item">వ్యాకరణ క్విజ్లు</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="english-class4.html" class="subject-button english-button">
+                        ఇంగ్లీష్ పాఠాలు ప్రారంభించండి <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mathematics Card -->
+            <div class="subject-card maths-card">
+                <div class="subject-header">
+                    <div class="subject-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h2 class="subject-title">గణితం | Mathematics</h2>
+                    <p class="subject-subtitle">లెక్కల నైపుణ్యాలు పెంపొందించండి | Enhance Calculation Skills</p>
+                </div>
+                
+                <div class="subject-content">
+                    <p class="subject-description">
+                        గణితాన్ని సరదాగా మరియు సులభంగా నేర్చుకోండి. ప్రాథమిక అంకగణితం నుండి జ్యామితి వరకు అన్ని అంశాలు వివరణాత్మకంగా మరియు ఇంటరాక్టివ్ గా నేర్పబడతాయి.
+                    </p>
+                    
+                    <div class="subject-features">
+                        <h3 class="features-title">
+                            <i class="fas fa-star"></i> ప్రత్యేకతలు
+                        </h3>
+                        <ul class="features-list">
+                            <li class="feature-item">అనుమానాలు తీర్చే వీడియోలు</li>
+                            <li class="feature-item">ప్రాక్టీస్ ప్రాబ్లెమ్స్</li>
+                            <li class="feature-item">గణిత ఇంటరాక్టివ్ గేమ్స్</li>
+                            <li class="feature-item">స్టెప్-బై-స్టెప్ సొల్యూషన్స్</li>
+                            <li class="feature-item">పరీక్షల కోసం మోడల్ పేపర్స్</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="maths-class5.html" class="subject-button maths-button">
+                        గణిత పాఠాలు ప్రారంభించండి <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="page-footer">
+            <p class="footer-text">కందులపురం బడి - 4వ తరగతి విద్యా పోర్టల్</p>
+            <p class="footer-text">Kandulapuram Badi - Class V Educational Portal</p>
+            <p class="class-note">గమనిక: ఈ పేజీలోని అన్ని విషయాలు విద్యార్థుల అభ్యాసానికి సహాయకారిగా ఉండేలా రూపొందించబడ్డాయి.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Interactive JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click animation to subject buttons
+            const subjectButtons = document.querySelectorAll('.subject-button');
+            
+            subjectButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    // Add click animation
+                    this.style.transform = 'scale(0.95)';
+                    
+                    // Show loading message
+                    const subject = this.classList.contains('english-button') ? 'English' : 'Mathematics';
+                    const message = subject === 'English' ? 
+                        'ఇంగ్లీష్ పాఠాల పేజీకి మారుతున్నారు...' : 
+                        'గణిత పాఠాల పేజీకి మారుతున్నారు...';
+                    
+                    console.log(message);
+                    
+                    // Reset animation after delay
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 300);
+                });
+            });
+            
+            // Add hover effects to subject cards
+            const subjectCards = document.querySelectorAll('.subject-card');
+            
+            subjectCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.subject-icon i');
+                    if (icon) {
+                        icon.style.transform = 'scale(1.2)';
+                        icon.style.transition = 'transform 0.3s ease';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.subject-icon i');
+                    if (icon) {
+                        icon.style.transform = 'scale(1)';
+                    }
+                });
+            });
+            
+            // Back button functionality
+            const backButton = document.querySelector('.back-button');
+            if (backButton) {
+                backButton.addEventListener('click', function(e) {
+                    this.style.backgroundColor = '#008891';
+                    setTimeout(() => {
+                        this.style.backgroundColor = '';
+                    }, 300);
+                });
+            }
+            
+            // Add page load animation
+            const header = document.querySelector('.page-header');
+            if (header) {
+                header.style.animation = 'fadeInDown 0.8s ease';
+            }
+            
+            const cards = document.querySelectorAll('.subject-card');
+            cards.forEach((card, index) => {
+                card.style.animation = `fadeInUp 0.8s ease ${index * 0.2}s forwards`;
+                card.style.opacity = '0';
+            });
+            
+            // Add CSS animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInDown {
+                    from {
+                        opacity: 0;
+                        transform: translateY(-30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+                
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>

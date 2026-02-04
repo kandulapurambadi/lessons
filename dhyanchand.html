@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Major Dhyan Chand - Class IV English Interactive Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1565C0;
+            --secondary: #1976D2;
+            --accent: #FFC107;
+            --light: #E3F2FD;
+            --dark: #0D47A1;
+            --telugu-color: #C2185B;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Anek Telugu', sans-serif;
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        
+        /* Header */
+        header {
+            text-align: center;
+            background: linear-gradient(135deg, #0D47A1, #1565C0);
+            color: white;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+        
+        .class-info {
+            background-color: var(--accent);
+            color: var(--dark);
+            padding: 8px 25px;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        /* Main Navigation */
+        .main-nav {
+            background-color: #BBDEFB;
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .nav-btn {
+            padding: 10px 20px;
+            background-color: white;
+            border: 2px solid var(--primary);
+            border-radius: 25px;
+            font-family: 'Anek Telugu', sans-serif;
+            font-weight: bold;
+            color: var(--dark);
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .nav-btn:hover, .nav-btn.active {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Main Content */
+        .content-area {
+            padding: 30px;
+            min-height: 600px;
+        }
+        
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        h2 {
+            color: var(--secondary);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3 {
+            color: var(--primary);
+            margin: 20px 0 15px 0;
+            font-size: 1.4rem;
+        }
+        
+        /* Story Text with Highlighted Words */
+        .story-text {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+        
+        .story-text p {
+            margin-bottom: 20px;
+            text-indent: 0;
+            padding-left: 20px;
+            border-left: 3px solid var(--accent);
+        }
+        
+        .highlight-word {
+            background-color: #BBDEFB;
+            padding: 2px 6px;
+            border-radius: 4px;
+            border-bottom: 2px dashed var(--primary);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            position: relative;
+        }
+        
+        .highlight-word:hover {
+            background-color: #90CAF9;
+            transform: translateY(-2px);
+        }
+        
+        /* Color coding based on word length */
+        .word-3 { background-color: #FFF9C4; } /* 3 letters */
+        .word-4 { background-color: #C8E6C9; } /* 4 letters */
+        .word-5 { background-color: #FFCCBC; } /* 5 letters */
+        .word-6 { background-color: #D1C4E9; } /* 6 letters */
+        .word-7 { background-color: #E1BEE7; } /* 7+ letters */
+        
+        /* Vocabulary Cards */
+        .vocab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .vocab-card {
+            background-color: var(--light);
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 6px solid var(--secondary);
+            transition: transform 0.3s;
+            box-shadow: var(--shadow);
+        }
+        
+        .vocab-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .word-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .word {
+            font-weight: bold;
+            font-size: 1.4rem;
+            color: var(--secondary);
+        }
+        
+        .sound-btn {
+            background-color: var(--accent);
+            color: var(--dark);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .sound-btn:hover {
+            background-color: var(--secondary);
+            transform: scale(1.1);
+            color: white;
+        }
+        
+        .pronunciation {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .telugu-meaning {
+            color: var(--telugu-color);
+            margin-bottom: 8px;
+            font-family: 'Anek Telugu', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .english-meaning {
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .word-length {
+            display: inline-block;
+            padding: 2px 8px;
+            background-color: var(--accent);
+            color: var(--dark);
+            border-radius: 10px;
+            font-size: 0.8rem;
+            margin-left: 8px;
+        }
+        
+        /* Grammar Tables */
+        .grammar-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .grammar-table th {
+            background-color: var(--secondary);
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .grammar-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .grammar-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* Word Modal */
+        .word-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .close-modal:hover {
+            color: #333;
+        }
+        
+        /* Date and time styling */
+        .date-highlight {
+            color: #D32F2F;
+            font-weight: bold;
+            font-style: italic;
+        }
+        
+        .number-highlight {
+            color: #388E3C;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--dark);
+            color: white;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .main-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 90%;
+                justify-content: center;
+            }
+            
+            .vocab-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .content-area {
+                padding: 20px;
+            }
+            
+            .story-text p {
+                padding-left: 10px;
+            }
+        }
+        
+        /* Hockey stick icon animation */
+        .hockey-icon {
+            display: inline-block;
+            margin: 0 5px;
+            animation: swing 3s infinite;
+        }
+        
+        @keyframes swing {
+            0%, 100% { transform: rotate(0); }
+            50% { transform: rotate(15deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+		<h1>కందులాపురం బడి </h1>>
+            <h1>Class IV English</h1>
+            <h1>🏑 Major Dhyan Chand 🏑</h1>
+            <div class="subtitle">The Legendary Hockey Wizard</div>
+            <div class="class-info">Class IV - English with Telugu Meanings</div>
+        </header>
+        
+        <div class="navigation">
+            <a href="english-class4.html" class="nav-btn back-btn">← English Lessons Index [Back]</a>
+        </div>
+
+        <nav class="main-nav">
+            <button class="nav-btn active" data-section="story">
+                <i class="fas fa-book-open"></i> Biography
+            </button>
+            <button class="nav-btn" data-section="vocabulary">
+                <i class="fas fa-book"></i> All Words
+            </button>
+            <button class="nav-btn" data-section="verbs">
+                <i class="fas fa-running"></i> Verbs
+            </button>
+            <button class="nav-btn" data-section="opposites">
+                <i class="fas fa-exchange-alt"></i> Opposites
+            </button>
+            <button class="nav-btn" data-section="singular-plural">
+                <i class="fas fa-copy"></i> Singular/Plural
+            </button>
+        </nav>
+        
+        <div class="content-area">
+            <!-- Story Section -->
+            <section id="story" class="content-section active">
+                <h2><i class="fas fa-book-open"></i> Major Dhyan Chand - The Hockey Legend</h2>
+                <div class="story-text" id="storyText">
+                    <!-- Story text will be inserted by JavaScript -->
+                </div>
+            </section>
+            
+            <!-- All Words Section -->
+            <section id="vocabulary" class="content-section">
+                <h2><i class="fas fa-book"></i> All Highlighted Words</h2>
+                <p>Words are color-coded by length: <span style="background-color:#FFF9C4; padding:2px 6px;">3 letters</span> <span style="background-color:#C8E6C9; padding:2px 6px;">4 letters</span> <span style="background-color:#FFCCBC; padding:2px 6px;">5 letters</span> <span style="background-color:#D1C4E9; padding:2px 6px;">6 letters</span> <span style="background-color:#E1BEE7; padding:2px 6px;">7+ letters</span></p>
+                
+                <div class="vocab-grid" id="allWordsGrid">
+                    <!-- All words will be inserted by JavaScript -->
+                </div>
+            </section>
+            
+            <!-- Verbs Section -->
+            <section id="verbs" class="content-section">
+                <h2><i class="fas fa-running"></i> Verbs from the Biography</h2>
+                
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Verb</th>
+                            <th>Telugu Meaning</th>
+                            <th>Pronunciation</th>
+                            <th>Example from Story</th>
+                        </tr>
+                    </thead>
+                    <tbody id="verbsTable">
+                        <!-- Verbs will be inserted by JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- Opposites Section -->
+            <section id="opposites" class="content-section">
+                <h2><i class="fas fa-exchange-alt"></i> Opposite Words</h2>
+                
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Word</th>
+                            <th>Telugu Meaning</th>
+                            <th>Opposite Word</th>
+                            <th>Telugu Meaning of Opposite</th>
+                        </tr>
+                    </thead>
+                    <tbody id="oppositesTable">
+                        <!-- Opposites will be inserted by JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+            
+            <!-- Singular/Plural Section -->
+            <section id="singular-plural" class="content-section">
+                <h2><i class="fas fa-copy"></i> Singular and Plural Forms</h2>
+                
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Singular</th>
+                            <th>Telugu Meaning</th>
+                            <th>Plural</th>
+                            <th>Telugu Meaning</th>
+                        </tr>
+                    </thead>
+                    <tbody id="singularPluralTable">
+                        <!-- Singular/Plural will be inserted by JavaScript -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+        
+        <footer>
+            <p>Class IV English Reader - Major Dhyan Chand: The Hockey Wizard</p>
+            <p>Interactive Learning Page with Telugu Meanings</p>
+        </footer>
+    </div>
+
+    <!-- Word Detail Modal -->
+    <div class="word-modal" id="wordModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="modalContent">
+                <!-- Modal content will be inserted by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Story text
+        const storyText = `Dhyan Chand's real name was Dhyan Singh. He was a soldier in the Indian Army. He couldn't practice hockey during the day because he used to be busy on his duty as a soldier. That is why he used to practice at night in moonlight. It is believed that his coach fondly began to call him Dhyan Chand, 'Chand' meaning moon. The name stayed with him.
+
+Saturday, 15 August 1936. It was the day of the hockey finals during the Olympic events held in Berlin, Germany. Germany had defeated several teams to enter the finals against the Indian team. They were the hosts of the Olympics, and they were sure of their victory.
+
+All the day before, it had rained heavily. The entire field had become wet. But 15th August being the last day of the Games, it was not possible to postpone the match any further.
+
+About forty thousand people including men and women had gathered in the hockey stadium. The match started exactly at 11 a.m. No team could score a goal during the first half an hour. During the 32nd minute, Roop Singh scored the first goal, hitting the ball towards the goalpost from a difficult angle.
+
+In the second half of the match, the Indian team scored three more goals. Two of them were scored by the Captain of the Indian team, Dhyan Chand. The Germans also scored a goal.
+
+Dhyan Chand's spiked shoes were making it difficult for him to run fast on the wet ground. He removed the shoes and the socks and began to run barefoot. The Indian team scored three more goals.
+
+The German goalkeeper pounced on Dhyan Chand and hurt him. But Dhyan Chand was a true soldier. After a little first-aid, he immediately returned to the field and held the spectators spellbound with his game. At last, he scored the last goal of the match just as the game drew to a close. The Indian team had won the medal third time in a row. It was a hat-trick. Indians were the third time winners of the Olympic gold medal.
+
+It is said that the German ruler offered Dhyan Chand a higher salary and rank in the German army, if he agreed to play on behalf of Germany, but Dhyan Chand turned down the offer. After the celebrated victory in the Olympics, Hitler awarded a special gold medal to Dhyan Chand.
+
+You may be aware that hockey is our national sport. Major Dhyan Chand's birthday, August 29 is celebrated as National Sports Day in India. The famous national stadium in Delhi is named after the great hero 'Dhyan Chand'. Who knows, perhaps one of you may carry the legacy of Dhyan Chand further and win great glory for our country.`;
+
+        // Vocabulary data with Telugu meanings and pronunciation
+        const vocabulary = [
+            // 3-letter words
+            { word: "real", length: 4, pronunciation: "/riːl/", teluguMeaning: "నిజమైన", englishMeaning: "actual" },
+            { word: "name", length: 4, pronunciation: "/neɪm/", teluguMeaning: "పేరు", englishMeaning: "word by which person is known" },
+            { word: "was", length: 3, pronunciation: "/wʌz/", teluguMeaning: "ఉంది", englishMeaning: "past of is" },
+            { word: "He", length: 2, pronunciation: "/hiː/", teluguMeaning: "అతను", englishMeaning: "male person" },
+            { word: "a", length: 1, pronunciation: "/ə/", teluguMeaning: "ఒక", englishMeaning: "indefinite article" },
+            { word: "soldier", length: 7, pronunciation: "/ˈsoʊldʒər/", teluguMeaning: "సైనికుడు", englishMeaning: "person in army" },
+            { word: "in", length: 2, pronunciation: "/ɪn/", teluguMeaning: "లో", englishMeaning: "inside" },
+            { word: "the", length: 3, pronunciation: "/ðə/", teluguMeaning: "", englishMeaning: "definite article" },
+            { word: "Indian", length: 6, pronunciation: "/ˈɪndiən/", teluguMeaning: "భారతీయ", englishMeaning: "from India" },
+            { word: "Army", length: 4, pronunciation: "/ˈɑːrmi/", teluguMeaning: "సైన్యం", englishMeaning: "military force" },
+            { word: "couldn't", length: 7, pronunciation: "/ˈkʊdnt/", teluguMeaning: "చేయలేదు", englishMeaning: "could not" },
+            { word: "practice", length: 8, pronunciation: "/ˈpræktɪs/", teluguMeaning: "సాధన", englishMeaning: "repeated exercise" },
+            { word: "hockey", length: 6, pronunciation: "/ˈhɒki/", teluguMeaning: "హాకీ", englishMeaning: "sport played with sticks" },
+            { word: "during", length: 6, pronunciation: "/ˈdjʊərɪŋ/", teluguMeaning: "సమయంలో", englishMeaning: "throughout the course of" },
+            { word: "day", length: 3, pronunciation: "/deɪ/", teluguMeaning: "పగలు", englishMeaning: "24-hour period" },
+            { word: "because", length: 7, pronunciation: "/bɪˈkɒz/", teluguMeaning: "ఎందుకంటే", englishMeaning: "for the reason that" },
+            { word: "used", length: 4, pronunciation: "/juːzd/", teluguMeaning: "ఉపయోగించారు", englishMeaning: "employed" },
+            { word: "to", length: 2, pronunciation: "/tuː/", teluguMeaning: "కు", englishMeaning: "toward" },
+            { word: "be", length: 2, pronunciation: "/biː/", teluguMeaning: "అవ్వటానికి", englishMeaning: "exist" },
+            { word: "busy", length: 4, pronunciation: "/ˈbɪzi/", teluguMeaning: "బిజీగా", englishMeaning: "occupied" },
+            { word: "on", length: 2, pronunciation: "/ɒn/", teluguMeaning: "పై", englishMeaning: "position" },
+            { word: "his", length: 3, pronunciation: "/hɪz/", teluguMeaning: "తన", englishMeaning: "belonging to him" },
+            { word: "duty", length: 4, pronunciation: "/ˈdjuːti/", teluguMeaning: "కర్తవ్యం", englishMeaning: "obligation" },
+            { word: "as", length: 2, pronunciation: "/æz/", teluguMeaning: "వలె", englishMeaning: "like" },
+            { word: "That", length: 4, pronunciation: "/ðæt/", teluguMeaning: "ఆ", englishMeaning: "introducing clause" },
+            { word: "is", length: 2, pronunciation: "/ɪz/", teluguMeaning: "ఉంది", englishMeaning: "exists" },
+            { word: "why", length: 3, pronunciation: "/waɪ/", teluguMeaning: "ఎందుకు", englishMeaning: "for what reason" },
+            { word: "at", length: 2, pronunciation: "/æt/", teluguMeaning: "వద్ద", englishMeaning: "in the place of" },
+            { word: "night", length: 5, pronunciation: "/naɪt/", teluguMeaning: "రాత్రి", englishMeaning: "time of darkness" },
+            { word: "moonlight", length: 9, pronunciation: "/ˈmuːnlaɪt/", teluguMeaning: "చంద్రిక", englishMeaning: "light from moon" },
+            { word: "It", length: 2, pronunciation: "/ɪt/", teluguMeaning: "ఇది", englishMeaning: "thing mentioned" },
+            { word: "believed", length: 8, pronunciation: "/bɪˈliːvd/", teluguMeaning: "నమ్మారు", englishMeaning: "accepted as true" },
+            { word: "that", length: 4, pronunciation: "/ðæt/", teluguMeaning: "ఆ", englishMeaning: "introducing clause" },
+            { word: "coach", length: 5, pronunciation: "/koʊtʃ/", teluguMeaning: "కోచ్", englishMeaning: "trainer" },
+            { word: "fondly", length: 6, pronunciation: "/ˈfɒndli/", teluguMeaning: "ప్రేమగా", englishMeaning: "with affection" },
+            { word: "began", length: 5, pronunciation: "/bɪˈɡæn/", teluguMeaning: "ప్రారంభించింది", englishMeaning: "started" },
+            { word: "call", length: 4, pronunciation: "/kɔːl/", teluguMeaning: "పిలుస్తారు", englishMeaning: "name" },
+            { word: "him", length: 3, pronunciation: "/hɪm/", teluguMeaning: "అతనిని", englishMeaning: "object pronoun" },
+            { word: "Chand", length: 5, pronunciation: "/tʃɑːnd/", teluguMeaning: "చంద్", englishMeaning: "moon" },
+            { word: "meaning", length: 7, pronunciation: "/ˈmiːnɪŋ/", teluguMeaning: "అర్థం", englishMeaning: "sense of word" },
+            { word: "moon", length: 4, pronunciation: "/muːn/", teluguMeaning: "చంద్రుడు", englishMeaning: "natural satellite" },
+            { word: "stayed", length: 6, pronunciation: "/steɪd/", teluguMeaning: "ఉండిపోయింది", englishMeaning: "remained" },
+            { word: "with", length: 4, pronunciation: "/wɪð/", teluguMeaning: "తో", englishMeaning: "accompanied by" },
+            { word: "Saturday", length: 8, pronunciation: "/ˈsætərdeɪ/", teluguMeaning: "శనివారం", englishMeaning: "day of week" },
+            { word: "August", length: 6, pronunciation: "/ˈɔːɡəst/", teluguMeaning: "ఆగస్టు", englishMeaning: "month" },
+            { word: "It", length: 2, pronunciation: "/ɪt/", teluguMeaning: "ఇది", englishMeaning: "thing mentioned" },
+            { word: "day", length: 3, pronunciation: "/deɪ/", teluguMeaning: "రోజు", englishMeaning: "24-hour period" },
+            { word: "of", length: 2, pronunciation: "/əv/", teluguMeaning: "యొక్క", englishMeaning: "belonging to" },
+            { word: "finals", length: 6, pronunciation: "/ˈfaɪnlz/", teluguMeaning: "ఫైనల్స్", englishMeaning: "last matches" },
+            { word: "Olympic", length: 7, pronunciation: "/əˈlɪmpɪk/", teluguMeaning: "ఒలింపిక్", englishMeaning: "international sports event" },
+            { word: "events", length: 6, pronunciation: "/ɪˈvents/", teluguMeaning: "కార్యక్రమాలు", englishMeaning: "occurrences" },
+            { word: "held", length: 4, pronunciation: "/held/", teluguMeaning: "నిర్వహించబడింది", englishMeaning: "organized" },
+            { word: "Berlin", length: 6, pronunciation: "/bɜːrˈlɪn/", teluguMeaning: "బెర్లిన్", englishMeaning: "city in Germany" },
+            { word: "Germany", length: 7, pronunciation: "/ˈdʒɜːrməni/", teluguMeaning: "జర్మనీ", englishMeaning: "country in Europe" },
+            { word: "had", length: 3, pronunciation: "/hæd/", teluguMeaning: "కలిగి ఉంది", englishMeaning: "possessed" },
+            { word: "defeated", length: 8, pronunciation: "/dɪˈfiːtɪd/", teluguMeaning: "పరాజయం పొందింది", englishMeaning: "beat in contest" },
+            { word: "several", length: 7, pronunciation: "/ˈsevrəl/", teluguMeaning: "అనేక", englishMeaning: "more than two" },
+            { word: "teams", length: 5, pronunciation: "/tiːmz/", teluguMeaning: "టీములు", englishMeaning: "groups playing together" },
+            { word: "enter", length: 5, pronunciation: "/ˈentər/", teluguMeaning: "ప్రవేశించండి", englishMeaning: "go into" },
+            { word: "against", length: 7, pronunciation: "/əˈɡenst/", teluguMeaning: "వ్యతిరేకంగా", englishMeaning: "in opposition to" },
+            { word: "team", length: 4, pronunciation: "/tiːm/", teluguMeaning: "టీమ్", englishMeaning: "group playing together" },
+            { word: "They", length: 4, pronunciation: "/ðeɪ/", teluguMeaning: "వారు", englishMeaning: "those ones" },
+            { word: "were", length: 4, pronunciation: "/wɜːr/", teluguMeaning: "ఉన్నారు", englishMeaning: "past of be" },
+            { word: "hosts", length: 5, pronunciation: "/hoʊsts/", teluguMeaning: "హోస్ట్లు", englishMeaning: "organizers" },
+            { word: "Olympics", length: 8, pronunciation: "/əˈlɪmpɪks/", teluguMeaning: "ఒలింపిక్స్", englishMeaning: "international sports games" },
+            { word: "and", length: 3, pronunciation: "/ænd/", teluguMeaning: "మరియు", englishMeaning: "together with" },
+            { word: "sure", length: 4, pronunciation: "/ʃʊr/", teluguMeaning: "ఖచ్చితంగా", englishMeaning: "certain" },
+            { word: "victory", length: 7, pronunciation: "/ˈvɪktəri/", teluguMeaning: "విజయం", englishMeaning: "win" },
+            { word: "All", length: 3, pronunciation: "/ɔːl/", teluguMeaning: "అన్నీ", englishMeaning: "every one" },
+            { word: "before", length: 6, pronunciation: "/bɪˈfɔːr/", teluguMeaning: "ముందు", englishMeaning: "earlier than" },
+            { word: "rained", length: 6, pronunciation: "/reɪnd/", teluguMeaning: "వర్షం పడింది", englishMeaning: "fell as rain" },
+            { word: "heavily", length: 7, pronunciation: "/ˈhevɪli/", teluguMeaning: "భారీగా", englishMeaning: "in heavy manner" },
+            { word: "entire", length: 6, pronunciation: "/ɪnˈtaɪər/", teluguMeaning: "మొత్తం", englishMeaning: "whole" },
+            { word: "field", length: 5, pronunciation: "/fiːld/", teluguMeaning: "మైదానం", englishMeaning: "playing area" },
+            { word: "become", length: 6, pronunciation: "/bɪˈkʌm/", teluguMeaning: "అయింది", englishMeaning: "come to be" },
+            { word: "wet", length: 3, pronunciation: "/wet/", teluguMeaning: "నీటితో తడిసిన", englishMeaning: "covered with water" },
+            { word: "But", length: 3, pronunciation: "/bʌt/", teluguMeaning: "కానీ", englishMeaning: "however" },
+            { word: "being", length: 5, pronunciation: "/ˈbiːɪŋ/", teluguMeaning: "అయినందున", englishMeaning: "existing as" },
+            { word: "last", length: 4, pronunciation: "/læst/", teluguMeaning: "చివరి", englishMeaning: "final" },
+            { word: "Games", length: 5, pronunciation: "/ɡeɪmz/", teluguMeaning: "ఆటలు", englishMeaning: "sports events" },
+            { word: "not", length: 3, pronunciation: "/nɒt/", teluguMeaning: "కాదు", englishMeaning: "negative" },
+            { word: "possible", length: 8, pronunciation: "/ˈpɒsəbl/", teluguMeaning: "సాధ్యం", englishMeaning: "able to be done" },
+            { word: "postpone", length: 8, pronunciation: "/pəˈspoʊn/", teluguMeaning: "ప్రతిపాదించండి", englishMeaning: "delay" },
+            { word: "match", length: 5, pronunciation: "/mætʃ/", teluguMeaning: "మ్యాచ్", englishMeaning: "game" },
+            { word: "any", length: 3, pronunciation: "/ˈeni/", teluguMeaning: "ఏదైనా", englishMeaning: "some" },
+            { word: "further", length: 7, pronunciation: "/ˈfɜːrðər/", teluguMeaning: "మరింత", englishMeaning: "more" },
+            { word: "About", length: 5, pronunciation: "/əˈbaʊt/", teluguMeaning: "గురించి", englishMeaning: "approximately" },
+            { word: "forty", length: 5, pronunciation: "/ˈfɔːrti/", teluguMeaning: "నలభై", englishMeaning: "number 40" },
+            { word: "thousand", length: 8, pronunciation: "/ˈθaʊznd/", teluguMeaning: "వేలు", englishMeaning: "number 1000" },
+            { word: "people", length: 6, pronunciation: "/ˈpiːpl/", teluguMeaning: "ప్రజలు", englishMeaning: "human beings" },
+            { word: "including", length: 9, pronunciation: "/ɪnˈkluːdɪŋ/", teluguMeaning: "సహా", englishMeaning: "containing as part" },
+            { word: "men", length: 3, pronunciation: "/men/", teluguMeaning: "పురుషులు", englishMeaning: "adult males" },
+            { word: "women", length: 5, pronunciation: "/ˈwɪmɪn/", teluguMeaning: "స్త్రీలు", englishMeaning: "adult females" },
+            { word: "gathered", length: 8, pronunciation: "/ˈɡæðərd/", teluguMeaning: "సేకరించారు", englishMeaning: "came together" },
+            { word: "stadium", length: 7, pronunciation: "/ˈsteɪdiəm/", teluguMeaning: "స్టేడియం", englishMeaning: "sports arena" },
+            { word: "started", length: 7, pronunciation: "/ˈstɑːrtɪd/", teluguMeaning: "ప్రారంభమైంది", englishMeaning: "began" },
+            { word: "exactly", length: 7, pronunciation: "/ɪɡˈzæktli/", teluguMeaning: "ఖచ్చితంగా", englishMeaning: "precisely" },
+            { word: "a.m.", length: 3, pronunciation: "/ˌeɪ ˈem/", teluguMeaning: "ఉదయం", englishMeaning: "before noon" },
+            { word: "No", length: 2, pronunciation: "/noʊ/", teluguMeaning: "లేదు", englishMeaning: "negative" },
+            { word: "score", length: 5, pronunciation: "/skɔːr/", teluguMeaning: "స్కోరు", englishMeaning: "point in game" },
+            { word: "goal", length: 4, pronunciation: "/ɡoʊl/", teluguMeaning: "గోల్", englishMeaning: "point in hockey" },
+            { word: "first", length: 5, pronunciation: "/fɜːrst/", teluguMeaning: "మొదటి", englishMeaning: "coming before others" },
+            { word: "half", length: 4, pronunciation: "/hæf/", teluguMeaning: "సగం", englishMeaning: "50 percent" },
+            { word: "hour", length: 4, pronunciation: "/aʊər/", teluguMeaning: "గంట", englishMeaning: "60 minutes" },
+            { word: "minute", length: 6, pronunciation: "/ˈmɪnɪt/", teluguMeaning: "నిమిషం", englishMeaning: "60 seconds" },
+            { word: "Roop", length: 4, pronunciation: "/ruːp/", teluguMeaning: "రూప్", englishMeaning: "name" },
+            { word: "Singh", length: 5, pronunciation: "/sɪŋ/", teluguMeaning: "సింగ్", englishMeaning: "surname" },
+            { word: "hitting", length: 7, pronunciation: "/ˈhɪtɪŋ/", teluguMeaning: "కొట్టడం", englishMeaning: "striking" },
+            { word: "ball", length: 4, pronunciation: "/bɔːl/", teluguMeaning: "బంతి", englishMeaning: "round object" },
+            { word: "towards", length: 7, pronunciation: "/təˈwɔːrdz/", teluguMeaning: "వైపు", englishMeaning: "in the direction of" },
+            { word: "goalpost", length: 8, pronunciation: "/ˈɡoʊlpoʊst/", teluguMeaning: "గోల్ పోస్ట్", englishMeaning: "hockey goal frame" },
+            { word: "from", length: 4, pronunciation: "/frɒm/", teluguMeaning: "నుండి", englishMeaning: "starting at" },
+            { word: "difficult", length: 9, pronunciation: "/ˈdɪfɪkəlt/", teluguMeaning: "కష్టమైన", englishMeaning: "hard" },
+            { word: "angle", length: 5, pronunciation: "/ˈæŋɡl/", teluguMeaning: "కోణం", englishMeaning: "space between lines" },
+            { word: "second", length: 6, pronunciation: "/ˈsekənd/", teluguMeaning: "రెండవ", englishMeaning: "coming after first" },
+            { word: "more", length: 4, pronunciation: "/mɔːr/", teluguMeaning: "మరిన్ని", englishMeaning: "additional" },
+            { word: "goals", length: 5, pronunciation: "/ɡoʊlz/", teluguMeaning: "గోల్స్", englishMeaning: "points in game" },
+            { word: "Two", length: 3, pronunciation: "/tuː/", teluguMeaning: "రెండు", englishMeaning: "number 2" },
+            { word: "them", length: 4, pronunciation: "/ðem/", teluguMeaning: "వాటిని", englishMeaning: "those things" },
+            { word: "by", length: 2, pronunciation: "/baɪ/", teluguMeaning: "ద్వారా", englishMeaning: "through" },
+            { word: "Captain", length: 7, pronunciation: "/ˈkæptɪn/", teluguMeaning: "కెప్టెన్", englishMeaning: "team leader" },
+            { word: "Germans", length: 7, pronunciation: "/ˈdʒɜːrmənz/", teluguMeaning: "జర్మన్లు", englishMeaning: "people from Germany" },
+            { word: "also", length: 4, pronunciation: "/ˈɔːlsoʊ/", teluguMeaning: "కూడా", englishMeaning: "in addition" },
+            { word: "spiked", length: 6, pronunciation: "/spaɪkt/", teluguMeaning: "స్పైక్ చేయబడిన", englishMeaning: "with spikes" },
+            { word: "shoes", length: 5, pronunciation: "/ʃuːz/", teluguMeaning: "షూలు", englishMeaning: "footwear" },
+            { word: "making", length: 6, pronunciation: "/ˈmeɪkɪŋ/", teluguMeaning: "చేస్తున్న", englishMeaning: "creating" },
+            { word: "difficult", length: 9, pronunciation: "/ˈdɪfɪkəlt/", teluguMeaning: "కష్టమైన", englishMeaning: "hard" },
+            { word: "run", length: 3, pronunciation: "/rʌn/", teluguMeaning: "పరుగెత్తడం", englishMeaning: "move fast on foot" },
+            { word: "fast", length: 4, pronunciation: "/fæst/", teluguMeaning: "వేగంగా", englishMeaning: "quickly" },
+            { word: "ground", length: 6, pronunciation: "/ɡraʊnd/", teluguMeaning: "నేల", englishMeaning: "earth surface" },
+            { word: "removed", length: 7, pronunciation: "/rɪˈmuːvd/", teluguMeaning: "తొలగించబడింది", englishMeaning: "took off" },
+            { word: "socks", length: 5, pronunciation: "/sɒks/", teluguMeaning: "సాక్స్", englishMeaning: "foot coverings" },
+            { word: "began", length: 5, pronunciation: "/bɪˈɡæn/", teluguMeaning: "ప్రారంభించింది", englishMeaning: "started" },
+            { word: "barefoot", length: 8, pronunciation: "/ˈberfʊt/", teluguMeaning: "బేర్ ఫుట్", englishMeaning: "without shoes" },
+            { word: "goalkeeper", length: 10, pronunciation: "/ˈɡoʊlkiːpər/", teluguMeaning: "గోల్ కీపర్", englishMeaning: "player defending goal" },
+            { word: "pounced", length: 7, pronunciation: "/paʊnst/", teluguMeaning: "దూకింది", englishMeaning: "jumped suddenly" },
+            { word: "hurt", length: 4, pronunciation: "/hɜːrt/", teluguMeaning: "గాయపరిచింది", englishMeaning: "caused pain" },
+            { word: "true", length: 4, pronunciation: "/truː/", teluguMeaning: "నిజమైన", englishMeaning: "real" },
+            { word: "little", length: 6, pronunciation: "/ˈlɪtl/", teluguMeaning: "చిన్న", englishMeaning: "small amount" },
+            { word: "first-aid", length: 9, pronunciation: "/ˌfɜːrst ˈeɪd/", teluguMeaning: "ప్రాథమిక చికిత్స", englishMeaning: "immediate medical help" },
+            { word: "immediately", length: 11, pronunciation: "/ɪˈmiːdiətli/", teluguMeaning: "వెంటనే", englishMeaning: "without delay" },
+            { word: "returned", length: 8, pronunciation: "/rɪˈtɜːrnd/", teluguMeaning: "తిరిగి వచ్చింది", englishMeaning: "went back" },
+            { word: "field", length: 5, pronunciation: "/fiːld/", teluguMeaning: "మైదానం", englishMeaning: "playing area" },
+            { word: "held", length: 4, pronunciation: "/held/", teluguMeaning: "పట్టుకుంది", englishMeaning: "gripped" },
+            { word: "spectators", length: 10, pronunciation: "/ˈspekteɪtərz/", teluguMeaning: "ప్రేక్షకులు", englishMeaning: "people watching" },
+            { word: "spellbound", length: 10, pronunciation: "/ˈspelbaʊnd/", teluguMeaning: "మంత్రముగ్ధులను", englishMeaning: "fascinated" },
+            { word: "game", length: 4, pronunciation: "/ɡeɪm/", teluguMeaning: "ఆట", englishMeaning: "sport" },
+            { word: "last", length: 4, pronunciation: "/læst/", teluguMeaning: "చివరి", englishMeaning: "final" },
+            { word: "just", length: 4, pronunciation: "/dʒʌst/", teluguMeaning: "కేవలం", englishMeaning: "only" },
+            { word: "drew", length: 4, pronunciation: "/druː/", teluguMeaning: "లాగింది", englishMeaning: "pulled" },
+            { word: "close", length: 5, pronunciation: "/kloʊz/", teluguMeaning: "ముగింపు", englishMeaning: "end" },
+            { word: "won", length: 3, pronunciation: "/wʌn/", teluguMeaning: "గెలిచింది", englishMeaning: "was victorious" },
+            { word: "medal", length: 5, pronunciation: "/ˈmedl/", teluguMeaning: "పతకం", englishMeaning: "award" },
+            { word: "third", length: 5, pronunciation: "/θɜːrd/", teluguMeaning: "మూడవ", englishMeaning: "coming after second" },
+            { word: "time", length: 4, pronunciation: "/taɪm/", teluguMeaning: "సమయం", englishMeaning: "period" },
+            { word: "row", length: 3, pronunciation: "/roʊ/", teluguMeaning: "వరుస", englishMeaning: "line" },
+            { word: "hat-trick", length: 9, pronunciation: "/ˈhæt trɪk/", teluguMeaning: "హ్యాట్రిక్", englishMeaning: "three consecutive wins" },
+            { word: "winners", length: 7, pronunciation: "/ˈwɪnərz/", teluguMeaning: "విజేతలు", englishMeaning: "people who win" },
+            { word: "gold", length: 4, pronunciation: "/ɡoʊld/", teluguMeaning: "బంగారం", englishMeaning: "precious metal" },
+            { word: "said", length: 4, pronunciation: "/sed/", teluguMeaning: "చెప్పబడింది", englishMeaning: "spoken" },
+            { word: "ruler", length: 5, pronunciation: "/ˈruːlər/", teluguMeaning: "శాసకుడు", englishMeaning: "leader" },
+            { word: "offered", length: 7, pronunciation: "/ˈɒfəd/", teluguMeaning: "అందించింది", englishMeaning: "presented" },
+            { word: "higher", length: 6, pronunciation: "/ˈhaɪər/", teluguMeaning: "ఎక్కువ", englishMeaning: "more" },
+            { word: "salary", length: 6, pronunciation: "/ˈsæləri/", teluguMeaning: "సాలరీ", englishMeaning: "payment for work" },
+            { word: "rank", length: 4, pronunciation: "/ræŋk/", teluguMeaning: "ర్యాంక్", englishMeaning: "position" },
+            { word: "army", length: 4, pronunciation: "/ˈɑːrmi/", teluguMeaning: "సైన్యం", englishMeaning: "military force" },
+            { word: "if", length: 2, pronunciation: "/ɪf/", teluguMeaning: "ఒకవేళ", englishMeaning: "on condition that" },
+            { word: "agreed", length: 6, pronunciation: "/əˈɡriːd/", teluguMeaning: "అంగీకరించారు", englishMeaning: "consented" },
+            { word: "play", length: 4, pronunciation: "/pleɪ/", teluguMeaning: "ఆడటానికి", englishMeaning: "participate in sport" },
+            { word: "behalf", length: 6, pronunciation: "/bɪˈhæf/", teluguMeaning: "వత్తిడిలో", englishMeaning: "in the interest of" },
+            { word: "turned", length: 6, pronunciation: "/tɜːrnd/", teluguMeaning: "తిరిగింది", englishMeaning: "rotated" },
+            { word: "down", length: 4, pronunciation: "/daʊn/", teluguMeaning: "కిందికి", englishMeaning: "toward ground" },
+            { word: "offer", length: 5, pronunciation: "/ˈɒfər/", teluguMeaning: "ఆఫర్", englishMeaning: "proposal" },
+            { word: "After", length: 5, pronunciation: "/ˈæftər/", teluguMeaning: "తర్వాత", englishMeaning: "following in time" },
+            { word: "celebrated", length: 10, pronunciation: "/ˈselɪbreɪtɪd/", teluguMeaning: "ప్రసిద్ధ", englishMeaning: "famous" },
+            { word: "Hitler", length: 6, pronunciation: "/ˈhɪtlər/", teluguMeaning: "హిట్లర్", englishMeaning: "German dictator" },
+            { word: "awarded", length: 7, pronunciation: "/əˈwɔːrdɪd/", teluguMeaning: "ప్రదానం చేసింది", englishMeaning: "gave as prize" },
+            { word: "special", length: 7, pronunciation: "/ˈspeʃl/", teluguMeaning: "ప్రత్యేక", englishMeaning: "different from usual" },
+            { word: "You", length: 3, pronunciation: "/juː/", teluguMeaning: "మీరు", englishMeaning: "person addressed" },
+            { word: "may", length: 3, pronunciation: "/meɪ/", teluguMeaning: "చేయవచ్చు", englishMeaning: "might" },
+            { word: "aware", length: 5, pronunciation: "/əˈweər/", teluguMeaning: "తెలుసు", englishMeaning: "knowing" },
+            { word: "hockey", length: 6, pronunciation: "/ˈhɒki/", teluguMeaning: "హాకీ", englishMeaning: "sport played with sticks" },
+            { word: "our", length: 3, pronunciation: "/aʊər/", teluguMeaning: "మా", englishMeaning: "belonging to us" },
+            { word: "national", length: 8, pronunciation: "/ˈnæʃnəl/", teluguMeaning: "జాతీయ", englishMeaning: "of the country" },
+            { word: "sport", length: 5, pronunciation: "/spɔːrt/", teluguMeaning: "క్రీడ", englishMeaning: "game" },
+            { word: "Major", length: 5, pronunciation: "/ˈmeɪdʒər/", teluguMeaning: "మేజర్", englishMeaning: "army rank" },
+            { word: "birthday", length: 8, pronunciation: "/ˈbɜːrθdeɪ/", teluguMeaning: "పుట్టినరోజు", englishMeaning: "anniversary of birth" },
+            { word: "celebrated", length: 10, pronunciation: "/ˈselɪbreɪtɪd/", teluguMeaning: "పాటించబడుతుంది", englishMeaning: "observed" },
+            { word: "National", length: 8, pronunciation: "/ˈnæʃnəl/", teluguMeaning: "జాతీయ", englishMeaning: "of the country" },
+            { word: "Sports", length: 6, pronunciation: "/spɔːrts/", teluguMeaning: "క్రీడల", englishMeaning: "games" },
+            { word: "Day", length: 3, pronunciation: "/deɪ/", teluguMeaning: "దినోత్సవం", englishMeaning: "special day" },
+            { word: "India", length: 5, pronunciation: "/ˈɪndiə/", teluguMeaning: "భారతదేశం", englishMeaning: "country in South Asia" },
+            { word: "famous", length: 6, pronunciation: "/ˈfeɪməs/", teluguMeaning: "ప్రసిద్ధ", englishMeaning: "well known" },
+            { word: "stadium", length: 7, pronunciation: "/ˈsteɪdiəm/", teluguMeaning: "స్టేడియం", englishMeaning: "sports arena" },
+            { word: "Delhi", length: 5, pronunciation: "/ˈdeli/", teluguMeaning: "డెల్హీ", englishMeaning: "capital city" },
+            { word: "named", length: 5, pronunciation: "/neɪmd/", teluguMeaning: "పేరు పెట్టబడింది", englishMeaning: "given a name" },
+            { word: "after", length: 5, pronunciation: "/ˈæftər/", teluguMeaning: "తర్వాత", englishMeaning: "following" },
+            { word: "great", length: 5, pronunciation: "/ɡreɪt/", teluguMeaning: "గొప్ప", englishMeaning: "large" },
+            { word: "hero", length: 4, pronunciation: "/ˈhɪəroʊ/", teluguMeaning: "హీరో", englishMeaning: "brave person" },
+            { word: "knows", length: 5, pronunciation: "/noʊz/", teluguMeaning: "తెలుసు", englishMeaning: "has knowledge" },
+            { word: "perhaps", length: 7, pronunciation: "/pərˈhæps/", teluguMeaning: "బహుశా", englishMeaning: "maybe" },
+            { word: "one", length: 3, pronunciation: "/wʌn/", teluguMeaning: "ఒకరు", englishMeaning: "single person" },
+            { word: "carry", length: 5, pronunciation: "/ˈkæri/", teluguMeaning: "మోసుకెళ్ళండి", englishMeaning: "transport" },
+            { word: "legacy", length: 6, pronunciation: "/ˈleɡəsi/", teluguMeaning: "వారసత్వం", englishMeaning: "inheritance" },
+            { word: "further", length: 7, pronunciation: "/ˈfɜːrðər/", teluguMeaning: "మరింత", englishMeaning: "more" },
+            { word: "win", length: 3, pronunciation: "/wɪn/", teluguMeaning: "గెలుచుకోండి", englishMeaning: "be victorious" },
+            { word: "glory", length: 5, pronunciation: "/ˈɡlɔːri/", teluguMeaning: "కీర్తి", englishMeaning: "fame" },
+            { word: "country", length: 7, pronunciation: "/ˈkʌntri/", teluguMeaning: "దేశం", englishMeaning: "nation" }
+        ];
+
+        // Verbs data
+        const verbs = [
+            { verb: "was", telugu: "ఉంది", pronunciation: "/wʌz/", example: "real name was Dhyan Singh" },
+            { verb: "couldn't", telugu: "చేయలేదు", pronunciation: "/ˈkʊdnt/", example: "He couldn't practice hockey" },
+            { verb: "practice", telugu: "సాధన", pronunciation: "/ˈpræktɪs/", example: "practice hockey during the day" },
+            { verb: "used", telugu: "ఉపయోగించారు", pronunciation: "/juːzd/", example: "he used to be busy" },
+            { verb: "be", telugu: "అవ్వటానికి", pronunciation: "/biː/", example: "used to be busy" },
+            { verb: "used", telugu: "ఉపయోగించారు", pronunciation: "/juːzd/", example: "used to practice at night" },
+            { verb: "practice", telugu: "సాధన", pronunciation: "/ˈpræktɪs/", example: "practice at night" },
+            { verb: "believed", telugu: "నమ్మారు", pronunciation: "/bɪˈliːvd/", example: "It is believed" },
+            { verb: "began", telugu: "ప్రారంభించింది", pronunciation: "/bɪˈɡæn/", example: "began to call him" },
+            { verb: "call", telugu: "పిలుస్తారు", pronunciation: "/kɔːl/", example: "call him Dhyan Chand" },
+            { verb: "meaning", telugu: "అర్థం", pronunciation: "/ˈmiːnɪŋ/", example: "'Chand' meaning moon" },
+            { verb: "stayed", telugu: "ఉండిపోయింది", pronunciation: "/steɪd/", example: "name stayed with him" },
+            { verb: "had", telugu: "కలిగి ఉంది", pronunciation: "/hæd/", example: "Germany had defeated" },
+            { verb: "defeated", telugu: "పరాజయం పొందింది", pronunciation: "/dɪˈfiːtɪd/", example: "defeated several teams" },
+            { verb: "enter", telugu: "ప్రవేశించండి", pronunciation: "/ˈentər/", example: "enter the finals" },
+            { verb: "were", telugu: "ఉన్నారు", pronunciation: "/wɜːr/", example: "They were the hosts" },
+            { verb: "rained", telugu: "వర్షం పడింది", pronunciation: "/reɪnd/", example: "it had rained heavily" },
+            { verb: "become", telugu: "అయింది", pronunciation: "/bɪˈkʌm/", example: "field had become wet" },
+            { verb: "being", telugu: "అయినందున", pronunciation: "/ˈbiːɪŋ/", example: "August being the last day" },
+            { verb: "postpone", telugu: "ప్రతిపాదించండి", pronunciation: "/pəˈspoʊn/", example: "postpone the match" },
+            { verb: "gathered", telugu: "సేకరించారు", pronunciation: "/ˈɡæðərd/", example: "people had gathered" },
+            { verb: "started", telugu: "ప్రారంభమైంది", pronunciation: "/ˈstɑːrtɪd/", example: "match started exactly" },
+            { verb: "score", telugu: "స్కోరు", pronunciation: "/skɔːr/", example: "could score a goal" },
+            { verb: "scored", telugu: "స్కోర్ చేసింది", pronunciation: "/skɔːrd/", example: "Roop Singh scored" },
+            { verb: "hitting", telugu: "కొట్టడం", pronunciation: "/ˈhɪtɪŋ/", example: "hitting the ball" },
+            { verb: "scored", telugu: "స్కోర్ చేసింది", pronunciation: "/skɔːrd/", example: "team scored three more goals" },
+            { verb: "making", telugu: "చేస్తున్న", pronunciation: "/ˈmeɪkɪŋ/", example: "were making it difficult" },
+            { verb: "run", telugu: "పరుగెత్తడం", pronunciation: "/rʌn/", example: "run fast on wet ground" },
+            { verb: "removed", telugu: "తొలగించబడింది", pronunciation: "/rɪˈmuːvd/", example: "He removed the shoes" },
+            { verb: "began", telugu: "ప్రారంభించింది", pronunciation: "/bɪˈɡæn/", example: "began to run barefoot" },
+            { verb: "pounced", telugu: "దూకింది", pronunciation: "/paʊnst/", example: "goalkeeper pounced on" },
+            { verb: "hurt", telugu: "గాయపరిచింది", pronunciation: "/hɜːrt/", example: "hurt him" },
+            { verb: "was", telugu: "ఉంది", pronunciation: "/wʌz/", example: "was a true soldier" },
+            { verb: "returned", telugu: "తిరిగి వచ్చింది", pronunciation: "/rɪˈtɜːrnd/", example: "returned to the field" },
+            { verb: "held", telugu: "పట్టుకుంది", pronunciation: "/held/", example: "held the spectators spellbound" },
+            { verb: "drew", telugu: "లాగింది", pronunciation: "/druː/", example: "game drew to a close" },
+            { verb: "won", telugu: "గెలిచింది", pronunciation: "/wʌn/", example: "team had won the medal" },
+            { verb: "said", telugu: "చెప్పబడింది", pronunciation: "/sed/", example: "It is said" },
+            { verb: "offered", telugu: "అందించింది", pronunciation: "/ˈɒfəd/", example: "offered Dhyan Chand" },
+            { verb: "agreed", telugu: "అంగీకరించారు", pronunciation: "/əˈɡriːd/", example: "if he agreed to play" },
+            { verb: "play", telugu: "ఆడటానికి", pronunciation: "/pleɪ/", example: "play on behalf of Germany" },
+            { verb: "turned", telugu: "తిరిగింది", pronunciation: "/tɜːrnd/", example: "turned down the offer" },
+            { verb: "awarded", telugu: "ప్రదానం చేసింది", pronunciation: "/əˈwɔːrdɪd/", example: "Hitler awarded a medal" },
+            { verb: "may", telugu: "చేయవచ్చు", pronunciation: "/meɪ/", example: "You may be aware" },
+            { verb: "aware", telugu: "తెలుసు", pronunciation: "/əˈweər/", example: "may be aware" },
+            { verb: "celebrated", telugu: "పాటించబడుతుంది", pronunciation: "/ˈselɪbreɪtɪd/", example: "is celebrated as" },
+            { verb: "named", telugu: "పేరు పెట్టబడింది", pronunciation: "/neɪmd/", example: "named after the great hero" },
+            { verb: "knows", telugu: "తెలుసు", pronunciation: "/noʊz/", example: "Who knows" },
+            { verb: "carry", telugu: "మోసుకెళ్ళండి", pronunciation: "/ˈkæri/", example: "carry the legacy" },
+            { verb: "win", telugu: "గెలుచుకోండి", pronunciation: "/wɪn/", example: "win great glory" }
+        ];
+
+        // Opposites data
+        const opposites = [
+            { word: "real", telugu: "నిజమైన", opposite: "fake", teluguOpposite: "నకిలీ" },
+            { word: "soldier", telugu: "సైనికుడు", opposite: "civilian", teluguOpposite: "పౌరుడు" },
+            { word: "couldn't", telugu: "చేయలేదు", opposite: "could", teluguOpposite: "చేయగలిగింది" },
+            { word: "practice", telugu: "సాధన", opposite: "neglect", teluguOpposite: "నిర్లక్ష్యం" },
+            { word: "during", telugu: "సమయంలో", opposite: "after", teluguOpposite: "తర్వాత" },
+            { word: "day", telugu: "పగలు", opposite: "night", teluguOpposite: "రాత్రి" },
+            { word: "busy", telugu: "బిజీగా", opposite: "free", teluguOpposite: "ఉచితం" },
+            { word: "night", telugu: "రాత్రి", opposite: "day", teluguOpposite: "పగలు" },
+            { word: "moonlight", telugu: "చంద్రిక", opposite: "sunlight", teluguOpposite: "సూర్యకాంతి" },
+            { word: "began", telugu: "ప్రారంభించింది", opposite: "ended", teluguOpposite: "ముగిసింది" },
+            { word: "stayed", telugu: "ఉండిపోయింది", opposite: "left", teluguOpposite: "వదిలివేసింది" },
+            { word: "defeated", telugu: "పరాజయం పొందింది", opposite: "lost to", teluguOpposite: "పరాజయం పొందింది" },
+            { word: "enter", telugu: "ప్రవేశించండి", opposite: "exit", teluguOpposite: "నిష్క్రమించండి" },
+            { word: "hosts", telugu: "హోస్ట్లు", opposite: "guests", teluguOpposite: "అతిథులు" },
+            { word: "sure", telugu: "ఖచ్చితంగా", opposite: "unsure", teluguOpposite: "అనిశ్చితంగా" },
+            { word: "victory", telugu: "విజయం", opposite: "defeat", teluguOpposite: "పరాజయం" },
+            { word: "rained", telugu: "వర్షం పడింది", opposite: "cleared", teluguOpposite: "క్లియర్ అయ్యింది" },
+            { word: "heavily", telugu: "భారీగా", opposite: "lightly", teluguOpposite: "తేలికగా" },
+            { word: "entire", telugu: "మొత్తం", opposite: "partial", teluguOpposite: "పాక్షిక" },
+            { word: "wet", telugu: "నీటితో తడిసిన", opposite: "dry", teluguOpposite: "ఎండిన" },
+            { word: "last", telugu: "చివరి", opposite: "first", teluguOpposite: "మొదటి" },
+            { word: "possible", telugu: "సాధ్యం", opposite: "impossible", teluguOpposite: "అసాధ్యం" },
+            { word: "postpone", telugu: "ప్రతిపాదించండి", opposite: "advance", teluguOpposite: "ముందుకు" },
+            { word: "gathered", telugu: "సేకరించారు", opposite: "dispersed", teluguOpposite: "చెదరగొట్టబడింది" },
+            { word: "started", telugu: "ప్రారంభమైంది", opposite: "finished", teluguOpposite: "ముగిసింది" },
+            { word: "score", telugu: "స్కోరు", opposite: "miss", teluguOpposite: "మిస్" },
+            { word: "first", telugu: "మొదటి", opposite: "last", teluguOpposite: "చివరి" },
+            { word: "difficult", telugu: "కష్టమైన", opposite: "easy", teluguOpposite: "సులభమైన" },
+            { word: "second", telugu: "రెండవ", opposite: "first", teluguOpposite: "మొదటి" },
+            { word: "more", telugu: "మరిన్ని", opposite: "less", teluguOpposite: "తక్కువ" },
+            { word: "making", telugu: "చేస్తున్న", opposite: "breaking", teluguOpposite: "విరిచివేయడం" },
+            { word: "fast", telugu: "వేగంగా", opposite: "slow", teluguOpposite: "నెమ్మదిగా" },
+            { word: "removed", telugu: "తొలగించబడింది", opposite: "put on", teluguOpposite: "వేసుకోండి" },
+            { word: "began", telugu: "ప్రారంభించింది", opposite: "stopped", teluguOpposite: "ఆపివేసింది" },
+            { word: "barefoot", telugu: "బేర్ ఫుట్", opposite: "shod", teluguOpposite: "షూస్ ధరించిన" },
+            { verb: "pounced", telugu: "దూకింది", opposite: "retreated", teluguOpposite: "ప్రత్యావర్తనం చేసింది" },
+            { word: "hurt", telugu: "గాయపరిచింది", opposite: "healed", teluguOpposite: "స్వస్థపరిచింది" },
+            { word: "true", telugu: "నిజమైన", opposite: "false", teluguOpposite: "తప్పుడు" },
+            { word: "little", telugu: "చిన్న", opposite: "much", teluguOpposite: "చాలా" },
+            { word: "immediately", telugu: "వెంటనే", opposite: "later", teluguOpposite: "తర్వాత" },
+            { word: "returned", telugu: "తిరిగి వచ్చింది", opposite: "left", teluguOpposite: "వదిలివేసింది" },
+            { word: "last", telugu: "చివరి", opposite: "first", teluguOpposite: "మొదటి" },
+            { word: "close", telugu: "ముగింపు", opposite: "beginning", teluguOpposite: "ప్రారంభం" },
+            { word: "won", telugu: "గెలిచింది", opposite: "lost", teluguOpposite: "పరాజయం పొందింది" },
+            { word: "offered", telugu: "అందించింది", opposite: "refused", teluguOpposite: "తిరస్కరించింది" },
+            { word: "higher", telugu: "ఎక్కువ", opposite: "lower", teluguOpposite: "తక్కువ" },
+            { verb: "agreed", telugu: "అంగీకరించారు", opposite: "refused", teluguOpposite: "తిరస్కరించారు" },
+            { word: "turned", telugu: "తిరిగింది", opposite: "accepted", teluguOpposite: "ఆమోదించింది" },
+            { word: "down", telugu: "కిందికి", opposite: "up", teluguOpposite: "పైకి" },
+            { word: "celebrated", telugu: "ప్రసిద్ధ", opposite: "unknown", teluguOpposite: "తెలియని" },
+            { word: "special", telugu: "ప్రత్యేక", opposite: "ordinary", teluguOpposite: "సాధారణ" },
+            { word: "aware", telugu: "తెలుసు", opposite: "unaware", teluguOpposite: "తెలియదు" },
+            { word: "national", telugu: "జాతీయ", opposite: "local", teluguOpposite: "స్థానిక" },
+            { word: "famous", telugu: "ప్రసిద్ధ", opposite: "unknown", teluguOpposite: "తెలియని" },
+            { word: "great", telugu: "గొప్ప", opposite: "small", teluguOpposite: "చిన్న" },
+            { word: "carry", telugu: "మోసుకెళ్ళండి", opposite: "drop", teluguOpposite: "డ్రాప్ చేయండి" },
+            { word: "further", telugu: "మరింత", opposite: "less", teluguOpposite: "తక్కువ" },
+            { word: "win", telugu: "గెలుచుకోండి", opposite: "lose", teluguOpposite: "ఓడిపోవడం" },
+            { word: "glory", telugu: "కీర్తి", opposite: "shame", teluguOpposite: "సిగ్గు" }
+        ];
+
+        // Singular/Plural data
+        const singularPlural = [
+            { singular: "butterfly", teluguSingular: "సీతాకోకచిలుక", plural: "butterflies", teluguPlural: "సీతాకోకచిలుకలు" },
+            { singular: "soldier", teluguSingular: "సైనికుడు", plural: "soldiers", teluguPlural: "సైనికులు" },
+            { singular: "coach", teluguSingular: "కోచ్", plural: "coaches", teluguPlural: "కోచ్లు" },
+            { singular: "final", teluguSingular: "ఫైనల్", plural: "finals", teluguPlural: "ఫైనల్స్" },
+            { singular: "event", teluguSingular: "కార్యక్రమం", plural: "events", teluguPlural: "కార్యక్రమాలు" },
+            { singular: "team", teluguSingular: "టీమ్", plural: "teams", teluguPlural: "టీములు" },
+            { singular: "host", teluguSingular: "హోస్ట్", plural: "hosts", teluguPlural: "హోస్ట్లు" },
+            { singular: "field", teluguSingular: "మైదానం", plural: "fields", teluguPlural: "మైదానాలు" },
+            { singular: "game", teluguSingular: "ఆట", plural: "games", teluguPlural: "ఆటలు" },
+            { singular: "person", teluguSingular: "వ్యక్తి", plural: "people", teluguPlural: "ప్రజలు" },
+            { singular: "man", teluguSingular: "మనిషి", plural: "men", teluguPlural: "పురుషులు" },
+            { singular: "woman", teluguSingular: "స్త్రీ", plural: "women", teluguPlural: "స్త్రీలు" },
+            { singular: "stadium", teluguSingular: "స్టేడియం", plural: "stadiums", teluguPlural: "స్టేడియాలు" },
+            { singular: "goal", teluguSingular: "గోల్", plural: "goals", teluguPlural: "గోల్స్" },
+            { singular: "minute", teluguSingular: "నిమిషం", plural: "minutes", teluguPlural: "నిమిషాలు" },
+            { singular: "angle", teluguSingular: "కోణం", plural: "angles", teluguPlural: "కోణాలు" },
+            { singular: "shoe", teluguSingular: "షూ", plural: "shoes", teluguPlural: "షూలు" },
+            { singular: "sock", teluguSingular: "సాక్", plural: "socks", teluguPlural: "సాక్స్" },
+            { singular: "goalkeeper", teluguSingular: "గోల్ కీపర్", plural: "goalkeepers", teluguPlural: "గోల్ కీపర్లు" },
+            { singular: "spectator", teluguSingular: "ప్రేక్షకుడు", plural: "spectators", teluguPlural: "ప్రేక్షకులు" },
+            { singular: "medal", teluguSingular: "పతకం", plural: "medals", teluguPlural: "పతకాలు" },
+            { singular: "winner", teluguSingular: "విజేత", plural: "winners", teluguPlural: "విజేతలు" },
+            { singular: "ruler", teluguSingular: "శాసకుడు", plural: "rulers", teluguPlural: "శాసకులు" },
+            { singular: "hero", teluguSingular: "హీరో", plural: "heroes", teluguPlural: "హీరోలు" }
+        ];
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Display story with highlighted words
+            displayStory();
+            
+            // Display all words
+            displayAllWords();
+            
+            // Display verbs table
+            displayVerbs();
+            
+            // Display opposites table
+            displayOpposites();
+            
+            // Display singular/plural table
+            displaySingularPlural();
+            
+            // Setup navigation
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.nav-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Hide all content sections
+                    document.querySelectorAll('.content-section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // Show selected section
+                    const sectionId = this.getAttribute('data-section');
+                    document.getElementById(sectionId).classList.add('active');
+                });
+            });
+            
+            // Setup modal close button
+            document.querySelector('.close-modal').addEventListener('click', function() {
+                document.getElementById('wordModal').style.display = 'none';
+            });
+            
+            // Close modal when clicking outside
+            document.getElementById('wordModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.style.display = 'none';
+                }
+            });
+        });
+        
+        // Function to display story with highlighted words
+        function displayStory() {
+            const storyElement = document.getElementById('storyText');
+            
+            // Process the story text
+            const lines = storyText.split('\n');
+            let formattedStory = '';
+            
+            // Sort vocabulary by word length (longest first) to avoid partial highlighting
+            const sortedVocab = [...vocabulary].sort((a, b) => b.word.length - a.word.length);
+            
+            // Create a map for quick lookup
+            const vocabMap = {};
+            sortedVocab.forEach(item => {
+                vocabMap[item.word.toLowerCase()] = item;
+            });
+            
+            lines.forEach(line => {
+                if (line.trim()) {
+                    // Highlight dates and numbers
+                    let processedLine = line;
+                    
+                    // Highlight dates like "15 August 1936"
+                    processedLine = processedLine.replace(/(\d{1,2}\s+[A-Z][a-z]+\s+\d{4})/g, '<span class="date-highlight">$1</span>');
+                    
+                    // Highlight numbers like "forty thousand"
+                    processedLine = processedLine.replace(/(forty|thirty|thirty-two|32nd)/gi, '<span class="number-highlight">$1</span>');
+                    
+                    formattedStory += `<p>${highlightWordsInText(processedLine, vocabMap)}</p>`;
+                }
+            });
+            
+            storyElement.innerHTML = formattedStory;
+            
+            // Add click event to highlighted words
+            document.querySelectorAll('.highlight-word').forEach(word => {
+                word.addEventListener('click', function() {
+                    const wordText = this.getAttribute('data-word');
+                    showWordDetails(wordText);
+                });
+            });
+        }
+        
+        // Helper function to highlight words in text
+        function highlightWordsInText(text, vocabMap) {
+            const words = text.split(/(\s+)/);
+            return words.map(word => {
+                const cleanWord = word.toLowerCase().replace(/[.,!?"':;-]/g, '');
+                if (vocabMap[cleanWord] && cleanWord.length >= 2) {
+                    const wordData = vocabMap[cleanWord];
+                    const lengthClass = `word-${Math.min(wordData.length, 7)}`; // Cap at 7+
+                    return `<span class="highlight-word ${lengthClass}" data-word="${wordData.word}">${word}</span>`;
+                }
+                return word;
+            }).join('');
+        }
+        
+        // Function to display all words
+        function displayAllWords() {
+            const grid = document.getElementById('allWordsGrid');
+            grid.innerHTML = '';
+            
+            // Group words by length
+            const wordsByLength = {};
+            vocabulary.forEach(word => {
+                if (!wordsByLength[word.length]) {
+                    wordsByLength[word.length] = [];
+                }
+                wordsByLength[word.length].push(word);
+            });
+            
+            // Sort lengths and display
+            const sortedLengths = Object.keys(wordsByLength).sort((a, b) => a - b);
+            
+            sortedLengths.forEach(length => {
+                // Create section for each length
+                const section = document.createElement('div');
+                section.style.gridColumn = '1 / -1';
+                section.style.marginTop = '20px';
+                section.innerHTML = `<h3>${length}-letter words</h3>`;
+                grid.appendChild(section);
+                
+                // Create cards for words of this length
+                wordsByLength[length].forEach(wordData => {
+                    const card = document.createElement('div');
+                    card.className = 'vocab-card';
+                    
+                    // Determine color class based on length
+                    const lengthClass = `word-${Math.min(wordData.length, 7)}`;
+                    
+                    card.innerHTML = `
+                        <div class="word-header">
+                            <div class="word">${wordData.word} <span class="word-length">${wordData.length} letters</span></div>
+                            <button class="sound-btn" data-word="${wordData.word}">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                        </div>
+                        <div class="pronunciation">${wordData.pronunciation}</div>
+                        <div class="telugu-meaning">${wordData.teluguMeaning}</div>
+                        <div class="english-meaning">${wordData.englishMeaning}</div>
+                    `;
+                    
+                    grid.appendChild(card);
+                    
+                    // Add sound functionality
+                    card.querySelector('.sound-btn').addEventListener('click', function(e) {
+                        e.stopPropagation();
+                        speakWord(wordData.word);
+                    });
+                    
+                    // Add click functionality to whole card
+                    card.addEventListener('click', function() {
+                        showWordDetails(wordData.word);
+                    });
+                });
+            });
+        }
+        
+        // Function to display verbs table
+        function displayVerbs() {
+            const table = document.getElementById('verbsTable');
+            table.innerHTML = '';
+            
+            verbs.forEach(verb => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${verb.verb}</strong></td>
+                    <td>${verb.telugu}</td>
+                    <td>${verb.pronunciation}</td>
+                    <td>${verb.example}</td>
+                `;
+                table.appendChild(row);
+                
+                // Add click functionality
+                row.addEventListener('click', function() {
+                    showWordDetails(verb.verb);
+                });
+            });
+        }
+        
+        // Function to display opposites table
+        function displayOpposites() {
+            const table = document.getElementById('oppositesTable');
+            table.innerHTML = '';
+            
+            opposites.forEach(pair => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${pair.word}</strong></td>
+                    <td>${pair.telugu}</td>
+                    <td>${pair.opposite}</td>
+                    <td>${pair.teluguOpposite}</td>
+                `;
+                table.appendChild(row);
+                
+                // Add click functionality for the word
+                row.cells[0].addEventListener('click', function() {
+                    showWordDetails(pair.word);
+                });
+                
+                // Add click functionality for the opposite word
+                row.cells[2].addEventListener('click', function() {
+                    showWordDetails(pair.opposite);
+                });
+            });
+        }
+        
+        // Function to display singular/plural table
+        function displaySingularPlural() {
+            const table = document.getElementById('singularPluralTable');
+            table.innerHTML = '';
+            
+            singularPlural.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><strong>${item.singular}</strong></td>
+                    <td>${item.teluguSingular}</td>
+                    <td><strong>${item.plural}</strong></td>
+                    <td>${item.teluguPlural}</td>
+                `;
+                table.appendChild(row);
+                
+                // Add click functionality for singular
+                row.cells[0].addEventListener('click', function() {
+                    showWordDetails(item.singular);
+                });
+                
+                // Add click functionality for plural
+                row.cells[2].addEventListener('click', function() {
+                    showWordDetails(item.plural);
+                });
+            });
+        }
+        
+        // Function to show word details in modal
+        function showWordDetails(word) {
+            // Find word in vocabulary
+            const wordData = vocabulary.find(item => item.word.toLowerCase() === word.toLowerCase());
+            
+            // Find if it's a verb
+            const verbData = verbs.find(item => item.verb.toLowerCase() === word.toLowerCase());
+            
+            // Find if it has an opposite
+            const oppositeData = opposites.find(item => 
+                item.word.toLowerCase() === word.toLowerCase() || 
+                item.opposite.toLowerCase() === word.toLowerCase()
+            );
+            
+            // Find if it's in singular/plural
+            const singularPluralData = singularPlural.find(item => 
+                item.singular.toLowerCase() === word.toLowerCase() || 
+                item.plural.toLowerCase() === word.toLowerCase()
+            );
+            
+            const modalContent = document.getElementById('modalContent');
+            let html = `<div style="font-size: 1.8rem; font-weight: bold; color: var(--secondary); margin-bottom: 15px;">${word}</div>`;
+            
+            if (wordData) {
+                html += `
+                    <div style="margin-bottom: 10px;">
+                        <div><strong>Length:</strong> ${wordData.length} letters</div>
+                        <div><strong>Pronunciation:</strong> ${wordData.pronunciation}</div>
+                        <div class="telugu-meaning"><strong>Telugu Meaning:</strong> ${wordData.teluguMeaning}</div>
+                        <div><strong>English Meaning:</strong> ${wordData.englishMeaning}</div>
+                    </div>
+                `;
+            }
+            
+            if (verbData) {
+                html += `
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #eee;">
+                        <div style="color: var(--primary); font-weight: bold; margin-bottom: 8px;">Verb Information:</div>
+                        <div><strong>Telugu:</strong> ${verbData.telugu}</div>
+                        <div><strong>Example:</strong> "${verbData.example}"</div>
+                    </div>
+                `;
+            }
+            
+            if (oppositeData) {
+                const isWord = oppositeData.word.toLowerCase() === word.toLowerCase();
+                const oppositeWord = isWord ? oppositeData.opposite : oppositeData.word;
+                const oppositeTelugu = isWord ? oppositeData.teluguOpposite : oppositeData.telugu;
+                
+                html += `
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #eee;">
+                        <div style="color: var(--accent); font-weight: bold; margin-bottom: 8px;">Opposite Word:</div>
+                        <div><strong>${oppositeWord}</strong> - ${oppositeTelugu}</div>
+                    </div>
+                `;
+            }
+            
+            if (singularPluralData) {
+                const isSingular = singularPluralData.singular.toLowerCase() === word.toLowerCase();
+                const singular = singularPluralData.singular;
+                const plural = singularPluralData.plural;
+                
+                html += `
+                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #eee;">
+                        <div style="color: var(--telugu-color); font-weight: bold; margin-bottom: 8px;">Singular/Plural:</div>
+                        <div><strong>Singular:</strong> ${singular} (${singularPluralData.teluguSingular})</div>
+                        <div><strong>Plural:</strong> ${plural} (${singularPluralData.teluguPlural})</div>
+                    </div>
+                `;
+            }
+            
+            html += `
+                <button class="sound-btn" style="margin-top: 20px; padding: 10px 20px; font-size: 1rem;" data-word="${word}">
+                    <i class="fas fa-volume-up"></i> Hear Pronunciation
+                </button>
+            `;
+            
+            modalContent.innerHTML = html;
+            
+            // Show modal
+            document.getElementById('wordModal').style.display = 'flex';
+            
+            // Add event listener to modal sound button
+            modalContent.querySelector('.sound-btn').addEventListener('click', function() {
+                speakWord(word);
+            });
+        }
+        
+        // Function to speak a word
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.rate = 0.8;
+                utterance.pitch = 1;
+                utterance.volume = 1;
+                
+                speechSynthesis.speak(utterance);
+            } else {
+                alert("Your browser doesn't support text-to-speech. Try Chrome or Edge.");
+            }
+        }
+    </script>
+</body>
+</html>

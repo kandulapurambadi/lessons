@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>తెలుగు పదాలు - Simple Telugu Words</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Anek Telugu', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            text-align: center;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto 25px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+        
+        /* Main Content Area */
+        .content-area {
+            padding: 30px;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        /* Word Display Area */
+        .word-display-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 40px;
+            min-height: 300px;
+            align-items: center;
+        }
+        
+        /* Single Word Card */
+        .word-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            min-width: 220px;
+            max-width: 250px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .word-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Color coding by length */
+        .word-card.length-3 { 
+            background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+            border-left: 6px solid #1976D2;
+        }
+        
+        .word-card.length-4 { 
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+            border-left: 6px solid #388E3C;
+        }
+        
+        .word-card.length-5 { 
+            background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
+            border-left: 6px solid #F57C00;
+        }
+        
+        .word-card.length-6 { 
+            background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
+            border-left: 6px solid #7B1FA2;
+        }
+        
+        .word-card.length-7 { 
+            background: linear-gradient(135deg, #FFEBEE 0%, #FFCDD2 100%);
+            border-left: 6px solid #D32F2F;
+        }
+        
+        .telugu-word {
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .word-info {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .word-length {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
+        
+        .pronunciation {
+            font-style: italic;
+            color: #666;
+            font-size: 1.1rem;
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 5px 10px;
+            border-radius: 10px;
+        }
+        
+        /* Sound button */
+        .sound-btn {
+            background-color: #6a11cb;
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(106, 17, 203, 0.3);
+        }
+        
+        .sound-btn:hover {
+            background-color: #2575fc;
+            transform: scale(1.1);
+        }
+        
+        /* Pagination Navigation */
+        .pagination-nav {
+            background-color: #f8f9fa;
+            padding: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            align-items: center;
+            border-top: 2px solid #e9ecef;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .nav-btn {
+            padding: 12px 25px;
+            background-color: white;
+            border: 2px solid #6a11cb;
+            border-radius: 25px;
+            font-family: 'Anek Telugu', sans-serif;
+            font-weight: 600;
+            color: #6a11cb;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+        
+        .nav-btn:hover:not(:disabled) {
+            background-color: #6a11cb;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-color: #999;
+            color: #999;
+        }
+        
+        .page-indicator {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            padding: 0 20px;
+        }
+        
+        .current-page {
+            color: #6a11cb;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+        
+        .total-pages {
+            color: #666;
+        }
+        
+        /* Page Jump Section */
+        .page-jump {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 20px;
+        }
+        
+        .page-input {
+            width: 80px;
+            padding: 10px;
+            border: 2px solid #6a11cb;
+            border-radius: 10px;
+            font-family: 'Anek Telugu', sans-serif;
+            font-size: 1rem;
+            text-align: center;
+        }
+        
+        .jump-btn {
+            padding: 10px 20px;
+            background-color: #6a11cb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Anek Telugu', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .jump-btn:hover {
+            background-color: #2575fc;
+        }
+        
+        /* Words per page selector */
+        .page-size-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 20px;
+        }
+        
+        .page-size-select {
+            padding: 10px;
+            border: 2px solid #6a11cb;
+            border-radius: 10px;
+            font-family: 'Anek Telugu', sans-serif;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        
+        /* Filter buttons */
+        .filter-nav {
+            background-color: #f8f9fa;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background-color: white;
+            border: 2px solid #6a11cb;
+            border-radius: 25px;
+            font-family: 'Anek Telugu', sans-serif;
+            font-weight: 600;
+            color: #6a11cb;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #6a11cb;
+            color: white;
+        }
+        
+        /* Word count display */
+        .word-count {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            font-size: 1.2rem;
+            color: #2c3e50;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .count-number {
+            font-weight: bold;
+            color: #6a11cb;
+            font-size: 1.4rem;
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #2c3e50;
+            color: white;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .word-display-area {
+                gap: 20px;
+            }
+            
+            .word-card {
+                min-width: 200px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .telugu-word {
+                font-size: 2.8rem;
+            }
+            
+            .pagination-nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .page-jump, .page-size-selector {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            
+            .filter-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 90%;
+            }
+            
+            .word-card {
+                min-width: 180px;
+                max-width: 180px;
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .word-display-area {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .word-card {
+                min-width: 100%;
+                max-width: 100%;
+            }
+            
+            .telugu-word {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>తెలుగు పదాలు</h1>
+            <div class="subtitle">సరళమైన తెలుగు పదాల సేకరణ</div>
+            <div class="description">
+                ఈ పేజీలో వివిధ పొడవుల తెలుగు పదాలు అక్షరక్రమంలో సేకరించబడ్డాయి. ప్రతి పేజీలో 4 పదాలు మాత్రమే చూపించబడతాయి.
+            </div>
+        </header>
+        
+        <div class="word-count">
+            మొత్తం పదాలు: <span class="count-number" id="totalWords">0</span> | 
+            మొత్తం పేజీలు: <span class="count-number" id="totalPages">0</span> | 
+            ప్రస్తుత పేజీ: <span class="count-number" id="currentPage">1</span>
+        </div>
+        
+        <nav class="filter-nav">
+            <button class="filter-btn active" data-filter="all">అన్నీ పదాలు</button>
+            <button class="filter-btn" data-filter="3">3 అక్షరాలు</button>
+            <button class="filter-btn" data-filter="4">4 అక్షరాలు</button>
+            <button class="filter-btn" data-filter="5">5 అక్షరాలు</button>
+            <button class="filter-btn" data-filter="6">6 అక్షరాలు</button>
+            <button class="filter-btn" data-filter="7">7+ అక్షరాలు</button>
+        </nav>
+        
+        <div class="content-area">
+            <div class="word-display-area" id="wordDisplay">
+                <!-- 4 words per page will be displayed here -->
+            </div>
+        </div>
+        
+        <nav class="pagination-nav">
+            <button class="nav-btn" id="firstPage">
+                <i class="fas fa-fast-backward"></i> మొదటి పేజీ
+            </button>
+            
+            <button class="nav-btn" id="prevPage">
+                <i class="fas fa-chevron-left"></i> మునుపటి పేజీ
+            </button>
+            
+            <div class="page-indicator">
+                పేజీ <span class="current-page" id="currentPageDisplay">1</span> / <span class="total-pages" id="totalPagesDisplay">1</span>
+            </div>
+            
+            <button class="nav-btn" id="nextPage">
+                తర్వాతి పేజీ <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <button class="nav-btn" id="lastPage">
+                చివరి పేజీ <i class="fas fa-fast-forward"></i>
+            </button>
+            
+            <div class="page-jump">
+                <input type="number" class="page-input" id="pageInput" min="1" value="1" placeholder="పేజీ #">
+                <button class="jump-btn" id="jumpBtn">వెళ్ళండి</button>
+            </div>
+            
+            <div class="page-size-selector">
+                <label for="pageSize">పేజీకి పదాలు:</label>
+                <select class="page-size-select" id="pageSize">
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                    <option value="12">12</option>
+                    <option value="16">16</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+        </nav>
+        
+        <footer>
+            <p>తెలుగు పదాల సేకరణ - Anek Telugu ఫాంట్</p>
+            <p>అభ్యాసానికి ఉపయోగపడే సరళ పదాలు</p>
+        </footer>
+    </div>
+
+    <script>
+        // Telugu words data
+        const teluguWords = [
+            "అరవ", "అనక", "అచట", "అమల",
+            "అనప", "అలక", "అవతల", "ఆమడ",
+            "ఆవడ", "ఆశ", "ఇసక", "ఇవతల",
+            "ఈల", "ఈగ", "ఈత", "ఉడత",
+            "ఉమ", "ఉలక", "ఉదర", "ఊయల",
+            "ఊడ", "కమల", "కలప", "కడప", 
+            "కడవ", "కలవరం", "కలత", "కడగ",
+            "కపటం", "గవద", "గడప", "గమనం",
+            "గయ", "గతం", "గద", "గల గల",
+            "గస గస", "చరక", "చవక", "చవట",
+            "చదరం", "జడ", "జగన", "జగడం",
+            "జలజ", "జపం", "తబల", "తల",
+            "తడక", "తపన", "తమన", "దవడ",
+            "దమన", "నడక", "నలక", "నలత",
+            "నడవ", "నరవ", "నటన", "నవరస",
+            "నడపడం", "పలక", "పడవ", "పడమ",
+            "పటమట", "పడమర", "పలచన", "బడవ",
+            "బరక", "మరక", "మలక", "మడమ",
+            "మసక", "యలక", "యమ", "రమణ",
+            "రగడ", "రచన", "రసమయ", "లవ",
+            "లలన", "లత", "వడ", "వనజ",
+            "వచన", "వల", "శనగ", "శపధం",
+            "శరం", "శయనం"
+        ];
+
+        // Pagination variables
+        let currentPage = 1;
+        let wordsPerPage = 4;
+        let currentFilter = 'all';
+        let filteredWords = [...teluguWords];
+
+        // Function to get word length (count characters excluding spaces)
+        function getWordLength(word) {
+            return word.replace(/\s/g, '').length;
+        }
+
+        // Function to generate pronunciation guide
+        function generatePronunciation(word) {
+            return word.split('').join(' ');
+        }
+
+        // Function to filter words based on selected filter
+        function filterWords(filter) {
+            currentFilter = filter;
+            
+            if (filter === 'all') {
+                filteredWords = [...teluguWords];
+            } else {
+                const length = parseInt(filter);
+                filteredWords = teluguWords.filter(word => {
+                    const wordLength = getWordLength(word);
+                    if (length === 7) {
+                        return wordLength >= 7;
+                    }
+                    return wordLength === length;
+                });
+            }
+            
+            // Reset to first page after filtering
+            currentPage = 1;
+            updateDisplay();
+        }
+
+        // Function to calculate total pages
+        function calculateTotalPages() {
+            return Math.ceil(filteredWords.length / wordsPerPage);
+        }
+
+        // Function to get words for current page
+        function getCurrentPageWords() {
+            const startIndex = (currentPage - 1) * wordsPerPage;
+            const endIndex = startIndex + wordsPerPage;
+            return filteredWords.slice(startIndex, endIndex);
+        }
+
+        // Function to display current page words
+        function displayCurrentPageWords() {
+            const wordDisplay = document.getElementById('wordDisplay');
+            wordDisplay.innerHTML = '';
+            
+            const currentWords = getCurrentPageWords();
+            
+            if (currentWords.length === 0) {
+                wordDisplay.innerHTML = `
+                    <div style="text-align: center; width: 100%; padding: 40px; font-size: 1.5rem; color: #666;">
+                        ఈ వర్గంలో పదాలు లేవు
+                    </div>
+                `;
+                return;
+            }
+            
+            currentWords.forEach(word => {
+                const wordLength = getWordLength(word);
+                const pronunciation = generatePronunciation(word);
+                
+                const card = document.createElement('div');
+                card.className = `word-card length-${Math.min(wordLength, 7)}`;
+                
+                card.innerHTML = `
+                    <div class="telugu-word">${word}</div>
+                    <div class="pronunciation">${pronunciation}</div>
+                    <div class="word-info">
+                        <div class="word-length">${wordLength} అక్షరాలు</div>
+                        <button class="sound-btn" data-word="${word}">
+                            <i class="fas fa-volume-up"></i>
+                        </button>
+                    </div>
+                `;
+                
+                wordDisplay.appendChild(card);
+                
+                // Add sound functionality
+                card.querySelector('.sound-btn').addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    speakWord(word);
+                });
+            });
+            
+            // Fill empty slots if less than 4 words on last page
+            const emptySlots = wordsPerPage - currentWords.length;
+            for (let i = 0; i < emptySlots; i++) {
+                const emptyCard = document.createElement('div');
+                emptyCard.className = 'word-card';
+                emptyCard.style.visibility = 'hidden';
+                emptyCard.style.border = 'none';
+                emptyCard.style.background = 'transparent';
+                emptyCard.style.boxShadow = 'none';
+                wordDisplay.appendChild(emptyCard);
+            }
+        }
+
+        // Function to update pagination controls
+        function updatePaginationControls() {
+            const totalPages = calculateTotalPages();
+            
+            // Update page indicators
+            document.getElementById('totalWords').textContent = filteredWords.length;
+            document.getElementById('totalPages').textContent = totalPages;
+            document.getElementById('currentPage').textContent = currentPage;
+            document.getElementById('currentPageDisplay').textContent = currentPage;
+            document.getElementById('totalPagesDisplay').textContent = totalPages;
+            
+            // Update input field
+            document.getElementById('pageInput').value = currentPage;
+            document.getElementById('pageInput').max = totalPages;
+            
+            // Enable/disable navigation buttons
+            document.getElementById('firstPage').disabled = currentPage === 1;
+            document.getElementById('prevPage').disabled = currentPage === 1;
+            document.getElementById('nextPage').disabled = currentPage === totalPages;
+            document.getElementById('lastPage').disabled = currentPage === totalPages;
+            
+            // Update page size selector
+            document.getElementById('pageSize').value = wordsPerPage;
+        }
+
+        // Function to update the entire display
+        function updateDisplay() {
+            displayCurrentPageWords();
+            updatePaginationControls();
+        }
+
+        // Function to change page
+        function changePage(pageNumber) {
+            const totalPages = calculateTotalPages();
+            
+            if (pageNumber < 1) pageNumber = 1;
+            if (pageNumber > totalPages) pageNumber = totalPages;
+            
+            currentPage = pageNumber;
+            updateDisplay();
+        }
+
+        // Function to speak a word
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'te-IN';
+                utterance.rate = 0.7;
+                utterance.pitch = 1;
+                utterance.volume = 1;
+                
+                const voices = speechSynthesis.getVoices();
+                const teluguVoice = voices.find(voice => 
+                    voice.lang === 'te-IN' || voice.lang.startsWith('te')
+                );
+                
+                if (teluguVoice) {
+                    utterance.voice = teluguVoice;
+                }
+                
+                speechSynthesis.speak(utterance);
+            } else {
+                alert("మీ బ్రౌజర్ టెక్స్ట్-టు-స్పీచ్ ను మద్దతు చేయదు. Chrome లేదా Edge బ్రౌజర్‌లను ప్రయత్నించండి.");
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize display
+            updateDisplay();
+            
+            // Setup filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Filter words
+                    const filter = this.getAttribute('data-filter');
+                    filterWords(filter);
+                });
+            });
+            
+            // Setup navigation buttons
+            document.getElementById('firstPage').addEventListener('click', () => changePage(1));
+            document.getElementById('prevPage').addEventListener('click', () => changePage(currentPage - 1));
+            document.getElementById('nextPage').addEventListener('click', () => changePage(currentPage + 1));
+            document.getElementById('lastPage').addEventListener('click', () => changePage(calculateTotalPages()));
+            
+            // Setup page jump
+            document.getElementById('jumpBtn').addEventListener('click', () => {
+                const pageInput = document.getElementById('pageInput');
+                const pageNumber = parseInt(pageInput.value);
+                
+                if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= calculateTotalPages()) {
+                    changePage(pageNumber);
+                } else {
+                    alert(`దయచేసి 1 నుండి ${calculateTotalPages()} మధ్య సంఖ్యను నమోదు చేయండి.`);
+                    pageInput.value = currentPage;
+                }
+            });
+            
+            // Setup page input enter key
+            document.getElementById('pageInput').addEventListener('keyup', (e) => {
+                if (e.key === 'Enter') {
+                    document.getElementById('jumpBtn').click();
+                }
+            });
+            
+            // Setup page size selector
+            document.getElementById('pageSize').addEventListener('change', function() {
+                wordsPerPage = parseInt(this.value);
+                currentPage = 1; // Reset to first page
+                updateDisplay();
+            });
+            
+            // Initialize speech synthesis voices
+            if ('speechSynthesis' in window) {
+                speechSynthesis.getVoices();
+            }
+        });
+    </script>
+    
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>
