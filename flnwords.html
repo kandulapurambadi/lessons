@@ -91,41 +91,89 @@ Loading words...
 
 <script>
 
-/* ===== CONFIG ===== */
+<script>
 
-const filePath ="FLN WORDS\words.txt";   // Folder + file path
+const filePath = "words.txt";
 const perPage = 4;
 
 let words = [];
 let page = 0;
 
-/* ===== LOAD TEXT FILE ===== */
+async function loadWords() {
+  try {
+    const response = await fetch(filePath);
 
-fetch(filePath)
-.then(response => {
+    if (!response.ok) {
+      throw new Error("File not found: " + filePath);
+    }
 
-if(!response.ok){
-throw new Error("File not found");
+    const data = await response.text();
+    words = data.split(/\r?\n/).filter(w => w.trim() !== "");
+
+    if (words.length === 0) {
+      document.getElementById("cards").innerHTML =
+        "⚠️ words.txt లో పదాలు లేవు";
+      return;
+    }
+
+    showPage();
+
+  } catch (error) {
+    document.getElementById("cards").innerHTML =
+      "⚠️ words.txt file load కాలేదు";
+    console.error(error);
+  }
 }
 
-return response.text();
+function showPage() {
 
-})
-.then(data => {
+  let start = page * perPage;
+  let pageWords = words.slice(start, start + perPage);
 
-words = data.split(/\r?\n/).filter(w => w.trim() !== "");
+  let html = "";
 
-showPage();
+  pageWords.forEach(word => {
+    html += `<div class="card">${word}</div>`;
+  });
 
-})
-.catch(error => {
+  document.getElementById("cards").innerHTML = html;
 
-document.getElementById("cards").innerHTML =
-"⚠️ words.txt file load కాలేదు";
+  let totalPages = Math.ceil(words.length / perPage);
 
-console.error(error);
+  document.getElementById("pageInfo").innerHTML =
+    "Page " + (page + 1) + " / " + totalPages;
+}
 
-});
+function nextPage() {
+  if ((page + 1) * perPage < words.length) {
+    page++;
+    showPage();
+  }
+}
+
+function prevPage() {
+  if (page > 0) {
+    page--;
+    showPage();
+  }
+}
+
+function jumpPage() {
+
+  let p = parseInt(document.getElementById("jumpInput").value);
+  let totalPages = Math.ceil(words.length / perPage);
+
+  if (p >= 1 && p <= totalPages) {
+    page = p - 1;
+    showPage();
+  } else {
+    alert("సరైన పేజీ సంఖ్య ఇవ్వండి");
+  }
+}
+
+loadWords();
+
+</script>
 
 /* ===== SHOW PAGE ===== */
 
@@ -185,11 +233,3 @@ alert("సరైన పేజీ సంఖ్య ఇవ్వండి");
 
 </body>
 </html>
-
-
-
-
-
-
-
-
