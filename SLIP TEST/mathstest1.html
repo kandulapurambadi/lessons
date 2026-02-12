@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maths Test – 18 Students (Shows Correct Answers)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Noto Sans', Arial, sans-serif;
+        }
+        body {
+            background: linear-gradient(145deg, #1e4a6b 0%, #163a4f 100%);
+            margin: 0;
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .main-container {
+            max-width: 1100px;
+            width: 100%;
+            background: #fefcf5;
+            border-radius: 40px 40px 20px 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            padding: 30px 25px;
+            border-bottom: 8px solid #ff9f1c;
+        }
+        h1 {
+            color: #0a3144;
+            border-left: 16px solid #ff9f1c;
+            padding-left: 20px;
+            margin-top: 0;
+            font-size: 2.1rem;
+        }
+        .bilingual {
+            display: flex;
+            justify-content: space-between;
+            background: #fef0d7;
+            padding: 12px 22px;
+            border-radius: 50px;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border: 1px solid #ffb347;
+        }
+        .student-panel {
+            background: #e3f0fa;
+            border-radius: 28px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+            border: 2px dashed #2a7faa;
+        }
+        .student-panel input {
+            flex: 2;
+            min-width: 220px;
+            padding: 14px 18px;
+            border: 2px solid #b0c4ce;
+            border-radius: 40px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            outline: none;
+            transition: 0.2s;
+        }
+        .student-panel input:focus {
+            border-color: #ff9f1c;
+            box-shadow: 0 0 0 4px rgba(255,159,28,0.2);
+        }
+        .btn {
+            background: #2a7f6e;
+            color: white;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            border-bottom: 4px solid #1d5b4e;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn:hover {
+            background: #3e9b87;
+            transform: scale(0.98);
+        }
+        .btn.reset {
+            background: #b43b3b;
+            border-bottom-color: #7a2a2a;
+        }
+        .question-paper {
+            background: white;
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05), 0 8px 20px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .student-header {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 10px;
+            border-bottom: 3px solid #ff9f1c;
+            padding-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .student-header span {
+            background: #ffd966;
+            padding: 5px 18px;
+            border-radius: 40px;
+            font-size: 1.2rem;
+            color: #1e3c72;
+        }
+        .question-block {
+            background: #f9f9ff;
+            border-left: 8px solid #4a89c7;
+            padding: 16px 22px;
+            margin-bottom: 16px;
+            border-radius: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+        }
+        .q-num {
+            font-weight: 800;
+            color: #1f4e6f;
+            font-size: 1.3rem;
+            display: inline-block;
+            margin-right: 12px;
+        }
+        .q-eng {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+        .q-tel {
+            font-size: 1rem;
+            color: #b43b3b;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        .answer-area {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        .answer-area input {
+            flex: 1;
+            padding: 12px 18px;
+            border: 2px solid #cbd5e0;
+            border-radius: 30px;
+            font-size: 1rem;
+            background: white;
+        }
+        .result-display {
+            background: #f8f4e9;
+            padding: 14px 20px;
+            border-radius: 16px;
+            margin-top: 12px;
+            border-left: 6px solid #2a7faa;
+            font-size: 1rem;
+        }
+        .correct-ans {
+            color: #1e6b3b;
+            font-weight: 700;
+            background: #e3f1e3;
+            padding: 5px 14px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        .wrong-ans {
+            color: #b43b3b;
+            font-weight: 700;
+            background: #ffe1e1;
+            padding: 5px 14px;
+            border-radius: 30px;
+            display: inline-block;
+        }
+        .score-badge {
+            background: #f1c40f;
+            color: #1e3c72;
+            padding: 12px 30px;
+            border-radius: 40px;
+            font-weight: 800;
+            font-size: 1.6rem;
+            display: inline-block;
+            margin-top: 20px;
+            border-bottom: 4px solid #c49a0c;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #4a5c66;
+            font-weight: 500;
+        }
+        .correct-badge {
+            background: #27ae60;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <h1>📐 గణిత పరీక్ష · Maths Test</h1>
+    <div class="bilingual">
+        <span>🔵 18+ students · 10 random questions · Correct answers shown</span>
+        <span>🟣 ప్రతి విద్యార్థికి 10 ప్రశ్నలు · సరైన సమాధానాలు చూపబడతాయి</span>
+    </div>
+
+    <!-- Student name input -->
+    <div class="student-panel">
+        <input type="text" id="studentNameInput" placeholder="Enter your full name / మీ పూర్తి పేరు రాయండి" autocomplete="off">
+        <button class="btn" onclick="generateStudentPaper()">
+            🚀 Generate my paper / నా ప్రశ్నపత్రం రూపొందించు
+        </button>
+        <button class="btn reset" onclick="resetPage()">
+            ⟲ Reset / కొత్తగా
+        </button>
+    </div>
+
+    <!-- Question paper area (dynamic) -->
+    <div id="paperContainer" class="question-paper" style="display: none;"></div>
+    <div id="scoreDisplay" style="text-align: center;"></div>
+    <div class="footer" id="footerMsg"></div>
+</div>
+
+<script>
+    // ----------------------------------------------------------------
+    // MATHS QUESTION BANK (Based on previous syllabus)
+    // Bilingual: English + Telugu, Topics: place value, expanded form, 
+    // predecessor/successor, greatest/smallest, sums, hundreds etc.
+    // ----------------------------------------------------------------
+    const questionBank = [
+        // Numbers in words
+        { eng: "Write in words: 47", tel: "అక్షరాలలో రాయండి: 47", answer: "forty seven", type: "word" },
+        { eng: "Write in words: 309", tel: "అక్షరాలలో రాయండి: 309", answer: "three hundred nine", type: "word" },
+        { eng: "Write in words: 5216", tel: "అక్షరాలలో రాయండి: 5216", answer: "five thousand two hundred sixteen", type: "word" },
+        { eng: "Write in words: 10009", tel: "అక్షరాలలో రాయండి: 10009", answer: "ten thousand nine", type: "word" },
+        // Expanded form
+        { eng: "Expanded form of 84", tel: "84 యొక్క విస్తరించిన రూపం", answer: "80+4", type: "expanded" },
+        { eng: "Expanded form of 607", tel: "607 యొక్క విస్తరించిన రూపం", answer: "600+7", type: "expanded" },
+        { eng: "Expanded form of 4319", tel: "4319 యొక్క విస్తరించిన రూపం", answer: "4000+300+10+9", type: "expanded" },
+        { eng: "Expanded form of 25006", tel: "25006 యొక్క విస్తరించిన రూపం", answer: "20000+5000+6", type: "expanded" },
+        // Place value
+        { eng: "Place value of 2 in 62", tel: "62లో 2 యొక్క స్థానవిలువ", answer: "2", type: "placevalue" },
+        { eng: "Place value of 8 in 483", tel: "483లో 8 యొక్క స్థానవిలువ", answer: "80", type: "placevalue" },
+        { eng: "Place value of 0 in 7019", tel: "7019లో 0 యొక్క స్థానవిలువ", answer: "0", type: "placevalue" },
+        { eng: "Place value of 6 in 36204", tel: "36204లో 6 యొక్క స్థానవిలువ", answer: "6000", type: "placevalue" },
+        // Sum of place values of 6
+        { eng: "Sum of place values of digit 6 in 66 and 606", tel: "66,606 లలో 6 అంకె స్థానవిలువల మొత్తం", answer: "660", type: "sum6" },
+        { eng: "Sum of place values of 6 in 1661 and 46426", tel: "1661, 46426 లలో 6 స్థానవిలువల మొత్తం", answer: "1200", type: "sum6" },
+        // Predecessor successor
+        { eng: "Predecessor of 100", tel: "100 యొక్క పూర్వగామి", answer: "99", type: "pre" },
+        { eng: "Successor of 899", tel: "899 యొక్క పరగామి", answer: "900", type: "suc" },
+        { eng: "Predecessor of 3400", tel: "3400 పూర్వగామి", answer: "3399", type: "pre" },
+        { eng: "Successor of 9999", tel: "9999 పరగామి", answer: "10000", type: "suc" },
+        // Smallest/greatest
+        { eng: "Smallest 1-digit number", tel: "1-అంకెల అతి చిన్న సంఖ్య", answer: "0", type: "small" },
+        { eng: "Greatest 2-digit number", tel: "2-అంకెల అతి పెద్ద సంఖ్య", answer: "99", type: "great" },
+        { eng: "Smallest 3-digit number", tel: "3-అంకెల అతి చిన్న సంఖ్య", answer: "100", type: "small" },
+        { eng: "Greatest 4-digit number", tel: "4-అంకెల అతి పెద్ద సంఖ్య", answer: "9999", type: "great" },
+        // Forming digits
+        { eng: "Greatest 4-digit number using 7,2,9,4", tel: "7,2,9,4 తో అతి పెద్ద 4-అంకెల సంఖ్య", answer: "9742", type: "formgreat" },
+        { eng: "Smallest 4-digit number using 3,0,6,5", tel: "3,0,6,5 తో అతి చిన్న 4-అంకెల సంఖ్య", answer: "3056", type: "formsmall" },
+        // Addition
+        { eng: "6000 + 400 + 30 + 1 = ?", tel: "6000 + 400 + 30 + 1 = ?", answer: "6431", type: "add" },
+        { eng: "70000 + 3000 + 500 + 20 + 8 = ?", tel: "70000 + 3000 + 500 + 20 + 8 = ?", answer: "73528", type: "add" },
+        // How many 100s
+        { eng: "How many 100s in 10000?", tel: "10000లో ఎన్ని 100లు?", answer: "100", type: "hundreds" },
+        // Extra place value sum
+        { eng: "Sum of place values of 6 in 66, 606, 1661", tel: "66,606,1661 లో 6 స్థానవిలువల మొత్తం", answer: "1260", type: "sum6" },
+        { eng: "Write expanded form: 92", tel: "92 యొక్క విస్తరించిన రూపం", answer: "90+2", type: "expanded" },
+        { eng: "Write expanded form: 308", tel: "308 యొక్క విస్తరించిన రూపం", answer: "300+8", type: "expanded" },
+        { eng: "Place value of 6 in 6245", tel: "6245లో 6 యొక్క స్థానవిలువ", answer: "6000", type: "placevalue" },
+        { eng: "Successor of 1299", tel: "1299 పరగామి", answer: "1300", type: "suc" },
+        { eng: "Predecessor of 5000", tel: "5000 పూర్వగామి", answer: "4999", type: "pre" },
+    ];
+
+    // Store current student name and questions
+    let currentStudent = "";
+    let currentQuestions = [];
+
+    // Function to get 10 random questions
+    function getRandomQuestions(count = 10) {
+        const shuffled = [...questionBank].sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, count);
+    }
+
+    // Main function to generate paper for student
+    function generateStudentPaper() {
+        const nameInput = document.getElementById("studentNameInput");
+        const studentName = nameInput.value.trim();
+        
+        if (studentName === "") {
+            alert("👉 Please enter your name! / దయచేసి మీ పేరు రాయండి!");
+            return;
+        }
+
+        currentStudent = studentName;
+        // Get 10 random questions for this student
+        currentQuestions = getRandomQuestions(10);
+        
+        // Display paper
+        renderPaper(studentName, currentQuestions);
+        
+        // Hide any previous score, show paper
+        document.getElementById("paperContainer").style.display = "block";
+        document.getElementById("scoreDisplay").innerHTML = "";
+        document.getElementById("footerMsg").innerHTML = "✅ Answer all questions, then click 'Submit Answers' to see correct answers and score.";
+    }
+
+    // Render paper HTML
+    function renderPaper(name, questions) {
+        const container = document.getElementById("paperContainer");
+        let html = `<div class="student-header">
+                        🧑‍🎓 ${name} 
+                        <span>10 ప్రశ్నలు · 10 questions</span>
+                    </div>`;
+        
+        questions.forEach((q, index) => {
+            html += `<div class="question-block" id="qblock-${index}">
+                        <div style="display: flex; align-items: baseline;">
+                            <span class="q-num">${index + 1}.</span>
+                            <div style="flex:1">
+                                <div class="q-eng">🔵 ${q.eng}</div>
+                                <div class="q-tel">🟠 ${q.tel}</div>
+                            </div>
+                        </div>
+                        <div class="answer-area">
+                            <input type="text" id="ans-${index}" placeholder="Your answer / సమాధానం" autocomplete="off">
+                        </div>
+                        <div id="result-${index}" class="result-display" style="display: none;"></div>
+                    </div>`;
+        });
+
+        // Submit button + score
+        html += `<div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 30px;">
+                    <button class="btn" onclick="evaluateAnswers()">✅ Submit Answers / సమాధానాలు సమర్పించు</button>
+                    <button class="btn reset" onclick="resetForNewStudent()">🔄 New Student / కొత్త విద్యార్థి</button>
+                 </div>`;
+        
+        container.innerHTML = html;
+    }
+
+    // Evaluate all answers and SHOW CORRECT ANSWERS
+    function evaluateAnswers() {
+        let score = 0;
+        
+        for (let i = 0; i < currentQuestions.length; i++) {
+            const userAnsInput = document.getElementById(`ans-${i}`);
+            const userAns = userAnsInput?.value.trim().toLowerCase();
+            const correctAns = currentQuestions[i].answer.toString().toLowerCase();
+            const resultDiv = document.getElementById(`result-${i}`);
+            
+            // Show result div
+            resultDiv.style.display = "block";
+            
+            // Prepare result HTML
+            let resultHtml = "";
+            
+            if (userAns === correctAns) {
+                resultHtml = `<span style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                                <span class="correct-badge">✅ CORRECT</span>
+                                <span><strong>Your answer:</strong> ${userAnsInput.value}</span>
+                                <span class="correct-ans">✓ Correct answer: ${currentQuestions[i].answer}</span>
+                              </span>`;
+                score++;
+            } else {
+                let displayUserAns = userAnsInput.value === "" ? "(no answer)" : userAnsInput.value;
+                resultHtml = `<span style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+                                <span style="background: #e74c3c; color: white; padding: 4px 12px; border-radius: 30px; font-weight: bold;">❌ WRONG</span>
+                                <span><strong>Your answer:</strong> ${displayUserAns}</span>
+                                <span class="correct-ans">✓ Correct answer: ${currentQuestions[i].answer}</span>
+                              </span>`;
+            }
+            
+            resultDiv.innerHTML = resultHtml;
+            
+            // Disable input after submission
+            userAnsInput.disabled = true;
+            userAnsInput.style.background = "#f5f5f5";
+        }
+
+        // Display score
+        const scoreDiv = document.getElementById("scoreDisplay");
+        scoreDiv.innerHTML = `<div class="score-badge">🎯 ${currentStudent}: ${score}/10</div>`;
+        
+        // Footer message
+        document.getElementById("footerMsg").innerHTML = "📊 Correct answers are shown below each question.";
+    }
+
+    // Reset for new student (clear fields)
+    function resetForNewStudent() {
+        document.getElementById("studentNameInput").value = "";
+        document.getElementById("paperContainer").style.display = "none";
+        document.getElementById("scoreDisplay").innerHTML = "";
+        document.getElementById("footerMsg").innerHTML = "👋 Enter name and generate your random paper!";
+        currentQuestions = [];
+        currentStudent = "";
+    }
+
+    // Global reset
+    function resetPage() {
+        resetForNewStudent();
+    }
+
+    // Allow enter key to generate paper
+    document.addEventListener("DOMContentLoaded", function() {
+        const input = document.getElementById("studentNameInput");
+        input.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                generateStudentPaper();
+            }
+        });
+        document.getElementById("footerMsg").innerHTML = "👋 Enter your name and generate your random paper!";
+    });
+
+</script>
+
+<!-- Features: 18+ students, random questions, bilingual, shows correct answers after submit -->
+</body>
+</html>
