@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<title>Mallika's First Day – Vocabulary Matching Game (Class 5)</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+* {
+    box-sizing: border-box;
+    font-family: 'Anek Telugu', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0b3d91, #072c66);
+    display: flex;
+    justify-content: center;
+}
+
+.main-container {
+    max-width: 1300px;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #FF6B6B;
+    padding-bottom: 20px;
+    background: linear-gradient(to right, #FFF5F5, #fff);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.logo-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    position: relative;
+    background: #fff;
+    border: 6px solid #FF6B6B;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.logo-circle img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+}
+
+.logo-text {
+    position: relative;
+    z-index: 2;
+    font-weight: 800;
+    color: #FF6B6B;
+    text-align: center;
+    font-size: 10px;
+    padding: 8px;
+    line-height: 1.4;
+}
+
+h1 {
+    color: #FF6B6B;
+    font-size: 32px;
+    font-weight: 800;
+    margin: 10px 0;
+}
+
+.story-title {
+    background: #FFE5E5;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 40px;
+    color: #C92A2A;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    color: #4a5568;
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+/* Topic Tags */
+.topics-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.topic-tag {
+    background: #FFE5E5;
+    color: #C92A2A;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    border: 2px solid #FF6B6B;
+}
+
+/* Class Badge */
+.class-badge {
+    background: #FF6B6B;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 30px;
+    display: inline-block;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* Student Panel */
+.student-panel {
+    background: #FFF5F5;
+    padding: 25px;
+    border-radius: 20px;
+    margin: 20px 0 30px;
+    border: 2px dashed #FF6B6B;
+    text-align: center;
+}
+
+.student-selector {
+    margin-bottom: 20px;
+}
+
+.student-selector select {
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: 2px solid #FFB5B5;
+    font-size: 1rem;
+    outline: none;
+    min-width: 250px;
+    font-family: 'Anek Telugu', sans-serif;
+    background: white;
+}
+
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 700;
+    background: #FF6B6B;
+    color: #fff;
+    transition: 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn:hover {
+    background: #C92A2A;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #4a5568;
+}
+
+.btn-secondary:hover {
+    background: #2d3748;
+}
+
+/* Class V Students Grid */
+.class5-students {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.student-btn {
+    padding: 8px 15px;
+    font-size: 14px;
+    background: #FFE5E5;
+    color: #C92A2A;
+    border: 2px solid #FF6B6B;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.student-btn:hover {
+    background: #FF6B6B;
+    color: white;
+}
+
+.student-btn.active {
+    background: #FF6B6B;
+    color: white;
+}
+
+/* Student Info Card */
+.student-info-card {
+    background: linear-gradient(135deg, #FF6B6B, #C92A2A);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 40px;
+    margin: 20px 0;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Story Preview */
+.story-preview {
+    background: #FFF5F5;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    border-left: 6px solid #FF6B6B;
+    font-style: italic;
+    color: #C92A2A;
+    max-height: 120px;
+    overflow-y: auto;
+    font-size: 14px;
+}
+
+/* ===== MATCHING GAME STYLES ===== */
+.game-container {
+    margin: 30px 0;
+}
+
+.game-header {
+    background: linear-gradient(135deg, #FF6B6B, #C92A2A);
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.game-header h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.game-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+/* Game Grid */
+.game-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.word-column, .meaning-column {
+    background: #FFF5F5;
+    padding: 20px;
+    border-radius: 20px;
+    border: 2px solid #FFB5B5;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.column-header {
+    text-align: center;
+    padding: 15px;
+    background: #FF6B6B;
+    color: white;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+/* Word Items */
+.word-item {
+    background: white;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 15px;
+    border-left: 6px solid #FF6B6B;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.word-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: #FFE5E5;
+}
+
+.word-item.selected {
+    background: #FF6B6B;
+    color: white;
+    border-left-color: #FFD700;
+}
+
+/* Meaning Items */
+.meaning-item {
+    background: white;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 15px;
+    border-right: 6px solid #C92A2A;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.meaning-item:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: #FFE5E5;
+}
+
+.meaning-item.selected {
+    background: #C92A2A;
+    color: white;
+    border-right-color: #FFD700;
+}
+
+/* Match Badge */
+.match-badge {
+    background: #28a745;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Matched Pairs Section */
+.pairs-container {
+    background: #FFF5F5;
+    padding: 20px;
+    border-radius: 20px;
+    margin: 20px 0;
+    border: 2px solid #FFB5B5;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.pairs-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #C92A2A;
+    margin-bottom: 15px;
+}
+
+.matched-pair {
+    background: white;
+    border: 2px solid #28a745;
+    border-radius: 10px;
+    padding: 12px;
+    margin: 8px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Score Display */
+.score-badge {
+    background: #FF6B6B;
+    color: #fff;
+    padding: 20px 50px;
+    border-radius: 40px;
+    font-size: 2rem;
+    font-weight: 800;
+    display: inline-block;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.feedback-section {
+    background: #FFF5F5;
+    border-radius: 20px;
+    padding: 25px;
+    margin-top: 30px;
+    text-align: left;
+    border: 2px solid #FFB5B5;
+}
+
+/* Print Styles */
+@media print {
+    .student-panel, .btn, .game-header, .no-print {
+        display: none !important;
+    }
+    
+    .game-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .game-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Word count badge */
+.word-count {
+    background: #FFB5B5;
+    color: #C92A2A;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+/* Celebration animation */
+.celebration {
+    animation: bounce 0.5s;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.current-student {
+    background: #FFE5E5;
+    padding: 15px;
+    border-radius: 15px;
+    margin: 10px 0;
+    font-weight: 600;
+    color: #C92A2A;
+}
+</style>
+</head>
+<body>
+
+<div class="main-container">
+    <!-- Header -->
+    <div class="header">
+        <div class="logo-circle">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23f0f4ff'/%3E%3Ctext x='50' y='55' font-size='40' text-anchor='middle' fill='%23FF6B6B'%3E👧%3C/text%3E%3C/svg%3E" alt="Mallika Logo">
+            <div class="logo-text">
+                కందులాపురం బడి<br>
+                <span>Kandulapuram School</span>
+            </div>
+        </div>
+        
+        <div class="class-badge">✨ తరగతి 5 | Class V Only ✨</div>
+        
+        <div class="story-title">
+            <span>👧</span> Mallika's First Day at School | మల్లిక మొదటి రోజు <span>🏫</span>
+        </div>
+        
+        <h1>📚 Vocabulary Matching Game</h1>
+        <div class="subtitle">
+            <span class="te">25 కష్టమైన పదాలు - అర్థాలు</span> | 
+            <span class="en">25 Difficult Words & Meanings</span>
+        </div>
+        
+        <!-- Story Preview -->
+        <div class="story-preview">
+            <small>📖 Story Preview:</small><br>
+            Mallika, a differently-abled girl from Nallamala forest, dreams of going to school. With help from Ranga, Headmaster, and villagers, they level the rocky path so she can use her wheelchair. A story of inclusion, friendship, and community support!
+        </div>
+    </div>
+
+    <!-- Student Panel - Class 5 Only -->
+    <div class="student-panel no-print">
+        <h2 style="color: #C92A2A; margin-bottom: 20px;">👧 తరగతి 5 విద్యార్థులు</h2>
+        <h3 style="color: #4a5568; margin-bottom: 25px;">Class V Students</h3>
+        
+        <!-- Class 5 Students Grid -->
+        <div class="class5-students">
+            <button class="student-btn" onclick="selectStudent('యశ్విత', 'Yaswitha', '501')">యశ్విత (Yaswitha)</button>
+            <button class="student-btn" onclick="selectStudent('కల్యాణి', 'Kalyani', '502')">కల్యాణి (Kalyani)</button>
+            <button class="student-btn" onclick="selectStudent('సాజిద', 'Sajida', '503')">సాజిద (Sajida)</button>
+            <button class="student-btn" onclick="selectStudent('అస్మ', 'Asma', '504')">అస్మ (Asma)</button>
+            <button class="student-btn" onclick="selectStudent('అతియ ఫాతిమ', 'Athiya', '505')">అతియ ఫాతిమ (Athiya)</button>
+            <button class="student-btn" onclick="selectStudent('ప్రవల్లిక', 'Pravallika', '506')">ప్రవల్లిక (Pravallika)</button>
+            <button class="student-btn" onclick="selectStudent('చంద్ర శేఖర్', 'Chandra', '507')">చంద్ర శేఖర్ (Chandra)</button>
+        </div>
+        
+        <!-- Current Student Display -->
+        <div id="currentStudentDisplay" class="current-student">
+            👤 No student selected. Please select a student.
+        </div>
+        
+        <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+            <button class="btn" onclick="startGame()">
+                🎮 Start Matching Game (25 Questions)
+            </button>
+        </div>
+    </div>
+
+    <!-- Student Info Display -->
+    <div id="studentInfoDisplay" style="display: none; text-align: center;"></div>
+
+    <!-- Game Container -->
+    <div id="gameContainer"></div>
+    
+    <!-- Score Display -->
+    <div id="scoreDisplay" style="text-align: center;"></div>
+</div>
+
+<script>
+// Current selected student
+let currentStudent = null;
+let currentGame = null;
+let selectedWordIndex = null;
+
+// Function to select student
+function selectStudent(telName, enName, roll) {
+    currentStudent = {
+        telName: telName,
+        enName: enName,
+        roll: roll
+    };
+    
+    // Update display
+    document.getElementById('currentStudentDisplay').innerHTML = `👤 Selected: ${telName} (${enName}) | Roll: ${roll}`;
+    
+    // Remove active class from all buttons
+    document.querySelectorAll('.student-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Add active class to clicked button
+    event.target.classList.add('active');
+    
+    // Show student info
+    document.getElementById('studentInfoDisplay').style.display = 'block';
+    document.getElementById('studentInfoDisplay').innerHTML = `
+        <div class="student-info-card">
+            👧 ${telName} (${enName}) | Roll No: ${roll} | Class V
+        </div>
+    `;
+}
+
+// Vocabulary Bank - 25 words from Mallika's story
+const vocabularyBank = [
+    { 
+        word: "excited", 
+        meaning: "ఉత్సాహంగా", 
+        example: "She was so excited" 
+    },
+    { 
+        word: "dawn", 
+        meaning: "తెల్లవారుజాము", 
+        example: "couldn't sleep after dawn" 
+    },
+    { 
+        word: "eagerly", 
+        meaning: "ఆత్రుతగా", 
+        example: "eagerly looked out" 
+    },
+    { 
+        word: "newly paved", 
+        meaning: "కొత్తగా వేసిన", 
+        example: "newly paved road" 
+    },
+    { 
+        word: "festival", 
+        meaning: "పండుగ", 
+        example: "neither a festival" 
+    },
+    { 
+        word: "foothills", 
+        meaning: "కొండపాదులు", 
+        example: "foothills of Nallamala" 
+    },
+    { 
+        word: "narrow", 
+        meaning: "ఇరుకైన", 
+        example: "narrow, rocky path" 
+    },
+    { 
+        word: "rocky", 
+        meaning: "రాళ్ళతో నిండిన", 
+        example: "rocky and uneven" 
+    },
+    { 
+        word: "uneven", 
+        meaning: "అసమానంగా", 
+        example: "uneven path" 
+    },
+    { 
+        word: "differently-abled", 
+        meaning: "వికలాంగులు", 
+        example: "she was differently-abled" 
+    },
+    { 
+        word: "weave", 
+        meaning: "అల్లడం", 
+        example: "weave cane baskets" 
+    },
+    { 
+        word: "cane", 
+        meaning: "వెదురు", 
+        example: "cane baskets" 
+    },
+    { 
+        word: "consoled", 
+        meaning: "ఓదార్చింది", 
+        example: "Naana consoled her" 
+    },
+    { 
+        word: "celebration", 
+        meaning: "వేడుక", 
+        example: "There was a celebration" 
+    },
+    { 
+        word: "wheelchair", 
+        meaning: "చక్రాల కుర్చీ", 
+        example: "brought a wheelchair" 
+    },
+    { 
+        word: "astonished", 
+        meaning: "ఆశ్చర్యపోయాడు", 
+        example: "He was astonished" 
+    },
+    { 
+        word: "skill", 
+        meaning: "నైపుణ్యం", 
+        example: "her skill in painting" 
+    },
+    { 
+        word: "insisted", 
+        meaning: "పట్టుబట్టాడు", 
+        example: "he insisted" 
+    },
+    { 
+        word: "uniform", 
+        meaning: "యూనిఫాం", 
+        example: "wear a uniform" 
+    },
+    { 
+        word: "tears", 
+        meaning: "కన్నీళ్ళు", 
+        example: "Tears rolled down" 
+    },
+    { 
+        word: "headmaster", 
+        meaning: "ప్రధానోపాధ్యాయుడు", 
+        example: "meet the headmaster" 
+    },
+    { 
+        word: "level", 
+        meaning: "చదును చేయడం", 
+        example: "level the path" 
+    },
+    { 
+        word: "committee", 
+        meaning: "కమిటీ", 
+        example: "Parents' Committee" 
+    },
+    { 
+        word: "panchayat", 
+        meaning: "పంచాయతీ", 
+        example: "village Panchayat" 
+    },
+    { 
+        word: "bouquet", 
+        meaning: "పూలగుత్తి", 
+        example: "gave a bouquet" 
+    }
+];
+
+// Shuffle array function
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+// Start game function
+function startGame() {
+    if (!currentStudent) {
+        alert('దయచేసి ముందు విద్యార్థిని ఎంచుకోండి / Please select a student first');
+        return;
+    }
+    
+    // Shuffle vocabulary for random order
+    const shuffledVocab = shuffleArray([...vocabularyBank]);
+    
+    // Create words list
+    const words = shuffledVocab.map(item => ({
+        word: item.word,
+        meaning: item.meaning,
+        example: item.example,
+        matched: false
+    }));
+    
+    // Create meanings list (shuffled separately)
+    const meanings = shuffleArray([...shuffledVocab]).map(item => ({
+        meaning: item.meaning,
+        word: item.word,
+        matched: false
+    }));
+    
+    currentGame = {
+        words: words,
+        meanings: meanings,
+        matches: []
+    };
+    
+    selectedWordIndex = null;
+    displayGame();
+}
+
+// Display game function
+function displayGame() {
+    let html = `
+        <div class="game-container">
+            <div class="game-header">
+                <h2>🎮 మ్యాచింగ్ గేమ్ | Matching Game</h2>
+                <p>Click a word, then click its Telugu meaning</p>
+                <div class="game-stats">
+                    <span>📊 Matched: <span id="matchedCount">0</span>/25</span>
+                    <span>🎯 Selected: <span id="selectedWord">None</span></span>
+                </div>
+            </div>
+            
+            <div class="game-grid">
+                <!-- English Words Column -->
+                <div class="word-column">
+                    <div class="column-header">📝 ENGLISH WORDS</div>
+                    <div id="wordsList">
+    `;
+    
+    currentGame.words.forEach((item, index) => {
+        if (!item.matched) {
+            html += `
+                <div class="word-item" onclick="selectWord(${index})" id="word-${index}">
+                    <span>${item.word}</span>
+                    <small class="word-count">${item.example}</small>
+                </div>
+            `;
+        }
+    });
+    
+    html += `
+                    </div>
+                </div>
+                
+                <!-- Telugu Meanings Column -->
+                <div class="meaning-column">
+                    <div class="column-header">📖 తెలుగు అర్థాలు</div>
+                    <div id="meaningsList">
+    `;
+    
+    currentGame.meanings.forEach((item, index) => {
+        if (!item.matched) {
+            html += `
+                <div class="meaning-item" onclick="selectMeaning(${index})" id="meaning-${index}">
+                    <span>${item.meaning}</span>
+                </div>
+            `;
+        }
+    });
+    
+    html += `
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Matched Pairs -->
+            <div class="pairs-container">
+                <div class="pairs-title">✅ మ్యాచ్ అయిన జతలు | Matched Pairs</div>
+                <div id="matchedPairsList">No matches yet. Start matching!</div>
+            </div>
+            
+            <div style="text-align: center; margin: 30px 0;" class="no-print">
+                <button class="btn" onclick="checkAnswers()">
+                    ✅ Finish & Check Answers
+                </button>
+                <button class="btn btn-secondary" onclick="startGame()" style="margin-left: 10px;">
+                    🔄 New Game
+                </button>
+            </div>
+        </div>
+    `;
+    
+    document.getElementById("gameContainer").innerHTML = html;
+}
+
+// Select word function
+function selectWord(index) {
+    if (!currentGame) return;
+    
+    // Remove previous selection
+    if (selectedWordIndex !== null) {
+        const prevWord = document.getElementById(`word-${selectedWordIndex}`);
+        if (prevWord) prevWord.classList.remove('selected');
+    }
+    
+    selectedWordIndex = index;
+    const wordElement = document.getElementById(`word-${index}`);
+    if (wordElement) wordElement.classList.add('selected');
+    
+    document.getElementById('selectedWord').textContent = currentGame.words[index].word;
+}
+
+// Select meaning function
+function selectMeaning(meaningIndex) {
+    if (!currentGame) return;
+    
+    if (selectedWordIndex === null) {
+        alert('ముందు ఒక పదాన్ని ఎంచుకోండి / Please select a word first');
+        return;
+    }
+    
+    const word = currentGame.words[selectedWordIndex];
+    const meaning = currentGame.meanings[meaningIndex];
+    
+    if (word.matched || meaning.matched) {
+        alert('ఈ పదం ఇప్పటికే మ్యాచ్ అయింది / Already matched');
+        return;
+    }
+    
+    if (word.meaning === meaning.meaning) {
+        // Correct match
+        word.matched = true;
+        meaning.matched = true;
+        
+        currentGame.matches.push({
+            word: word.word,
+            meaning: word.meaning,
+            example: word.example
+        });
+        
+        // Remove from display
+        document.getElementById(`word-${selectedWordIndex}`).remove();
+        document.getElementById(`meaning-${meaningIndex}`).remove();
+        
+        // Clear selection
+        document.getElementById(`word-${selectedWordIndex}`)?.classList.remove('selected');
+        selectedWordIndex = null;
+        document.getElementById('selectedWord').textContent = 'None';
+        
+        // Update matched pairs
+        updateMatchedPairs();
+        
+        // Check if game complete
+        if (currentGame.matches.length === 25) {
+            alert('🎉 అద్భుతం! మీరు అన్ని పదాలను సరిగ్గా మ్యాచ్ చేశారు!');
+        }
+    } else {
+        alert('❌ తప్పు జత! మళ్ళీ ప్రయత్నించండి / Wrong match! Try again');
+        document.getElementById(`word-${selectedWordIndex}`)?.classList.remove('selected');
+        selectedWordIndex = null;
+        document.getElementById('selectedWord').textContent = 'None';
+    }
+}
+
+// Update matched pairs function
+function updateMatchedPairs() {
+    if (!currentGame) return;
+    
+    document.getElementById('matchedCount').textContent = currentGame.matches.length;
+    
+    let pairsHtml = '';
+    if (currentGame.matches.length === 0) {
+        pairsHtml = '<p style="text-align: center; color: #718096;">No matches yet. Start matching!</p>';
+    } else {
+        currentGame.matches.forEach((match, index) => {
+            pairsHtml += `
+                <div class="matched-pair">
+                    <span><strong>${index + 1}.</strong> ${match.word}</span>
+                    <span>➡️</span>
+                    <span><strong>${match.meaning}</strong></span>
+                    <small style="color: #718096;">${match.example}</small>
+                </div>
+            `;
+        });
+    }
+    
+    document.getElementById('matchedPairsList').innerHTML = pairsHtml;
+}
+
+// Check answers function
+function checkAnswers() {
+    if (!currentGame) return;
+    
+    const totalMatches = currentGame.matches.length;
+    const percentage = (totalMatches / 25) * 100;
+    
+    let gradeMessage = percentage >= 80 ? '🏆 అద్భుతం! Excellent!' :
+                      percentage >= 60 ? '🎉 చాలా మంచిది! Very Good!' :
+                      percentage >= 40 ? '👍 మంచిది! Good!' :
+                      '📚 మరింత సాధన అవసరం! Practice More!';
+    
+    let feedback = `
+        <div style="text-align: center;">
+            <div class="score-badge">
+                🎯 ${totalMatches}/25 (${percentage}%)<br>
+                <small style="font-size: 18px;">${gradeMessage}</small>
+            </div>
+        </div>
+    `;
+    
+    // Show unmatched words
+    if (totalMatches < 25) {
+        const unmatchedWords = currentGame.words.filter(w => !w.matched);
+        
+        feedback += '<div class="feedback-section"><h3 style="color:#C92A2A;">📋 మ్యాచ్ కాని పదాలు / Unmatched Words:</h3>';
+        
+        unmatchedWords.forEach((item, i) => {
+            feedback += `
+                <div style="padding: 8px; border-bottom: 1px solid #FFB5B5;">
+                    <strong>${item.word}</strong> ➡️ <span style="color:#C92A2A;">${item.meaning}</span>
+                    <small> (${item.example})</small>
+                </div>
+            `;
+        });
+        
+        feedback += '</div>';
+    }
+    
+    document.getElementById("scoreDisplay").innerHTML = feedback;
+}
+
+// Auto-select first student on page load
+window.onload = function() {
+    // Simulate click on first student
+    setTimeout(() => {
+        const firstStudent = document.querySelector('.student-btn');
+        if (firstStudent) {
+            firstStudent.click();
+        }
+    }, 100);
+};
+</script>
+
+</body>
+</html>
