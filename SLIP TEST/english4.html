@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vocabulary Matching Game – Class 5</title>
+<title>Lesson 3 – Three Butterflies | Matching Game</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@400;600;700;800&display=swap" rel="stylesheet">
 
@@ -16,34 +16,45 @@
 }
 
 body{
-    background:linear-gradient(135deg,#0b3d91,#072c66);
+    background:linear-gradient(135deg,#0A1F44,#123C73);
     padding:30px;
     display:flex;
     justify-content:center;
 }
 
 .main{
-    background:#fff;
+    background:#F4F9FF;
     width:1200px;
-    border-radius:25px;
+    border-radius:20px;
     padding:30px;
-    box-shadow:0 15px 40px rgba(0,0,0,0.3);
+    box-shadow:0 10px 35px rgba(0,0,0,0.3);
 }
 
-/* Header */
 .header{
     text-align:center;
     margin-bottom:20px;
 }
 
 h1{
-    color:#C92A2A;
+    color:#0A1F44;
     font-size:30px;
     font-weight:800;
 }
 
+.subtitle{
+    color:#123C73;
+    font-weight:600;
+    margin-bottom:10px;
+}
+
+.timer{
+    font-weight:700;
+    color:#123C73;
+    margin:10px 0;
+}
+
 .progress-container{
-    background:#ffe5e5;
+    background:#DCEEFF;
     height:20px;
     border-radius:20px;
     overflow:hidden;
@@ -53,19 +64,10 @@ h1{
 .progress-bar{
     height:100%;
     width:0%;
-    background:#FF6B6B;
-    transition:width 0.4s ease;
+    background:#1E90FF;
+    transition:width 0.3s ease;
 }
 
-/* Timer */
-.timer{
-    font-size:20px;
-    font-weight:700;
-    color:#C92A2A;
-    margin:10px 0;
-}
-
-/* Grid */
 .game-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -74,39 +76,45 @@ h1{
 }
 
 .column{
-    background:#FFF5F5;
+    background:#EAF4FF;
     padding:20px;
-    border-radius:20px;
-    border:2px solid #FFB5B5;
+    border-radius:15px;
+    border:2px solid #B6D9FF;
 }
 
 .column h3{
     text-align:center;
     margin-bottom:15px;
-    color:#C92A2A;
+    color:#0A1F44;
 }
 
 .item{
-    background:#fff;
+    background:#FFFFFF;
     padding:12px;
     margin-bottom:10px;
     border-radius:10px;
     cursor:pointer;
     font-weight:600;
-    border-left:6px solid #FF6B6B;
+    border-left:6px solid #1E90FF;
     transition:0.2s;
+    color:#0A1F44;
 }
 
 .item:hover{
-    background:#ffe5e5;
+    background:#DCEEFF;
 }
 
 .item.selected{
-    background:#FF6B6B;
-    color:#fff;
+    background:#1E90FF;
+    color:white;
 }
 
-/* Buttons */
+.item.matched{
+    background:#0A1F44;
+    color:white;
+    cursor:default;
+}
+
 .controls{
     margin-top:20px;
     text-align:center;
@@ -122,16 +130,23 @@ button{
 }
 
 .next-btn{
-    background:#FF6B6B;
+    background:#1E90FF;
     color:white;
 }
 
 .prev-btn{
-    background:#555;
+    background:#0A1F44;
     color:white;
 }
 
-/* Celebration */
+.score{
+    text-align:center;
+    font-size:26px;
+    font-weight:800;
+    color:#0A1F44;
+    margin-top:20px;
+}
+
 .celebration{
     position:fixed;
     top:0;
@@ -139,28 +154,18 @@ button{
     width:100%;
     height:100%;
     pointer-events:none;
-    overflow:hidden;
 }
 
 .confetti{
     position:absolute;
     width:10px;
     height:10px;
-    background:red;
     animation:fall 3s linear infinite;
 }
 
 @keyframes fall{
     from{transform:translateY(-100px) rotate(0);}
     to{transform:translateY(100vh) rotate(360deg);}
-}
-
-.score{
-    text-align:center;
-    font-size:28px;
-    font-weight:800;
-    color:#C92A2A;
-    margin-top:20px;
 }
 </style>
 </head>
@@ -169,14 +174,19 @@ button{
 <div class="main">
 
 <div class="header">
-    <h1>📚 Vocabulary Matching Game</h1>
+    <h1> కందులాపురం బడి <br>
+	4 వ తరగతి -🦋 Three Butterflies</h1>
+
+    <div class="subtitle">Vocabulary Matching Game</div>
     <div class="timer">⏱ Time: <span id="time">0</span> sec</div>
 
     <div class="progress-container">
         <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <div>Page <span id="pageNum">1</span> / 5</div>
+    <div style="color:#123C73;font-weight:600;">
+        Page <span id="pageNum">1</span> / 5
+    </div>
 </div>
 
 <div id="gameArea"></div>
@@ -187,127 +197,114 @@ button{
 </div>
 
 <div id="scoreArea"></div>
-
 </div>
 
 <div class="celebration" id="celebration"></div>
 
 <script>
 
-// =========================
-// DATA
-// =========================
 const vocabularyBank = [
-{word:"excited", meaning:"ఉత్సాహంగా"},
-{word:"dawn", meaning:"తెల్లవారుజాము"},
-{word:"eagerly", meaning:"ఆత్రుతగా"},
-{word:"festival", meaning:"పండుగ"},
-{word:"narrow", meaning:"ఇరుకైన"},
-{word:"rocky", meaning:"రాళ్ళతో నిండిన"},
-{word:"uneven", meaning:"అసమానంగా"},
-{word:"wheelchair", meaning:"చక్రాల కుర్చీ"},
-{word:"skill", meaning:"నైపుణ్యం"},
-{word:"uniform", meaning:"యూనిఫాం"},
-{word:"committee", meaning:"కమిటీ"},
-{word:"panchayat", meaning:"పంచాయతీ"},
-{word:"bouquet", meaning:"పూలగుత్తి"},
-{word:"level", meaning:"చదును చేయడం"},
-{word:"insisted", meaning:"పట్టుబట్టాడు"},
-{word:"celebration", meaning:"వేడుక"},
-{word:"headmaster", meaning:"ప్రధానోపాధ్యాయుడు"},
-{word:"cane", meaning:"వెదురు"},
-{word:"consoled", meaning:"ఓదార్చింది"},
-{word:"astonished", meaning:"ఆశ్చర్యపోయాడు"},
-{word:"tears", meaning:"కన్నీళ్ళు"},
-{word:"weave", meaning:"అల్లడం"},
-{word:"differently-abled", meaning:"వికలాంగులు"},
-{word:"foothills", meaning:"కొండపాదులు"},
-{word:"newly paved", meaning:"కొత్తగా వేసిన"}
+{word:"garden", meaning:"తోట"},
+{word:"butterflies", meaning:"సీతాకోకచిలుకలు"},
+{word:"friends", meaning:"స్నేహితులు"},
+{word:"nectar", meaning:"పుష్పరసం"},
+{word:"suddenly", meaning:"అకస్మాత్తుగా"},
+{word:"dark", meaning:"చీకటి"},
+{word:"wind", meaning:"గాలి"},
+{word:"rain", meaning:"వర్షం"},
+{word:"shelter", meaning:"ఆశ్రయం"},
+{word:"sunflower", meaning:"సూర్యకాంతి పువ్వు"},
+{word:"curiously", meaning:"ఆసక్తిగా"},
+{word:"heavily", meaning:"భారీగా"},
+{word:"dismay", meaning:"నిరాశ"},
+{word:"lily", meaning:"లిల్లీ పువ్వు"},
+{word:"petals", meaning:"రేకులు"},
+{word:"cloudy", meaning:"మేఘావృతమైన"},
+{word:"pleased", meaning:"సంతోషించాడు"},
+{word:"chased", meaning:"తరిమివేసాడు"},
+{word:"dried", meaning:"ఎండబెట్టాడు"},
+{word:"wings", meaning:"రెక్కలు"},
+{word:"evening", meaning:"సాయంత్రం"},
+{word:"night", meaning:"రాత్రి"},
+{word:"danced", meaning:"నృత్యం చేశారు"},
+{word:"together", meaning:"కలిసి"},
+{word:"hide", meaning:"దాచుకోవడం"}
 ];
 
+let shuffled = vocabularyBank.sort(()=>Math.random()-0.5);
 let currentPage = 0;
-let wordsPerPage = 5;
-let selectedWord = null;
+let selectedIndex = null;
 let totalMatches = 0;
-let timerInterval;
 let seconds = 0;
-
-function shuffle(arr){
-    return arr.sort(()=>Math.random()-0.5);
-}
-
-let shuffled = shuffle([...vocabularyBank]);
+let timer;
 
 function startTimer(){
-    timerInterval = setInterval(()=>{
+    timer = setInterval(()=>{
         seconds++;
         document.getElementById("time").textContent = seconds;
     },1000);
 }
 
-function stopTimer(){
-    clearInterval(timerInterval);
+function stopTimer(){ clearInterval(timer); }
+
+function updateProgress(){
+    document.getElementById("progressBar").style.width =
+        (totalMatches/25)*100 + "%";
 }
 
 function loadPage(){
-    const start = currentPage*wordsPerPage;
+    const start = currentPage*5;
     const pageData = shuffled.slice(start,start+5);
-
-    const meanings = shuffle([...pageData]);
+    const meanings = [...pageData].sort(()=>Math.random()-0.5);
 
     let html = `<div class="game-grid">`;
 
     html += `<div class="column"><h3>English Words</h3>`;
     pageData.forEach((item,i)=>{
-        html+=`<div class="item" onclick="selectWord(${i})" id="w${i}">${item.word}</div>`;
+        html+=`<div class="item" id="word-${i}" onclick="selectWord(${i})">${item.word}</div>`;
     });
     html+=`</div>`;
 
     html += `<div class="column"><h3>తెలుగు అర్థాలు</h3>`;
-    meanings.forEach((item,i)=>{
+    meanings.forEach((item)=>{
         html+=`<div class="item" onclick="selectMeaning('${item.meaning}',this)">${item.meaning}</div>`;
     });
     html+=`</div></div>`;
 
     document.getElementById("gameArea").innerHTML = html;
-
     document.getElementById("pageNum").textContent = currentPage+1;
-
-    updateProgress();
 }
 
 function selectWord(i){
-    document.querySelectorAll(".item").forEach(e=>e.classList.remove("selected"));
-    selectedWord = i;
-    document.getElementById("w"+i).classList.add("selected");
+    document.querySelectorAll(".item").forEach(el=>el.classList.remove("selected"));
+    selectedIndex = i;
+    document.getElementById("word-"+i).classList.add("selected");
 }
 
-function selectMeaning(meaning,element){
-    if(selectedWord===null){ alert("Select word first"); return; }
+function selectMeaning(meaning,el){
+    if(selectedIndex===null){ alert("Select word first"); return; }
 
-    const correct = shuffled[currentPage*5+selectedWord];
+    const correct = shuffled[currentPage*5 + selectedIndex];
 
     if(correct.meaning===meaning){
-        element.style.background="#28a745";
-        document.getElementById("w"+selectedWord).style.background="#28a745";
-        playCorrect();
+        document.getElementById("word-"+selectedIndex).classList.add("matched");
+        el.classList.add("matched");
+        new Audio("https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg").play();
         totalMatches++;
         updateProgress();
-    }else{
-        playWrong();
+    } else {
+        new Audio("https://actions.google.com/sounds/v1/cartoon/boing.ogg").play();
         alert("Wrong match!");
     }
 
-    selectedWord=null;
+    selectedIndex=null;
 }
 
 function nextPage(){
     if(currentPage<4){
         currentPage++;
         loadPage();
-    }else{
-        finishGame();
-    }
+    } else finishGame();
 }
 
 function prevPage(){
@@ -317,32 +314,17 @@ function prevPage(){
     }
 }
 
-function updateProgress(){
-    const percent = (totalMatches/25)*100;
-    document.getElementById("progressBar").style.width = percent+"%";
-}
-
 function finishGame(){
     stopTimer();
     document.getElementById("gameArea").innerHTML="";
     document.getElementById("scoreArea").innerHTML=
-        `<div class="score">🎉 Score: ${totalMatches}/25 <br> ⏱ Time: ${seconds} sec</div>`;
+        `<div class="score">🎉 Score: ${totalMatches}/25<br>⏱ Time: ${seconds} sec</div>`;
     celebration();
 }
 
-// Sounds
-function playCorrect(){
-    new Audio("https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg").play();
-}
-
-function playWrong(){
-    new Audio("https://actions.google.com/sounds/v1/cartoon/boing.ogg").play();
-}
-
-// Celebration
 function celebration(){
     const container=document.getElementById("celebration");
-    for(let i=0;i<150;i++){
+    for(let i=0;i<120;i++){
         const div=document.createElement("div");
         div.classList.add("confetti");
         div.style.left=Math.random()*100+"%";
