@@ -2,90 +2,247 @@
 <html lang="te">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>కందులాపురం బడి</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-body{
-font-family:'Anek Telugu',sans-serif;
-background:#0b3d91;
-margin:0;
-text-align:center;
-color:#fff;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Anek Telugu', sans-serif;
+  background: #0b3d91;
+  text-align: center;
+  color: #fff;
+  min-height: 100vh;
+  padding: 20px;
 }
 
 /* Header */
-header{
-background:#072c66;
-padding:12px;
-font-size:24px;
+header {
+  background: #072c66;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.sub-heading {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 6px 0 12px 0;
+  opacity: 0.9;
+}
+
+.fln-heading {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 16px 0 8px 0;
+  color: #ffd966;
+  text-shadow: 0 2px 8px rgba(255, 215, 0, 0.15);
+}
+
+/* Back Button - White Text, Anek Telugu */
+.back-btn-container {
+  margin: 10px 0 18px 0;
+}
+
+.back-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  background: rgba(255, 255, 255, 0.10);
+  border: 2px solid rgba(255, 255, 255, 0.20);
+  border-radius: 50px;
+  color: #ffffff !important;
+  font-family: 'Anek Telugu', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+  backdrop-filter: blur(4px);
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.20);
+  border-color: #ffd966;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn i {
+  margin-right: 10px;
+}
+
+.telugu-sub {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 8px 0 16px 0;
+  opacity: 0.85;
 }
 
 /* 3x3 Grid - 30% Width */
-.word-container{
-display:grid;
-grid-template-columns:repeat(3, 1fr);
-gap:12px;
-width:30%;
-margin:30px auto;
+.word-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  width: 30%;
+  margin: 20px auto;
+  min-width: 280px;
 }
 
 /* Square Word Box */
-.card{
-background:#fff;
-color:#0b3d91;
-aspect-ratio:1/1;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:12px;
-box-shadow:0 0 8px rgba(0,0,0,0.3);
-transition:0.2s;
+.card {
+  background: #fff;
+  color: #0b3d91;
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  transition: all 0.25s ease;
+  cursor: default;
 }
 
-.card:hover{
-transform:scale(1.05);
+.card:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
 }
 
-/* Word - 100% Bigger */
-.card h1{
-margin:0;
-font-size:36px;   /* Increased 100% */
-font-weight:600;
+/* Word - Bigger */
+.card h1 {
+  margin: 0;
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
-/* Buttons */
-button{
-padding:6px 10px;
-margin:4px;
-border:none;
-border-radius:6px;
-background:#fff;
-color:#0b3d91;
-font-weight:bold;
-cursor:pointer;
-font-size:12px;
+/* Navigation */
+.nav-container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-button:hover{
-background:#ffdd57;
+.nav-btn {
+  padding: 8px 18px;
+  margin: 3px;
+  border: none;
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-family: 'Anek Telugu', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-input{
-padding:4px;
-width:50px;
-border-radius:5px;
-border:none;
-text-align:center;
-font-size:12px;
+.nav-btn:hover {
+  background: #ffd966;
+  color: #0b3d91;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(255, 215, 0, 0.25);
 }
 
-.page-info{
-margin-top:8px;
-font-size:14px;
-font-weight:bold;
+.nav-btn:active {
+  transform: translateY(1px);
+}
+
+.page-input {
+  padding: 8px 12px;
+  width: 60px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  text-align: center;
+  font-family: 'Anek Telugu', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.page-input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.page-input:focus {
+  outline: none;
+  border-color: #ffd966;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.page-info {
+  margin-top: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .word-container {
+    width: 60%;
+    min-width: 220px;
+  }
+  .card h1 {
+    font-size: 28px;
+  }
+  header h1 {
+    font-size: 22px;
+  }
+  .fln-heading {
+    font-size: 20px;
+  }
+  .back-btn {
+    font-size: 15px;
+    padding: 10px 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .word-container {
+    width: 85%;
+    min-width: 180px;
+    gap: 10px;
+  }
+  .card h1 {
+    font-size: 22px;
+  }
+  .nav-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  .page-input {
+    width: 50px;
+    font-size: 12px;
+  }
+  header h1 {
+    font-size: 18px;
+  }
+  .fln-heading {
+    font-size: 17px;
+  }
+  .back-btn {
+    font-size: 13px;
+    padding: 8px 16px;
+  }
 }
 
 </style>
@@ -93,119 +250,120 @@ font-weight:bold;
 
 <body>
 
-<header><h1>📘 కందులాపురం బడి</h1></header>
-	<h2>కందలాపురం బడి - విద్యా ప్రగతికి నిరంతరం కృషి</h2>
-	<h1> FOUNDATIONAL LITERACY & NUMERACY (FLN)</h1>
+<header>
+  <h1>📘 కందులాపురం బడి</h1>
+</header>
 
-	<h1>తెలుగు పదాలు చదువుదాం </h1>
-<a href="fln.html" class="back-button">
-<i class="fas fa-arrow-left"></i>
-<span>FLN పేజీకి తిరిగి వెళ్ళండి</span>
-</a>
+<h2 class="sub-heading">కందులాపురం బడి - విద్యా ప్రగతికి నిరంతరం కృషి</h2>
+
+<h1 class="fln-heading">🌟 FOUNDATIONAL LITERACY &amp; NUMERACY (FLN)</h1>
+
+<!-- BACK TO FLN PAGE BUTTON - White Text, Anek Telugu -->
+<div class="back-btn-container">
+  <a href="https://kandulapurambadi.github.io/lessons/fln.htmlfln.html" class="back-btn">
+    🔙 FLN పేజీకి వెళ్ళండి
+  </a>
+</div>
+
+<h2 class="telugu-sub">తెలుగు పదాలు చదువుదాం</h2>
+
 <div class="word-container" id="wordCard"></div>
 
 <div class="page-info" id="pageInfo"></div>
 
-<div>
+<div class="nav-container">
+  <button class="nav-btn" onclick="firstPage()">⏮ మొదటి</button>
+  <button class="nav-btn" onclick="prevPage()">◀ మునుపు</button>
+  <button class="nav-btn" onclick="nextPage()">తరువాత ▶</button>
+  <button class="nav-btn" onclick="lastPage()">చివరి ⏭</button>
 
-<button onclick="firstPage()">⏮</button>
-<button onclick="prevPage()">⬅</button>
-<button onclick="nextPage()">➡</button>
-<button onclick="lastPage()">⏭</button>
+  <span style="color:rgba(255,255,255,0.4);margin:0 4px;">|</span>
 
-<br><br>
-
-Page:
-<input type="number" id="pageInput" min="1">
-<button onclick="jumpPage()">Go</button>
-
+  <span style="font-size:14px;color:rgba(255,255,255,0.6);">పేజీ:</span>
+  <input type="number" class="page-input" id="pageInput" min="1" placeholder="#">
+  <button class="nav-btn" onclick="jumpPage()">వెళ్ళు</button>
 </div>
 
 <script>
 
 /* WORD LIST */
-
 const words = [
-"అమల", "అచట", "అకట", "అమల",
-"అరవ", "అలసట", "అమర", "అవతల",
-"అనక", "అపర", "అరమర", "ఆశ",
-"ఆమడ", "ఆవల", "ఇవతల", "ఇసక",
-"ఇనప", "ఇష", "ఇహపర", "ఈత",
-"ఉడత", "ఉలవ", "ఉమజడ", "ఉషజడ",
-"ఉరవ", "ఉపనయ", "ఉషనయ ", "ఊయల", 
-"ఊత", "ఎదర", "ఏట", "ఐన", "కమల",
-"కడప", "కవల",  "కలత", "కపట",
-"కథ", "గడప", "గవడ", "గరక",
-"చదర", "చవట", "చలమ", "చపల",
-"జడ", "జలజ", "జగడ", "జత",
-"జలక", "జనప", "జవర", "జజమ",
-"తబల", "తపన", "తలగడ", "తళతళ",
-"దవడ", "దవళ", "నవల", "నడక", 
-"నవత", "నటన", "పడక", "పడవ",
-"పనస", "పరక", "పచన", "బరవ",
-"బడవ", "మమత", "మగత", "మరకత",
-"రమణ", "జనత", "జలగ", "జనక",
-
+  "అమల", "అచట", "అకట", "అమల",
+  "అరవ", "అలసట", "అమర", "అవతల",
+  "అనక", "అపర", "అరమర", "ఆశ",
+  "ఆమడ", "ఆవల", "ఇవతల", "ఇసక",
+  "ఇనప", "ఇష", "ఇహపర", "ఈత",
+  "ఉడత", "ఉలవ", "ఉమజడ", "ఉషజడ",
+  "ఉరవ", "ఉపనయ", "ఉషనయ", "ఊయల",
+  "ఊత", "ఎదర", "ఏట", "ఐన", "కమల",
+  "కడప", "కవల", "కలత", "కపట",
+  "కథ", "గడప", "గవడ", "గరక",
+  "చదర", "చవట", "చలమ", "చపల",
+  "జడ", "జలజ", "జగడ", "జత",
+  "జలక", "జనప", "జవర", "జజమ",
+  "తబల", "తపన", "తలగడ", "తళతళ",
+  "దవడ", "దవళ", "నవల", "నడక",
+  "నవత", "నటన", "పడక", "పడవ",
+  "పనస", "పరక", "పచన", "బరవ",
+  "బడవ", "మమత", "మగత", "మరకత",
+  "రమణ", "జనత", "జలగ", "జనక"
 ];
 
 /* PAGING */
+let page = 0;
+const perPage = 9;
 
-let page=0;
-const perPage=9;
+function showPage() {
+  let start = page * perPage;
+  let list = words.slice(start, start + perPage);
 
-function showPage(){
+  document.getElementById("wordCard").innerHTML =
+    list.map(w => `
+      <div class="card">
+        <h1>${w}</h1>
+      </div>
+    `).join("");
 
-let start=page*perPage;
-let list=words.slice(start,start+perPage);
-
-document.getElementById("wordCard").innerHTML=
-list.map(w=>`
-<div class="card">
-<h1>${w}</h1>
-</div>
-`).join("");
-
-let totalPages=Math.ceil(words.length/perPage);
-
-document.getElementById("pageInfo").innerHTML=
-"Page "+(page+1)+" / "+totalPages;
-
+  let totalPages = Math.ceil(words.length / perPage);
+  document.getElementById("pageInfo").innerHTML =
+    "📄 పేజీ " + (page + 1) + " / " + totalPages;
 }
 
-function nextPage(){
-if((page+1)*perPage<words.length){
-page++;
-showPage();
-}
-}
-
-function prevPage(){
-if(page>0){
-page--;
-showPage();
-}
+function nextPage() {
+  if ((page + 1) * perPage < words.length) {
+    page++;
+    showPage();
+  }
 }
 
-function firstPage(){
-page=0;
-showPage();
+function prevPage() {
+  if (page > 0) {
+    page--;
+    showPage();
+  }
 }
 
-function lastPage(){
-page=Math.floor((words.length-1)/perPage);
-showPage();
+function firstPage() {
+  page = 0;
+  showPage();
 }
 
-function jumpPage(){
-let p=parseInt(document.getElementById("pageInput").value);
-let totalPages=Math.ceil(words.length/perPage);
-
-if(p>=1 && p<=totalPages){
-page=p-1;
-showPage();
-}else{
-alert("సరైన పేజీ సంఖ్య ఇవ్వండి");
+function lastPage() {
+  page = Math.floor((words.length - 1) / perPage);
+  showPage();
 }
+
+function jumpPage() {
+  let p = parseInt(document.getElementById("pageInput").value);
+  let totalPages = Math.ceil(words.length / perPage);
+
+  if (p >= 1 && p <= totalPages) {
+    page = p - 1;
+    showPage();
+  } else {
+    alert("⚠️ దయచేసి 1 నుండి " + totalPages + " మధ్య సంఖ్యను ఇవ్వండి.");
+  }
+  document.getElementById("pageInput").value = "";
 }
 
 showPage();
@@ -214,8 +372,3 @@ showPage();
 
 </body>
 </html>
-
-
-
-
-
