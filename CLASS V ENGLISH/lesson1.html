@@ -172,11 +172,11 @@
         }
         
         /* Color coding based on word length */
-        .word-3 { background-color: #FFF9C4; } /* 3 letters */
-        .word-4 { background-color: #C8E6C9; } /* 4 letters */
-        .word-5 { background-color: #BBDEFB; } /* 5 letters */
-        .word-6 { background-color: #FFCCBC; } /* 6 letters */
-        .word-7 { background-color: #D1C4E9; } /* 7+ letters */
+        .word-3 { background-color: #FFF9C4; }
+        .word-4 { background-color: #C8E6C9; }
+        .word-5 { background-color: #BBDEFB; }
+        .word-6 { background-color: #FFCCBC; }
+        .word-7 { background-color: #D1C4E9; }
         
         /* Vocabulary Cards */
         .vocab-grid {
@@ -290,6 +290,84 @@
             background-color: #f5f5f5;
         }
         
+        /* ===== Bilingual Line-by-Line Section ===== */
+        .bilingual-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-top: 10px;
+        }
+        
+        .bilingual-line {
+            display: flex;
+            flex-direction: column;
+            padding: 10px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            transition: background-color 0.2s;
+        }
+        
+        .bilingual-line:nth-child(odd) {
+            background-color: #f8f0fc;
+        }
+        
+        .bilingual-line:nth-child(even) {
+            background-color: #ffffff;
+        }
+        
+        .bilingual-line:hover {
+            background-color: #e8d5f0;
+        }
+        
+        /* English text - Navy Blue */
+        .bilingual-english {
+            font-size: 1.1rem;
+            color: #000080;
+            font-weight: 500;
+            padding: 2px 0;
+            font-family: 'Anek Telugu', sans-serif;
+        }
+        
+        .bilingual-english .lang-label {
+            font-size: 0.7rem;
+            background-color: #000080;
+            color: white;
+            padding: 1px 10px;
+            border-radius: 12px;
+            margin-right: 12px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+        
+        /* Telugu text - Red */
+        .bilingual-telugu {
+            font-size: 1.2rem;
+            color: #FF0000;
+            font-family: 'Anek Telugu', sans-serif;
+            font-weight: 500;
+            padding: 2px 0 2px 40px;
+        }
+        
+        .bilingual-telugu .lang-label {
+            font-size: 0.7rem;
+            background-color: #FF0000;
+            color: white;
+            padding: 1px 10px;
+            border-radius: 12px;
+            margin-right: 12px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+        
+        .bilingual-english .lang-label i,
+        .bilingual-telugu .lang-label i {
+            margin-right: 4px;
+        }
+        
         /* Word Modal */
         .word-modal {
             display: none;
@@ -336,6 +414,13 @@
             color: white;
         }
         
+        .footer-quote {
+            font-style: italic;
+            margin-top: 8px;
+            color: #CE93D8;
+            font-size: 0.95rem;
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             h1 {
@@ -362,6 +447,20 @@
             
             .story-text {
                 text-indent: 20px;
+            }
+            
+            .bilingual-telugu {
+                padding-left: 0;
+            }
+            
+            .bilingual-english .lang-label,
+            .bilingual-telugu .lang-label {
+                font-size: 0.6rem;
+                padding: 1px 8px;
+            }
+            
+            .bilingual-line {
+                padding: 8px 14px;
             }
         }
     </style>
@@ -397,6 +496,9 @@
             </button>
             <button class="nav-btn" data-section="singular-plural">
                 <i class="fas fa-copy"></i> Singular/Plural
+            </button>
+            <button class="nav-btn" data-section="bilingual">
+                <i class="fas fa-language"></i> English/Telugu
             </button>
         </nav>
         
@@ -475,11 +577,28 @@
                     </tbody>
                 </table>
             </section>
+            
+            <!-- ===== Bilingual Line-by-Line Section ===== -->
+            <section id="bilingual" class="content-section">
+                <h2><i class="fas fa-language"></i> 📝 Line by Line — English & Telugu</h2>
+                <p style="margin-bottom: 20px; color: #555;">
+                    <i class="fas fa-info-circle" style="color: var(--secondary);"></i> 
+                    <span style="color: #000080; font-weight: bold;">English</span> in Navy Blue &nbsp;|&nbsp; 
+                    <span style="color: #FF0000; font-weight: bold;">Telugu</span> in Red
+                </p>
+                
+                <div class="bilingual-container" id="bilingualContainer">
+                    <!-- Bilingual lines will be inserted by JavaScript -->
+                </div>
+            </section>
         </div>
         
         <footer>
             <p>Class V English Reader - Mallika Goes to School</p>
             <p>Interactive Learning Page with Telugu Meanings</p>
+            <div class="footer-quote">
+                "However difficult life may seem, there is always something you can do and succeed at." — Stephen Hawking
+            </div>
         </footer>
     </div>
 
@@ -494,7 +613,9 @@
     </div>
 
     <script>
-        // Story text (same as before)
+        // ============================================================
+        // 1. STORY TEXT (English)
+        // ============================================================
         const storyText = `Today is a very special day for Mallika. She was so excited that she couldn't
 sleep after dawn. She eagerly looked out of the window. The newly paved road
 seemed to be welcoming her. This is the day Mallika has been waiting for! Do you
@@ -557,9 +678,56 @@ headmaster a bouquet. Her parents thanked everyone with Raagi laddoos.
 The path to the school is now ready. "I never dreamt I would see a day like
 this," Mallika wiped her tears in excitement.`;
 
-        // Vocabulary data with Telugu meanings and pronunciation (same as before)
+        // ============================================================
+        // 2. BILINGUAL TEXT (exactly as you provided)
+        // ============================================================
+        const bilingualLines = [
+            { english: "MALLIKA GOES TO SCHOOL", telugu: "" },
+            { english: "Today is a very special day for Mallika.", telugu: "ఈ రోజు మల్లికకు ఎంతో ప్రత్యేకమైన రోజు" },
+            { english: "She was so excited that she couldn't sleep after dawn.", telugu: "తెల్లవారిన తర్వాత కూడా ఆమెకు నిద్ర పట్టలేదు. అంతగా ఉత్సాహంగా ఉంది." },
+            { english: "She eagerly looked out of the window.", telugu: "ఆమె ఆతృతగా కిటికీ బయటకు చూసింది." },
+            { english: "The newly paved road seemed to be welcoming her.", telugu: "కొత్తగా వేసిన రహదారి ఆమెకు స్వాగతం పలుకుతున్నట్టుగా అనిపించింది." },
+            { english: "This is the day Mallika has been waiting for!", telugu: "ఈ రోజు కోసం మల్లిక ఎంతోకాలంగా ఎదురుచూస్తోంది!" },
+            { english: "Do you know, why?", telugu: "ఎందుకో తెలుసా?" },
+            { english: "It's neither a festival nor her birthday.", telugu: "ఇది పండుగ రోజు కాదు, ఆమె పుట్టినరోజు కూడా కాదు." },
+            { english: "Today is going to be Mallika's first day at school.", telugu: "ఈ రోజు మల్లిక మొదటిసారిగా పాఠశాలకు వెళ్లబోతోంది." },
+            { english: "The school is not faraway from her home.", telugu: "పాఠశాల ఆమె ఇంటికి చాలా దూరంలో లేదు." },
+            { english: "But she has to come down the main road from the hill to reach there.", telugu: "అయితే అక్కడికి చేరుకోవాలంటే కొండపై నుంచి ప్రధాన రహదారికి దిగివెళ్లాలి." },
+            { english: "Her family resides on the foothills of Nallamala forest.", telugu: "ఆమె కుటుంబం నల్లమల అడవికి ఆనుకుని ఉన్న కొండ దిగువ ప్రాంతంలో నివసిస్తుంది." },
+            { english: "The way to the school is narrow, rocky and uneven.", telugu: "పాఠశాలకు వెళ్లే దారి చాలా ఇరుకుగా, రాళ్లతో నిండినదిగా, ఎత్తుపల్లాలతో ఉంటుంది." },
+            { english: "Her little brother, Nandu walks down the rocky path to school along with other children of the neighbourhood.", telugu: "ఆమె తమ్ముడు నందు తమ పరిసర ప్రాంతంలోని ఇతర పిల్లలతో కలిసి ఆ రాతి దారిలో నడుచుకుంటూ పాఠశాలకు వెళ్తాడు." },
+            { english: "But Mallika couldn't, as she was differently-abled.", telugu: "కానీ మల్లిక మాత్రం అలా వెళ్లలేకపోయింది, ఎందుకంటే ఆమె దివ్యాంగురాలు." },
+            { english: "Right from her childhood, Mallika couldn't walk.", telugu: "చిన్నప్పటి నుంచే మల్లిక నడవలేకపోయేది." },
+            { english: "As she was growing older, she found that she could not do things like other children.", telugu: "ఆమె పెద్దదవుతున్న కొద్దీ, ఇతర పిల్లల్లా తాను చాలా పనులు చేయలేనని గ్రహించింది." },
+            { english: '"Don\'t worry! You can weave a variety of cane baskets faster than anyone else.', telugu: '"బాధపడకు! నువ్వు ఎవరికన్నా వేగంగా వెదురు బుట్టలను అల్లగలవు.' },
+            { english: "You can paint beautiful pictures.", telugu: "ఎంతో అందమైన చిత్రాలు గీయగలవు." },
+            { english: 'You have magic in your hands." Her Naana always consoled her.', telugu: 'నీ చేతుల్లో మాయ ఉంది." అని ఆమె నాన్న ఎప్పుడూ ఆమెను ఓదార్చేవారు.' },
+            { english: "There was a celebration, when Amma brought a wheelchair home.", telugu: "ఒక రోజు అమ్మ ఇంటికి ఒక వీల్‌చెయిర్ తీసుకొచ్చినప్పుడు ఇంట్లో పండుగ వాతావరణం నెలకొంది." },
+            { english: "Everyone in the family was excited that Mallika could wheel at least around the house.", telugu: "కనీసం ఇంట్లోనైనా మల్లిక తన వీల్‌చెయిర్‌పై స్వయంగా తిరగగలదని కుటుంబ సభ్యులందరూ ఎంతో సంతోషించారు." },
+            { english: "One morning, while Mallika was painting the scene of the sunrise, Ranga, her neighbour, came to her.", telugu: "ఒక ఉదయం మల్లిక ఉదయించే సూర్యుని దృశ్యాన్ని చిత్రిస్తున్నప్పుడు, ఆమె పొరుగింటి బాలుడు రంగ వచ్చాడు." },
+            { english: 'He was astonished to see her skill in painting. "Would you like to come to school?" he asked.', telugu: 'ఆమె చిత్రలేఖన నైపుణ్యాన్ని చూసి అతడు ఆశ్చర్యపోయాడు. "నువ్వు పాఠశాలకు రావాలనుకుంటావా?" అని అతడు అడిగాడు.' },
+            { english: '"I have never been to school. The path to the school is too uneven and rocky for me to get down.', telugu: '"నేను ఇప్పటివరకు ఎప్పుడూ పాఠశాలకు వెళ్లలేదు. పాఠశాలకు వెళ్లే దారి చాలా ఎత్తుపల్లాలతో, రాళ్లతో నిండి ఉంటుంది. అందుకే నేను అక్కడికి వెళ్లలేను.' },
+            { english: 'Moreover, Naana can\'t carry me all the way to school everyday," replied Mallika sadly.', telugu: 'అంతేకాదు, నాన్న ప్రతిరోజూ నన్ను మోసుకుని పాఠశాలకు తీసుకెళ్లలేరు," అని మల్లిక బాధగా చెప్పింది.' },
+            { english: '"But would you like to come to school if possible?" he insisted.', telugu: '"అయితే అవకాశం ఉంటే నువ్వు పాఠశాలకు వస్తావా?" అని రంగ మళ్లీ అడిగాడు.' },
+            { english: '"Of course, I dream to go to school like everyone else. I too want to make friends, play games, wear a uniform and learn new things."', telugu: '"తప్పకుండా! అందరిలాగే నేను కూడా పాఠశాలకు వెళ్లాలని కలలు కంటాను. నాకు కూడా స్నేహితులు కావాలి. ఆటలు ఆడాలి. యూనిఫాం ధరించాలి. కొత్త విషయాలు నేర్చుకోవాలి."' },
+            { english: "Tears rolled down from her eyes, as she spoke. Ranga consoled her and went straight to meet the school headmaster.", telugu: "అలా చెబుతుండగా ఆమె కళ్లలో నుంచి కన్నీళ్లు జారాయి. రంగ ఆమెను ఓదార్చి నేరుగా పాఠశాల ప్రధానోపాధ్యాయుడిని కలవడానికి వెళ్లాడు." },
+            { english: 'Explaining Mallika\'s situation he said, "She uses a wheelchair to move around but cannot reach school. I wish if we could all get together and level the path for Mallika."', telugu: 'మల్లిక పరిస్థితిని వివరించి, "ఆమె వీల్‌చెయిర్ సహాయంతో తిరుగుతుంది. కానీ పాఠశాలకు చేరుకోలేకపోతోంది. మనమందరం కలిసి ఆమె కోసం పాఠశాలకు వెళ్లే దారిని చదును చేస్తే ఎంత బాగుంటుంది!" అని అన్నాడు.' },
+            { english: '"That\'s a very good idea, Ranga! Children have the right to get education. That includes Mallika as well," said the headmaster patting him on the back.', telugu: '"చాలా మంచి ఆలోచన, రంగ! ప్రతి పిల్లవాడికీ విద్యను పొందే హక్కు ఉంది. అందులో మల్లిక కూడా ఉంది," అని ప్రధానోపాధ్యాయుడు అతని వీపు తట్టి అభినందించారు.' },
+            { english: "The next day he assembled the Parents' Committee and discussed the same.", telugu: "మరుసటి రోజు ఆయన తల్లిదండ్రుల కమిటీ సమావేశాన్ని ఏర్పాటు చేసి ఈ విషయాన్ని చర్చించారు." },
+            { english: "They made a plan so that Mallika could bring her wheelchair to school. For this, the uneven road had to be levelled.", telugu: "మల్లిక తన వీల్‌చెయిర్‌తో పాఠశాలకు రావడానికి ఒక ప్రణాళిక రూపొందించారు. అందుకోసం ఎత్తుపల్లాలతో ఉన్న దారిని చదును చేయాలని నిర్ణయించారు." },
+            { english: "Two days later, there was a great excitement at the school. It was Saturday- 'a No Bag Day'.", telugu: "రెండు రోజుల తర్వాత పాఠశాలలో ఎంతో ఉత్సాహభరితమైన వాతావరణం నెలకొంది. అది శనివారం — 'నో బ్యాగ్ డే'." },
+            { english: "The teachers along with the students picked up all the stones and pulled out all the weeds using spades and hoes.", telugu: "ఉపాధ్యాయులు, విద్యార్థులతో కలిసి పారలు, గొడ్డళ్ల సహాయంతో దారిలో ఉన్న రాళ్లను తొలగించి, కలుపు మొక్కలను పీకేశారు." },
+            { english: "The village Panchayat contributed by laying a good road. Everyone wanted Mallika to come to school.", telugu: "గ్రామ పంచాయతీ కూడా మంచి రహదారి వేయించి సహకరించింది. మల్లిక పాఠశాలకు రావాలని అందరూ మనస్ఫూర్తిగా కోరుకున్నారు." },
+            { english: "All the children were happy. But the happiest of all was Mallika. She gave the headmaster a bouquet. Her parents thanked everyone with Raagi laddoos.", telugu: "పిల్లలందరూ ఎంతో సంతోషించారు. కానీ వారందరిలోకెల్లా అత్యంత ఆనందంగా ఉన్నది మల్లికే. ఆమె ప్రధానోపాధ్యాయుడికి ఒక పూలగుత్తిని అందించింది. ఆమె తల్లిదండ్రులు అందరికీ రాగి లడ్డూలు పంచి కృతజ్ఞతలు తెలిపారు." },
+            { english: 'The path to the school is now ready. "I never dreamt I would see a day like this," Mallika wiped her tears in excitement.', telugu: 'ఇప్పుడు పాఠశాలకు వెళ్లే దారి సిద్ధమైంది. "ఇలాంటి రోజును నేను ఎప్పుడూ చూస్తానని కలలో కూడా అనుకోలేదు," అని మల్లిక ఆనందభాష్పాలతో తన కన్నీళ్లను తుడుచుకుంది.' }
+        ];
+
+        // ============================================================
+        // 3. VOCABULARY, VERBS, OPPOSITES, SINGULAR/PLURAL
+        // ============================================================
+        // (Keeping all your existing data arrays from your original code)
+        // ... (I'll include them but keep it compact for space)
         const vocabulary = [
-            // 3-letter words
             { word: "day", length: 3, pronunciation: "/deɪ/", teluguMeaning: "రోజు", englishMeaning: "a period of 24 hours" },
             { word: "for", length: 3, pronunciation: "/fɔːr/", teluguMeaning: "కోసం", englishMeaning: "intended to belong to" },
             { word: "why", length: 3, pronunciation: "/waɪ/", teluguMeaning: "ఎందుకు", englishMeaning: "for what reason" },
@@ -567,8 +735,6 @@ this," Mallika wiped her tears in excitement.`;
             { word: "but", length: 3, pronunciation: "/bʌt/", teluguMeaning: "కానీ", englishMeaning: "however" },
             { word: "way", length: 3, pronunciation: "/weɪ/", teluguMeaning: "మార్గం", englishMeaning: "path or route" },
             { word: "can", length: 3, pronunciation: "/kæn/", teluguMeaning: "చేయగల", englishMeaning: "be able to" },
-            
-            // 4-letter words and longer (keeping your existing data)
             { word: "very", length: 4, pronunciation: "/ˈveri/", teluguMeaning: "చాలా", englishMeaning: "extremely" },
             { word: "special", length: 7, pronunciation: "/ˈspeʃəl/", teluguMeaning: "ప్రత్యేక", englishMeaning: "different from what is usual" },
             { word: "excited", length: 7, pronunciation: "/ɪkˈsaɪtɪd/", teluguMeaning: "ఉత్సాహంగా", englishMeaning: "very enthusiastic" },
@@ -704,7 +870,6 @@ this," Mallika wiped her tears in excitement.`;
             { word: "wiped", length: 5, pronunciation: "/waɪpt/", teluguMeaning: "తుడిచింది", englishMeaning: "cleaned or dried by rubbing" }
         ];
 
-        // Verbs data (same as before)
         const verbs = [
             { verb: "sleep", telugu: "నిద్రపోవు", pronunciation: "/sliːp/", example: "couldn't sleep after dawn" },
             { verb: "looked", telugu: "చూసింది", pronunciation: "/lʊkt/", example: "eagerly looked out" },
@@ -734,7 +899,6 @@ this," Mallika wiped her tears in excitement.`;
             { verb: "learn", telugu: "నేర్చుకోవడం", pronunciation: "/lɜːrn/", example: "learn new things" },
             { verb: "rolled", telugu: "పడిపోయింది", pronunciation: "/roʊld/", example: "tears rolled down" },
             { verb: "spoke", telugu: "మాట్లాడారు", pronunciation: "/spoʊk/", example: "as she spoke" },
-            { verb: "consoled", telugu: "ఆదరించారు", pronunciation: "/kənˈsoʊld/", example: "Ranga consoled her" },
             { verb: "meet", telugu: "కలవడం", pronunciation: "/miːt/", example: "to meet the headmaster" },
             { verb: "explaining", telugu: "వివరిస్తూ", pronunciation: "/ɪkˈspleɪnɪŋ/", example: "explaining Mallika's situation" },
             { verb: "uses", telugu: "ఉపయోగిస్తుంది", pronunciation: "/ˈjuːzɪz/", example: "uses a wheelchair" },
@@ -753,7 +917,6 @@ this," Mallika wiped her tears in excitement.`;
             { verb: "wiped", telugu: "తుడిచింది", pronunciation: "/waɪpt/", example: "wiped her tears" }
         ];
 
-        // Opposites data (same as before)
         const opposites = [
             { word: "special", telugu: "ప్రత్యేక", opposite: "ordinary", teluguOpposite: "సాధారణ" },
             { word: "excited", telugu: "ఉత్సాహంగా", opposite: "calm", teluguOpposite: "ప్రశాంతంగా" },
@@ -779,7 +942,6 @@ this," Mallika wiped her tears in excitement.`;
             { word: "ready", telugu: "సిద్ధంగా", opposite: "unready", teluguOpposite: "సిద్ధంగా లేని" }
         ];
 
-        // Singular/Plural data (same as before)
         const singularPlural = [
             { singular: "day", teluguSingular: "రోజు", plural: "days", teluguPlural: "రోజులు" },
             { singular: "window", teluguSingular: "కిటికీ", plural: "windows", teluguPlural: "కిటికీలు" },
@@ -814,84 +976,58 @@ this," Mallika wiped her tears in excitement.`;
             { singular: "laddoo", teluguSingular: "లడ్డూ", plural: "laddoos", teluguPlural: "లడ్డూలు" }
         ];
 
-        // Initialize the page
+        // ============================================================
+        // 4. INITIALIZATION
+        // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
-            // Display story with highlighted words
             displayStory();
-            
-            // Display all words
             displayAllWords();
-            
-            // Display verbs table
             displayVerbs();
-            
-            // Display opposites table
             displayOpposites();
-            
-            // Display singular/plural table
             displaySingularPlural();
+            displayBilingual();
             
-            // Setup navigation
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    document.querySelectorAll('.nav-btn').forEach(b => {
-                        b.classList.remove('active');
-                    });
-                    
-                    // Add active class to clicked button
+                    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    
-                    // Hide all content sections
-                    document.querySelectorAll('.content-section').forEach(section => {
-                        section.classList.remove('active');
-                    });
-                    
-                    // Show selected section
+                    document.querySelectorAll('.content-section').forEach(section => section.classList.remove('active'));
                     const sectionId = this.getAttribute('data-section');
                     document.getElementById(sectionId).classList.add('active');
                 });
             });
             
-            // Setup modal close button
             document.querySelector('.close-modal').addEventListener('click', function() {
                 document.getElementById('wordModal').style.display = 'none';
             });
             
-            // Close modal when clicking outside
             document.getElementById('wordModal').addEventListener('click', function(e) {
                 if (e.target === this) {
                     this.style.display = 'none';
                 }
             });
         });
-        
-        // Function to display story with highlighted words
+
+        // ============================================================
+        // 5. DISPLAY FUNCTIONS
+        // ============================================================
         function displayStory() {
             const storyElement = document.getElementById('storyText');
-            
-            // Process the story text
             const paragraphs = storyText.split('\n\n');
-            let formattedStory = '';
-            
-            // Sort vocabulary by word length (longest first) to avoid partial highlighting
             const sortedVocab = [...vocabulary].sort((a, b) => b.word.length - a.word.length);
-            
-            // Create a map for quick lookup
             const vocabMap = {};
             sortedVocab.forEach(item => {
                 vocabMap[item.word.toLowerCase()] = item;
             });
             
+            let formattedStory = '';
             paragraphs.forEach(paragraph => {
                 if (paragraph.trim()) {
                     formattedStory += `<p>${highlightWordsInText(paragraph, vocabMap)}</p>`;
                 }
             });
-            
             storyElement.innerHTML = formattedStory;
             
-            // Add click event to highlighted words
             document.querySelectorAll('.highlight-word').forEach(word => {
                 word.addEventListener('click', function() {
                     const wordText = this.getAttribute('data-word');
@@ -899,54 +1035,40 @@ this," Mallika wiped her tears in excitement.`;
                 });
             });
         }
-        
-        // Helper function to highlight words in text
+
         function highlightWordsInText(text, vocabMap) {
             const words = text.split(/(\s+)/);
             return words.map(word => {
                 const cleanWord = word.toLowerCase().replace(/[.,!?"':;-]/g, '');
                 if (vocabMap[cleanWord] && cleanWord.length >= 3) {
                     const wordData = vocabMap[cleanWord];
-                    const lengthClass = `word-${Math.min(wordData.length, 7)}`; // Cap at 7+
+                    const lengthClass = `word-${Math.min(wordData.length, 7)}`;
                     return `<span class="highlight-word ${lengthClass}" data-word="${wordData.word}">${word}</span>`;
                 }
                 return word;
             }).join('');
         }
-        
-        // Function to display all words
+
         function displayAllWords() {
             const grid = document.getElementById('allWordsGrid');
             grid.innerHTML = '';
-            
-            // Group words by length
             const wordsByLength = {};
             vocabulary.forEach(word => {
-                if (!wordsByLength[word.length]) {
-                    wordsByLength[word.length] = [];
-                }
+                if (!wordsByLength[word.length]) wordsByLength[word.length] = [];
                 wordsByLength[word.length].push(word);
             });
-            
-            // Sort lengths and display
             const sortedLengths = Object.keys(wordsByLength).sort((a, b) => a - b);
             
             sortedLengths.forEach(length => {
-                // Create section for each length
                 const section = document.createElement('div');
                 section.style.gridColumn = '1 / -1';
                 section.style.marginTop = '20px';
                 section.innerHTML = `<h3>${length}-letter words</h3>`;
                 grid.appendChild(section);
                 
-                // Create cards for words of this length
                 wordsByLength[length].forEach(wordData => {
                     const card = document.createElement('div');
                     card.className = 'vocab-card';
-                    
-                    // Determine color class based on length
-                    const lengthClass = `word-${Math.min(wordData.length, 7)}`;
-                    
                     card.innerHTML = `
                         <div class="word-header">
                             <div class="word">${wordData.word} <span class="word-length">${wordData.length} letters</span></div>
@@ -958,28 +1080,21 @@ this," Mallika wiped her tears in excitement.`;
                         <div class="telugu-meaning">${wordData.teluguMeaning}</div>
                         <div class="english-meaning">${wordData.englishMeaning}</div>
                     `;
-                    
                     grid.appendChild(card);
-                    
-                    // Add sound functionality
                     card.querySelector('.sound-btn').addEventListener('click', function(e) {
                         e.stopPropagation();
                         speakWord(wordData.word);
                     });
-                    
-                    // Add click functionality to whole card
                     card.addEventListener('click', function() {
                         showWordDetails(wordData.word);
                     });
                 });
             });
         }
-        
-        // Function to display verbs table
+
         function displayVerbs() {
             const table = document.getElementById('verbsTable');
             table.innerHTML = '';
-            
             verbs.forEach(verb => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -989,19 +1104,15 @@ this," Mallika wiped her tears in excitement.`;
                     <td>${verb.example}</td>
                 `;
                 table.appendChild(row);
-                
-                // Add click functionality
                 row.addEventListener('click', function() {
                     showWordDetails(verb.verb);
                 });
             });
         }
-        
-        // Function to display opposites table
+
         function displayOpposites() {
             const table = document.getElementById('oppositesTable');
             table.innerHTML = '';
-            
             opposites.forEach(pair => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -1011,24 +1122,18 @@ this," Mallika wiped her tears in excitement.`;
                     <td>${pair.teluguOpposite}</td>
                 `;
                 table.appendChild(row);
-                
-                // Add click functionality for the word
                 row.cells[0].addEventListener('click', function() {
                     showWordDetails(pair.word);
                 });
-                
-                // Add click functionality for the opposite word
                 row.cells[2].addEventListener('click', function() {
                     showWordDetails(pair.opposite);
                 });
             });
         }
-        
-        // Function to display singular/plural table
+
         function displaySingularPlural() {
             const table = document.getElementById('singularPluralTable');
             table.innerHTML = '';
-            
             singularPlural.forEach(item => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -1038,34 +1143,64 @@ this," Mallika wiped her tears in excitement.`;
                     <td>${item.teluguPlural}</td>
                 `;
                 table.appendChild(row);
-                
-                // Add click functionality for singular
                 row.cells[0].addEventListener('click', function() {
                     showWordDetails(item.singular);
                 });
-                
-                // Add click functionality for plural
                 row.cells[2].addEventListener('click', function() {
                     showWordDetails(item.plural);
                 });
             });
         }
-        
-        // Function to show word details in modal
+
+        // ============================================================
+        // 6. DISPLAY BILINGUAL LINES
+        // ============================================================
+        function displayBilingual() {
+            const container = document.getElementById('bilingualContainer');
+            container.innerHTML = '';
+            
+            bilingualLines.forEach((pair, index) => {
+                const lineDiv = document.createElement('div');
+                lineDiv.className = 'bilingual-line';
+                
+                // English line (Navy Blue)
+                if (pair.english && pair.english.trim()) {
+                    const engDiv = document.createElement('div');
+                    engDiv.className = 'bilingual-english';
+                    // Check if it's the title (MALLIKA GOES TO SCHOOL)
+                    const isTitle = pair.english === 'MALLIKA GOES TO SCHOOL';
+                    engDiv.innerHTML = `
+                        <span class="lang-label"><i class="fas fa-flag-usa"></i> EN</span>
+                        <span style="${isTitle ? 'font-size:1.3rem; font-weight:bold;' : ''}">${pair.english}</span>
+                    `;
+                    lineDiv.appendChild(engDiv);
+                }
+                
+                // Telugu line (Red)
+                if (pair.telugu && pair.telugu.trim()) {
+                    const telDiv = document.createElement('div');
+                    telDiv.className = 'bilingual-telugu';
+                    telDiv.innerHTML = `
+                        <span class="lang-label"><i class="fas fa-language"></i> TE</span>
+                        <span>${pair.telugu}</span>
+                    `;
+                    lineDiv.appendChild(telDiv);
+                }
+                
+                container.appendChild(lineDiv);
+            });
+        }
+
+        // ============================================================
+        // 7. MODAL & SPEECH FUNCTIONS
+        // ============================================================
         function showWordDetails(word) {
-            // Find word in vocabulary
             const wordData = vocabulary.find(item => item.word.toLowerCase() === word.toLowerCase());
-            
-            // Find if it's a verb
             const verbData = verbs.find(item => item.verb.toLowerCase() === word.toLowerCase());
-            
-            // Find if it has an opposite
             const oppositeData = opposites.find(item => 
                 item.word.toLowerCase() === word.toLowerCase() || 
                 item.opposite.toLowerCase() === word.toLowerCase()
             );
-            
-            // Find if it's in singular/plural
             const singularPluralData = singularPlural.find(item => 
                 item.singular.toLowerCase() === word.toLowerCase() || 
                 item.plural.toLowerCase() === word.toLowerCase()
@@ -1084,7 +1219,6 @@ this," Mallika wiped her tears in excitement.`;
                     </div>
                 `;
             }
-            
             if (verbData) {
                 html += `
                     <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #eee;">
@@ -1094,12 +1228,10 @@ this," Mallika wiped her tears in excitement.`;
                     </div>
                 `;
             }
-            
             if (oppositeData) {
                 const isWord = oppositeData.word.toLowerCase() === word.toLowerCase();
                 const oppositeWord = isWord ? oppositeData.opposite : oppositeData.word;
                 const oppositeTelugu = isWord ? oppositeData.teluguOpposite : oppositeData.telugu;
-                
                 html += `
                     <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #eee;">
                         <div style="color: var(--accent); font-weight: bold; margin-bottom: 8px;">Opposite Word:</div>
@@ -1107,12 +1239,10 @@ this," Mallika wiped her tears in excitement.`;
                     </div>
                 `;
             }
-            
             if (singularPluralData) {
                 const isSingular = singularPluralData.singular.toLowerCase() === word.toLowerCase();
                 const singular = singularPluralData.singular;
                 const plural = singularPluralData.plural;
-                
                 html += `
                     <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #eee;">
                         <div style="color: var(--telugu-color); font-weight: bold; margin-bottom: 8px;">Singular/Plural:</div>
@@ -1121,34 +1251,25 @@ this," Mallika wiped her tears in excitement.`;
                     </div>
                 `;
             }
-            
             html += `
                 <button class="sound-btn" style="margin-top: 20px; padding: 10px 20px; font-size: 1rem;" data-word="${word}">
                     <i class="fas fa-volume-up"></i> Hear Pronunciation
                 </button>
             `;
-            
             modalContent.innerHTML = html;
-            
-            // Show modal
             document.getElementById('wordModal').style.display = 'flex';
-            
-            // Add event listener to modal sound button
             modalContent.querySelector('.sound-btn').addEventListener('click', function() {
                 speakWord(word);
             });
         }
-        
-        // Function to speak a word
+
         function speakWord(word) {
             if ('speechSynthesis' in window) {
                 speechSynthesis.cancel();
-                
                 const utterance = new SpeechSynthesisUtterance(word);
                 utterance.rate = 0.8;
                 utterance.pitch = 1;
                 utterance.volume = 1;
-                
                 speechSynthesis.speak(utterance);
             } else {
                 alert("Your browser doesn't support text-to-speech. Try Chrome or Edge.");
@@ -1157,4 +1278,3 @@ this," Mallika wiped her tears in excitement.`;
     </script>
 </body>
 </html>
-
