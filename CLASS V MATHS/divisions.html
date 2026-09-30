@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>కందులాపురం బడి - భాగహార సాధన</title>
+    <!-- Anek Telugu font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Anek Telugu', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0F4C81 0%, #00A19D 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            background-color: rgba(255, 255, 255, 0.98);
+            border-radius: 25px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+            width: 100%;
+            max-width: 900px;
+            padding: 35px;
+            position: relative;
+            overflow: hidden;
+            border: 12px solid #FF9A3C;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 20px;
+            border-bottom: 5px double #0F4C81;
+        }
+        
+        .school-name {
+            color: #0F4C81;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 0 #E0F7FF;
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            color: #FF6B6B;
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        .motto {
+            color: #555;
+            font-size: 1.5rem;
+            font-weight: 600;
+            background: #FFF5E6;
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 3px solid #FF9A3C;
+        }
+        
+        .student-info {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #E0F7FF 0%, #B3E5FC 100%);
+            border-radius: 20px;
+            padding: 20px 15px;
+            text-align: center;
+            box-shadow: 0 8px 18px rgba(15, 76, 129, 0.15);
+            border: 3px solid #0F4C81;
+            transition: transform 0.3s ease;
+        }
+        
+        .info-box:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-box h3 {
+            color: #0F4C81;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .info-box p {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #FF6B6B;
+        }
+        
+        .difficulty-selector {
+            background: linear-gradient(135deg, #FFE8E8 0%, #FFC8C8 100%);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 4px solid #FF6B6B;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, 0.1);
+        }
+        
+        .difficulty-selector h3 {
+            color: #0F4C81;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+        
+        .difficulty-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .difficulty-btn {
+            padding: 18px 35px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+            font-family: 'Anek Telugu', sans-serif;
+            min-width: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .difficulty-btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 15px 28px rgba(0, 0, 0, 0.2);
+        }
+        
+        .difficulty-btn.active {
+            transform: scale(1.08);
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px rgba(15, 76, 129, 0.3);
+        }
+        
+        .one-digit {
+            background: linear-gradient(to right, #00A19D, #00D4B4);
+            color: white;
+        }
+        
+        .two-digit {
+            background: linear-gradient(to right, #0F4C81, #3D84B8);
+            color: white;
+        }
+        
+        .challenge {
+            background: linear-gradient(to right, #9C1D9E, #D862D8);
+            color: white;
+        }
+        
+        .question-container {
+            background: linear-gradient(135deg, #F0FFF4 0%, #C6FFD5 100%);
+            border-radius: 25px;
+            padding: 35px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: inset 0 0 22px rgba(0, 0, 0, 0.08);
+            border: 4px solid #00A19D;
+            position: relative;
+        }
+        
+        .division-symbol {
+            position: absolute;
+            font-size: 5rem;
+            color: #FF6B6B;
+            opacity: 0.1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 900;
+        }
+        
+        .question-title {
+            font-size: 1.8rem;
+            color: #0F4C81;
+            margin-bottom: 25px;
+            font-weight: 800;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .question {
+            font-size: 4.2rem;
+            color: #0F4C81;
+            margin: 30px 0;
+            font-weight: 900;
+            letter-spacing: 5px;
+            background: white;
+            padding: 25px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+            direction: ltr;
+            text-shadow: 2px 2px 0 #EEE;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .question small {
+            font-size: 2rem;
+            color: #FF6B6B;
+            display: block;
+            margin-top: 10px;
+        }
+        
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-top: 20px;
+        }
+        
+        .answer-inputs {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .input-label {
+            font-size: 1.5rem;
+            color: #0F4C81;
+            font-weight: 700;
+        }
+        
+        input {
+            font-size: 3rem;
+            width: 180px;
+            text-align: center;
+            padding: 20px;
+            border: 4px solid #0F4C81;
+            border-radius: 20px;
+            outline: none;
+            transition: all 0.3s ease;
+            font-family: 'Anek Telugu', sans-serif;
+            font-weight: 700;
+            direction: ltr;
+            background: #FFF5E6;
+            color: #0F4C81;
+        }
+        
+        input:focus {
+            border-color: #FF9A3C;
+            box-shadow: 0 0 0 6px rgba(255, 154, 60, 0.3);
+            background: white;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 20px 40px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+            font-family: 'Anek Telugu', sans-serif;
+            min-width: 220px;
+            justify-content: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, #0F4C81, #3D84B8);
+            color: white;
+        }
+        
+        .next-btn {
+            background: linear-gradient(to right, #00A19D, #00D4B4);
+            color: white;
+        }
+        
+        .hint-btn {
+            background: linear-gradient(to right, #FF9A3C, #FFC074);
+            color: white;
+        }
+        
+        .method-btn {
+            background: linear-gradient(to right, #9C1D9E, #D862D8);
+            color: white;
+        }
+        
+        .feedback {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            min-height: 70px;
+            margin-bottom: 25px;
+            padding: 20px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            line-height: 1.5;
+            box-shadow: 0 5px 17px rgba(0, 0, 0, 0.1);
+        }
+        
+        .correct {
+            color: #006B4A;
+            background: linear-gradient(135deg, #F0FFF4 0%, #C6FFD5 100%);
+            border: 3px solid #00A19D;
+            animation: pulse 0.8s;
+        }
+        
+        .incorrect {
+            color: #B00020;
+            background: linear-gradient(135deg, #FFE8E8 0%, #FFC8C8 100%);
+            border: 3px solid #FF6B6B;
+            animation: shake 0.5s;
+        }
+        
+        .hint {
+            color: #D45D00;
+            background: linear-gradient(135deg, #FFF5E6 0%, #FFE8C6 100%);
+            border: 3px solid #FF9A3C;
+        }
+        
+        .method-box {
+            background: linear-gradient(135deg, #F3E5F5 0%, #E1C6E8 100%);
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 25px;
+            direction: ltr;
+            border: 3px solid #9C1D9E;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        
+        .method-title {
+            color: #9C1D9E;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 800;
+        }
+        
+        .method-steps {
+            font-size: 1.4rem;
+            color: #6A1B9A;
+            line-height: 1.8;
+            padding-left: 20px;
+        }
+        
+        .method-steps ol {
+            padding-left: 25px;
+        }
+        
+        .method-steps li {
+            margin-bottom: 10px;
+        }
+        
+        .division-table {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            margin-top: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            border: 2px solid #0F4C81;
+        }
+        
+        .table-cell {
+            padding: 10px;
+            text-align: center;
+            font-weight: 700;
+            background: #E0F7FF;
+            border-radius: 10px;
+            border: 1px solid #3D84B8;
+        }
+        
+        .table-header {
+            background: #0F4C81;
+            color: white;
+            font-weight: 800;
+        }
+        
+        .progress-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            height: 25px;
+            background-color: #E0F7FF;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 3px solid #0F4C81;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #0F4C81, #00A19D);
+            width: 0%;
+            transition: width 0.6s ease;
+        }
+        
+        .progress-text {
+            color: #0F4C81;
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+        
+        .celebration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 10;
+            border-radius: 25px;
+            animation: fadeIn 0.6s;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .celebration h2 {
+            font-size: 3.5rem;
+            color: #0F4C81;
+            margin-bottom: 25px;
+            font-weight: 900;
+            line-height: 1.3;
+            text-shadow: 2px 2px 0 #E0F7FF;
+        }
+        
+        .celebration p {
+            font-size: 2rem;
+            color: #FF6B6B;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        
+        .certificate {
+            background: linear-gradient(135deg, #E0F7FF 0%, #B3E5FC 100%);
+            border: 20px solid #00A19D;
+            border-radius: 25px;
+            padding: 40px;
+            margin: 30px 0;
+            max-width: 700px;
+            box-shadow: 0 15px 42px rgba(0, 0, 0, 0.25);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .certificate:before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #0F4C81, #00A19D, #0F4C81);
+            z-index: -1;
+            border-radius: 30px;
+        }
+        
+        .certificate h3 {
+            color: #0F4C81;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+            text-decoration: underline;
+        }
+        
+        .certificate p {
+            color: #0F4C81;
+            font-size: 1.8rem;
+            margin: 15px 0;
+            font-weight: 700;
+        }
+        
+        .certificate .highlight {
+            color: #FF6B6B;
+            font-weight: 800;
+        }
+        
+        .restart-btn {
+            background: linear-gradient(to right, #0F4C81, #3D84B8);
+            color: white;
+            padding: 22px 50px;
+            border: none;
+            border-radius: 60px;
+            font-size: 1.6rem;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Anek Telugu', sans-serif;
+            margin-top: 30px;
+            box-shadow: 0 10px 28px rgba(15, 76, 129, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .restart-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 15px 32px rgba(15, 76, 129, 0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #555;
+            font-size: 1rem;
+            font-weight: 600;
+            border-top: 3px double #0F4C81;
+            padding-top: 20px;
+            line-height: 1.6;
+        }
+        
+        .instructions {
+            background: linear-gradient(135deg, #FFF0F8 0%, #FFE6F2 100%);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 25px;
+            border-left: 8px solid #FF6B6B;
+        }
+        
+        .instructions h4 {
+            color: #0F4C81;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .instructions p {
+            color: #555;
+            line-height: 1.7;
+            font-size: 1.2rem;
+        }
+        
+        .remainder-note {
+            color: #FF6B6B;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 10px;
+            padding: 10px;
+            background: #FFE8E8;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+            20%, 40%, 60%, 80% { transform: translateX(8px); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        .bounce {
+            animation: bounce 0.8s infinite;
+        }
+        
+        @media (max-width: 992px) {
+            .container {
+                padding: 25px;
+            }
+            
+            .school-name {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 2rem;
+            }
+            
+            .student-info {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .question {
+                font-size: 3.5rem;
+                padding: 20px 30px;
+            }
+            
+            input {
+                font-size: 2.5rem;
+                width: 150px;
+            }
+            
+            .difficulty-btn {
+                min-width: 220px;
+                padding: 16px 30px;
+            }
+            
+            .btn {
+                min-width: 200px;
+                padding: 18px 35px;
+            }
+            
+            .division-table {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .school-name {
+                font-size: 2.3rem;
+            }
+            
+            .question {
+                font-size: 2.8rem;
+                padding: 20px;
+            }
+            
+            input {
+                font-size: 2.2rem;
+                width: 130px;
+            }
+            
+            .difficulty-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .difficulty-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .answer-inputs {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .certificate {
+                padding: 25px;
+            }
+            
+            .certificate h3 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .school-name {
+                font-size: 1.9rem;
+            }
+            
+            .subtitle {
+                font-size: 1.6rem;
+            }
+            
+            .question {
+                font-size: 2.2rem;
+                letter-spacing: 3px;
+                padding: 15px;
+            }
+            
+            input {
+                font-size: 1.8rem;
+                width: 120px;
+                padding: 15px;
+            }
+            
+            .info-box {
+                padding: 15px 10px;
+            }
+            
+            .info-box p {
+                font-size: 1.8rem;
+            }
+            
+            .celebration h2 {
+                font-size: 2.5rem;
+            }
+            
+            .celebration p {
+                font-size: 1.6rem;
+            }
+            
+            .division-table {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="school-name">కందులాపురం బడి</h1>
+            <p class="subtitle">భాగహార గణిత సాధనం</p>
+            <p class="motto">"భాగించండి, నేర్చుకోండి, విజయం సాధించండి!"</p>
+        </div>
+        <body>
+    <!-- Navigation Menu -->
+    <div class="navigation">
+        <a href="maths-class5.html" class="nav-btn back-btn">← BACK TO Previous Page</a>
+            </div>
+   </body>
+
+        <div class="student-info">
+            <div class="info-box">
+                <h3><i class="fas fa-star"></i> స్కోరు</h3>
+                <p id="score">0</p>
+            </div>
+            <div class="info-box">
+                <h3><i class="fas fa-check-circle"></i> సరైనవి</h3>
+                <p id="correct-count">0</p>
+            </div>
+            <div class="info-box">
+                <h3><i class="fas fa-question-circle"></i> ప్రశ్నలు</h3>
+                <p id="question-count">0/10</p>
+            </div>
+            <div class="info-box">
+                <h3><i class="fas fa-trophy"></i> స్థాయి</h3>
+                <p id="level">1-అంకెలు</p>
+            </div>
+        </div>
+        
+        <div class="difficulty-selector">
+            <h3>భాగహార స్థాయిని ఎంచుకోండి:</h3>
+            <div class="difficulty-buttons">
+                <button class="difficulty-btn one-digit active" data-level="one-digit">
+                    <i class="fas fa-divide bounce"></i> 1-అంకెల భాగహారం
+                </button>
+                <button class="difficulty-btn two-digit" data-level="two-digit">
+                    <i class="fas fa-divide bounce"></i> 2-అంకెల భాగాహారం
+                </button>
+                <button class="difficulty-btn challenge" data-level="challenge">
+                    <i class="fas fa-brain"></i> శేష సహిత భాగహారం
+                </button>
+            </div>
+        </div>
+        
+        <div class="question-container">
+            <div class="division-symbol">÷</div>
+            <div class="question-title" id="question-title">1-అంకెల భాజకంతో భాగహారం</div>
+            <div class="question" id="question-text">
+                56 ÷ 7
+                <small>(56 ని 7 తో భాగించండి)</small>
+            </div>
+            <div class="input-container">
+                <div class="answer-inputs">
+                    <div class="input-group">
+                        <div class="input-label">భాగఫలం (Quotient)</div>
+                        <input type="number" id="quotient-input" placeholder="8" min="0" autofocus>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-label">శేషం (Remainder)</div>
+                        <input type="number" id="remainder-input" placeholder="0" min="0">
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="btn submit-btn" id="submit-btn">
+                        <i class="fas fa-paper-plane"></i> జవాబు సమర్పించండి
+                    </button>
+                    <button class="btn next-btn" id="next-btn">
+                        <i class="fas fa-forward"></i> తరువాతి ప్రశ్న
+                    </button>
+                    <button class="btn hint-btn" id="hint-btn">
+                        <i class="fas fa-lightbulb"></i> సూచన పొందండి
+                    </button>
+                    <button class="btn method-btn" id="method-btn">
+                        <i class="fas fa-calculator"></i> భాగహార విధానం
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="feedback" id="feedback"></div>
+        
+        <div id="method-container"></div>
+        
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <p class="progress-text" id="progress-text">పురోగతి: 0%</p>
+        </div>
+        
+        <div class="instructions">
+            <h4><i class="fas fa-info-circle"></i> భాగహార సాధన సూచనలు:</h4>
+            <p>1. మొదట భాగహార స్థాయిని ఎంచుకోండి. 2. భాగఫలం (quotient) మరియు శేషం (remainder) నమోదు చేయండి. 3. "జవాబు సమర్పించండి" బటన్ నొక్కండి. 4. భాగహార విధానం కోసం "భాగహార విధానం" బటన్ నొక్కండి. 5. 10 ప్రశ్నలు పూర్తి చేసిన తర్వాత మీ సర్టిఫికేట్ పొందండి.</p>
+            
+            <div class="division-table">
+                <div class="table-cell table-header">÷</div>
+                <div class="table-cell table-header">2</div>
+                <div class="table-cell table-header">3</div>
+                <div class="table-cell table-header">4</div>
+                <div class="table-cell table-header">5</div>
+                <div class="table-cell table-header">6</div>
+                
+                <div class="table-cell table-header">8</div>
+                <div class="table-cell">4</div>
+                <div class="table-cell">2</div>
+                <div class="table-cell">2</div>
+                <div class="table-cell">1</div>
+                <div class="table-cell">1</div>
+                
+                <div class="table-cell table-header">12</div>
+                <div class="table-cell">6</div>
+                <div class="table-cell">4</div>
+                <div class="table-cell">3</div>
+                <div class="table-cell">2</div>
+                <div class="table-cell">2</div>
+                
+                <div class="table-cell table-header">15</div>
+                <div class="table-cell">7</div>
+                <div class="table-cell">5</div>
+                <div class="table-cell">3</div>
+                <div class="table-cell">3</div>
+                <div class="table-cell">2</div>
+                
+                <div class="table-cell table-header">24</div>
+                <div class="table-cell">12</div>
+                <div class="table-cell">8</div>
+                <div class="table-cell">6</div>
+                <div class="table-cell">4</div>
+                <div class="table-cell">4</div>
+                
+                <div class="table-cell table-header">30</div>
+                <div class="table-cell">15</div>
+                <div class="table-cell">10</div>
+                <div class="table-cell">7</div>
+                <div class="table-cell">6</div>
+                <div class="table-cell">5</div>
+            </div>
+            <p class="remainder-note">గమనిక: పై పట్టికలో శేషం లేని భాగహారాలు మాత్రమే చూపించబడ్డాయి. కొన్ని భాగహారాలలో శేషం ఉండవచ్చు.</p>
+        </div>
+        
+        <div class="celebration" id="celebration">
+            <h2>🎉 అద్భుతం! మీరు భాగహార మాస్టర్! 🎉</h2>
+            
+            <div class="certificate">
+                <h3>భాగహార నైపుణ్య సర్టిఫికేట్</h3>
+                <p><strong>బడి:</strong> <span class="highlight">కందులపురం బడి</span></p>
+                <p><strong>విద్యార్థి:</strong> <span class="highlight">భాగహార చాంపియన్</span></p>
+                <p><strong>స్థాయి:</strong> <span class="highlight" id="cert-level">1-అంకెలు</span></p>
+                <p><strong>స్కోరు:</strong> <span class="highlight" id="cert-score">0/10</span></p>
+                <p><strong>శేష సహిత భాగహారాలు:</strong> <span class="highlight" id="cert-remainder">0</span></p>
+                <p><strong>తేదీ:</strong> <span class="highlight" id="cert-date">ఈ రోజు</span></p>
+                <p><strong>ప్రశంసలు:</strong> <span class="highlight" id="cert-praise">మీరు భాగహారంలో నైపుణ్యం సాధించారు!</span></p>
+                <p><strong>ఉపాధ్యాయుడు సంతకం:</strong> ____________________</p>
+            </div>
+            
+            <p id="final-message">మీ గణిత నైపుణ్యం అద్భుతం! కొనసాగించండి!</p>
+            <button class="restart-btn" id="restart-btn">
+                <i class="fas fa-redo"></i> మళ్లీ ప్రారంభించండి
+            </button>
+        </div>
+        
+        <div class="footer">
+            <p>కందులపురం బడి • గణిత ప్రతిభలను రూపుదిద్దడం • తరగతి 4, 5 & 6 విద్యార్థుల కోసం</p>
+            <p>1-అంకెల, 2-అంకెల భాజకాలతో భాగహార సాధనం • "భాగించడం నేర్చుకోండి, గణితంలో ముందుకు సాగండి!"</p>
+        </div>
+    </div>
+
+    <script>
+        // Game state
+        let score = 0;
+        let correctCount = 0;
+        let currentQuestion = 1;
+        const totalQuestions = 10;
+        let currentDifficulty = "one-digit";
+        let correctQuotient = 0;
+        let correctRemainder = 0;
+        let dividend = 0, divisor = 0;
+        let remainderProblems = 0;
+        
+        // DOM Elements
+        const scoreElement = document.getElementById("score");
+        const correctCountElement = document.getElementById("correct-count");
+        const questionCountElement = document.getElementById("question-count");
+        const levelElement = document.getElementById("level");
+        const questionTitleElement = document.getElementById("question-title");
+        const questionTextElement = document.getElementById("question-text");
+        const quotientInput = document.getElementById("quotient-input");
+        const remainderInput = document.getElementById("remainder-input");
+        const feedbackElement = document.getElementById("feedback");
+        const methodContainer = document.getElementById("method-container");
+        const progressFill = document.getElementById("progress-fill");
+        const progressText = document.getElementById("progress-text");
+        const celebrationElement = document.getElementById("celebration");
+        const certLevelElement = document.getElementById("cert-level");
+        const certScoreElement = document.getElementById("cert-score");
+        const certRemainderElement = document.getElementById("cert-remainder");
+        const certDateElement = document.getElementById("cert-date");
+        const certPraiseElement = document.getElementById("cert-praise");
+        const finalMessageElement = document.getElementById("final-message");
+        
+        // Buttons
+        const difficultyButtons = document.querySelectorAll(".difficulty-btn");
+        const submitBtn = document.getElementById("submit-btn");
+        const nextBtn = document.getElementById("next-btn");
+        const hintBtn = document.getElementById("hint-btn");
+        const methodBtn = document.getElementById("method-btn");
+        const restartBtn = document.getElementById("restart-btn");
+        
+        // Difficulty settings
+        const difficultySettings = {
+            "one-digit": { 
+                minDividend: 10, maxDividend: 99,
+                minDivisor: 2, maxDivisor: 9,
+                title: "1-అంకెల భాజకంతో భాగహారం",
+                levelName: "1-అంకెలు",
+                bonus: 10,
+                remainderChance: 0.3 // 30% chance for remainder problems
+            },
+            "two-digit": { 
+                minDividend: 50, maxDividend: 200,
+                minDivisor: 10, maxDivisor: 30,
+                title: "2-అంకెల భాజకంతో భాగహారం",
+                levelName: "2-అంకెలు",
+                bonus: 20,
+                remainderChance: 0.4 // 40% chance for remainder problems
+            },
+            "challenge": { 
+                minDividend: 100, maxDividend: 500,
+                minDivisor: 15, maxDivisor: 50,
+                title: "శేష సహిత భాగహారం",
+                levelName: "శేష సహితం",
+                bonus: 30,
+                remainderChance: 0.6 // 60% chance for remainder problems
+            }
+        };
+        
+        // Initialize the game
+        function initGame() {
+            score = 0;
+            correctCount = 0;
+            currentQuestion = 1;
+            remainderProblems = 0;
+            updateUI();
+            generateQuestion();
+            celebrationElement.style.display = "none";
+            quotientInput.disabled = false;
+            remainderInput.disabled = false;
+            quotientInput.focus();
+            methodContainer.innerHTML = "";
+        }
+        
+        // Generate a new division question
+        function generateQuestion() {
+            const settings = difficultySettings[currentDifficulty];
+            
+            // Generate random divisor
+            divisor = Math.floor(Math.random() * (settings.maxDivisor - settings.minDivisor + 1)) + settings.minDivisor;
+            
+            // Determine if we want a remainder problem
+            const hasRemainder = Math.random() < settings.remainderChance;
+            
+            if (hasRemainder) {
+                // Generate dividend that will have a remainder
+                correctQuotient = Math.floor(Math.random() * (15 - 3 + 1)) + 3;
+                correctRemainder = Math.floor(Math.random() * (divisor - 1)) + 1; // Remainder between 1 and divisor-1
+                dividend = correctQuotient * divisor + correctRemainder;
+                
+                // Ensure dividend is within range
+                while (dividend < settings.minDividend || dividend > settings.maxDividend) {
+                    correctQuotient = Math.floor(Math.random() * (12 - 2 + 1)) + 2;
+                    dividend = correctQuotient * divisor + correctRemainder;
+                }
+            } else {
+                // Generate exact division problem
+                correctQuotient = Math.floor(Math.random() * (20 - 2 + 1)) + 2;
+                correctRemainder = 0;
+                dividend = correctQuotient * divisor;
+                
+                // Ensure dividend is within range
+                while (dividend < settings.minDividend || dividend > settings.maxDividend) {
+                    correctQuotient = Math.floor(Math.random() * (15 - 2 + 1)) + 2;
+                    dividend = correctQuotient * divisor;
+                }
+            }
+            
+            // For challenge mode, ensure it's challenging
+            if (currentDifficulty === "challenge" && !hasRemainder) {
+                // Force a remainder for challenge mode if no remainder
+                correctRemainder = Math.floor(Math.random() * (divisor - 1)) + 1;
+                dividend = correctQuotient * divisor + correctRemainder;
+            }
+            
+            // Update remainder counter
+            if (correctRemainder > 0) remainderProblems++;
+            
+            // Display the question
+            questionTextElement.innerHTML = `${dividend} ÷ ${divisor}<br><small>(${dividend} ని ${divisor} తో భాగించండి)</small>`;
+            questionTitleElement.textContent = settings.title;
+            
+            // Clear inputs and feedback
+            quotientInput.value = "";
+            remainderInput.value = "0";
+            feedbackElement.textContent = "";
+            feedbackElement.className = "feedback";
+            methodContainer.innerHTML = "";
+            
+            // Update question counter
+            questionCountElement.textContent = `${currentQuestion}/${totalQuestions}`;
+            
+            // Update progress
+            const progressPercent = ((currentQuestion - 1) / totalQuestions) * 100;
+            progressFill.style.width = `${progressPercent}%`;
+            progressText.textContent = `పురోగతి: ${Math.round(progressPercent)}%`;
+            
+            // Set placeholder based on difficulty
+            if (currentDifficulty === "one-digit") {
+                quotientInput.placeholder = "భాగఫలం";
+            } else if (currentDifficulty === "two-digit") {
+                quotientInput.placeholder = "భాగఫలం";
+            } else {
+                quotientInput.placeholder = "భాగఫలం";
+            }
+            
+            // Focus on quotient input
+            quotientInput.focus();
+        }
+        
+        // Show division method
+        function showDivisionMethod() {
+            let methodHTML = `
+                <div class="method-box">
+                    <div class="method-title"><i class="fas fa-calculator"></i> ${dividend} ÷ ${divisor} భాగహార విధానం:</div>
+                    <div class="method-steps">
+                        <ol>
+            `;
+            
+            if (currentDifficulty === "one-digit") {
+                methodHTML += `
+                    <li>${divisor} ఎన్ని సార్లు ${dividend} లో ఉందో చూడండి</li>
+                    <li>${divisor} × ${correctQuotient} = ${divisor * correctQuotient}</li>
+                `;
+                
+                if (correctRemainder > 0) {
+                    methodHTML += `
+                        <li>${dividend} - ${divisor * correctQuotient} = ${correctRemainder} (శేషం)</li>
+                        <li>కాబట్టి ${dividend} ÷ ${divisor} = ${correctQuotient} మిగిలినది ${correctRemainder}</li>
+                    `;
+                } else {
+                    methodHTML += `
+                        <li>${dividend} - ${divisor * correctQuotient} = 0 (శేషం లేదు)</li>
+                        <li>కాబట్టి ${dividend} ÷ ${divisor} = ${correctQuotient}</li>
+                    `;
+                }
+            } else if (currentDifficulty === "two-digit") {
+                methodHTML += `
+                    <li>${divisor} ఎన్ని సార్లు ${dividend} లో ఉందో అంచనా వేయండి</li>
+                    <li>${divisor} × ${correctQuotient} = ${divisor * correctQuotient}</li>
+                `;
+                
+                if (correctRemainder > 0) {
+                    methodHTML += `
+                        <li>${dividend} - ${divisor * correctQuotient} = ${correctRemainder} (శేషం)</li>
+                        <li>కాబట్టి: ${dividend} ÷ ${divisor} = ${correctQuotient} R${correctRemainder}</li>
+                    `;
+                } else {
+                    methodHTML += `
+                        <li>${dividend} - ${divisor * correctQuotient} = 0 (శేషం లేదు)</li>
+                        <li>కాబట్టి: ${dividend} ÷ ${divisor} = ${correctQuotient}</li>
+                    `;
+                }
+            } else {
+                methodHTML += `
+                    <li>${divisor} ఎన్ని సార్లు ${dividend} లో ఉందో అంచనా వేయండి</li>
+                    <li>${divisor} × ${correctQuotient} = ${divisor * correctQuotient}</li>
+                `;
+                
+                if (correctRemainder > 0) {
+                    methodHTML += `
+                        <li>${dividend} - ${divisor * correctQuotient} = ${correctRemainder} (శేషం)</li>
+                        <li>చివరి జవాబు: ${correctQuotient} శేషం ${correctRemainder}</li>
+                        <li>సరిచూసుకోండి: (${divisor} × ${correctQuotient}) + ${correctRemainder} = ${dividend}</li>
+                    `;
+                } else {
+                    methodHTML += `
+                        <li>${dividend} - ${divisor * correctQuotient} = 0 (శేషం లేదు)</li>
+                        <li>చివరి జవాబు: ${correctQuotient}</li>
+                        <li>సరిచూసుకోండి: ${divisor} × ${correctQuotient} = ${dividend}</li>
+                    `;
+                }
+            }
+            
+            methodHTML += `
+                        </ol>
+                        <p><strong>చివరి జవాబు: భాగఫలం = ${correctQuotient}, శేషం = ${correctRemainder}</strong></p>
+                    </div>
+                </div>
+            `;
+            
+            methodContainer.innerHTML = methodHTML;
+        }
+        
+        // Check the answer
+        function checkAnswer() {
+            const userQuotient = parseInt(quotientInput.value);
+            const userRemainder = parseInt(remainderInput.value);
+            
+            if (isNaN(userQuotient)) {
+                feedbackElement.textContent = "దయచేసి భాగఫలం నమోదు చేయండి!";
+                feedbackElement.className = "feedback incorrect";
+                quotientInput.focus();
+                return;
+            }
+            
+            if (isNaN(userRemainder) || userRemainder < 0) {
+                feedbackElement.textContent = "దయచేసి సరైన శేషం నమోదు చేయండి (0 లేదా అంతకంటే ఎక్కువ)!";
+                feedbackElement.className = "feedback incorrect";
+                remainderInput.focus();
+                return;
+            }
+            
+            if (userRemainder >= divisor) {
+                feedbackElement.textContent = `శేషం భాజకం (${divisor}) కంటే తక్కువ ఉండాలి!`;
+                feedbackElement.className = "feedback incorrect";
+                remainderInput.focus();
+                return;
+            }
+            
+            if (userQuotient === correctQuotient && userRemainder === correctRemainder) {
+                // Correct answer
+                score += 10;
+                correctCount++;
+                
+                if (correctRemainder > 0) {
+                    feedbackElement.innerHTML = `<i class="fas fa-check-circle"></i> అద్భుతం! సరైన జవాబు! ${dividend} ÷ ${divisor} = ${correctQuotient} శేషం ${correctRemainder}`;
+                } else {
+                    feedbackElement.innerHTML = `<i class="fas fa-check-circle"></i> అద్భుతం! సరైన జవాబు! ${dividend} ÷ ${divisor} = ${correctQuotient}`;
+                }
+                feedbackElement.className = "feedback correct";
+                
+                // Add bonus for difficulty level
+                score += difficultySettings[currentDifficulty].bonus;
+                
+                // Extra bonus for remainder problems
+                if (correctRemainder > 0) {
+                    score += 5;
+                    feedbackElement.innerHTML += `<br><small>శేష సహిత భాగహారం సరిగ్గా చేసారు! +5 బోనస్ పాయింట్లు!</small>`;
+                }
+                
+                // Show division method
+                showDivisionMethod();
+            } else {
+                // Incorrect answer
+                if (correctRemainder > 0) {
+                    feedbackElement.innerHTML = `<i class="fas fa-times-circle"></i> జవాబు సరిగ్గా లేదు. సరైన జవాబు: ${correctQuotient} శేషం ${correctRemainder}`;
+                } else {
+                    feedbackElement.innerHTML = `<i class="fas fa-times-circle"></i> జవాబు సరిగ్గా లేదు. సరైన జవాబు: ${correctQuotient}`;
+                }
+                feedbackElement.className = "feedback incorrect";
+                
+                // Show the correct calculation with method
+                setTimeout(() => {
+                    showDivisionMethod();
+                }, 500);
+            }
+            
+            updateUI();
+            quotientInput.disabled = true;
+            remainderInput.disabled = true;
+            
+            // Check if we've reached the end
+            if (currentQuestion >= totalQuestions) {
+                setTimeout(showCelebration, 1500);
+            }
+        }
+        
+        // Show hint
+        function showHint() {
+            let hint = "";
+            
+            if (currentDifficulty === "one-digit") {
+                hint = `గుణకార పట్టిని గుర్తుంచుకోండి: ${divisor} × ? = ${dividend} (లేదా దాదాపు ${dividend})`;
+                
+                if (correctRemainder > 0) {
+                    hint += ` ${divisor} × ${correctQuotient} = ${divisor * correctQuotient}. ${dividend} - ${divisor * correctQuotient} = ${correctRemainder}`;
+                } else {
+                    hint += ` ${divisor} × ${correctQuotient} = ${dividend}. శేషం లేదు.`;
+                }
+            } else if (currentDifficulty === "two-digit") {
+                hint = `${divisor} తో ప్రారంభించండి. ${divisor} × 10 = ${divisor * 10}. ${dividend} కంటే ఎక్కువా తక్కువా?`;
+                
+                if (correctRemainder > 0) {
+                    hint += ` ${divisor} × ${correctQuotient} = ${divisor * correctQuotient}. మిగిలినది ${correctRemainder}`;
+                }
+            } else {
+                hint = `శేషం ఎల్లప్పుడూ భాజకం కంటే తక్కువ ఉండాలి. ఇక్కడ భాజకం ${divisor} కాబట్టి శేషం 0 నుండి ${divisor-1} మధ్య ఉండాలి.`;
+                
+                if (correctRemainder > 0) {
+                    hint += ` ప్రస్తుత సమస్యలో శేషం ఉంది. ${divisor} × ${correctQuotient} = ${divisor * correctQuotient}, మిగిలినది ${correctRemainder}`;
+                }
+            }
+            
+            feedbackElement.innerHTML = `<i class="fas fa-lightbulb"></i> సూచన: ${hint}`;
+            feedbackElement.className = "feedback hint";
+            
+            // Also show division method
+            setTimeout(showDivisionMethod, 500);
+        }
+        
+        // Move to next question
+        function nextQuestion() {
+            if (currentQuestion >= totalQuestions) {
+                showCelebration();
+                return;
+            }
+            
+            currentQuestion++;
+            generateQuestion();
+            quotientInput.disabled = false;
+            remainderInput.disabled = false;
+            quotientInput.focus();
+        }
+        
+        // Show celebration screen
+        function showCelebration() {
+            const percentage = Math.round((correctCount / totalQuestions) * 100);
+            let message = "";
+            let praise = "";
+            
+            if (percentage === 100) {
+                message = "పర్ఫెక్ట్ స్కోరు! మీరు భాగహార జినియస్!";
+                praise = "మీరు గణితంలో అసాధారణ ప్రతిభ కనబరిచారు!";
+            } else if (percentage >= 80) {
+                message = "శాంపియన్! మీకు భాగహారం బాగా అలవాటైంది!";
+                praise = "మీ నైపుణ్యం అభినందనీయం!";
+            } else if (percentage >= 60) {
+                message = "బాగుంది! మరింత సాధనతో మెరుగవుతారు!";
+                praise = "మీరు మంచి పురోగతి సాధించారు!";
+            } else {
+                message = "సాధన చేస్తూనే ఉండండి! ప్రతిరోజు మెరుగుపడతారు!";
+                praise = "ప్రతి సారి ముందుకు సాగడం ముఖ్యం!";
+            }
+            
+            // Set certificate details
+            const today = new Date();
+            const dateStr = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.getFullYear();
+            
+            certLevelElement.textContent = difficultySettings[currentDifficulty].levelName;
+            certScoreElement.textContent = `${correctCount}/${totalQuestions} (${percentage}%) - స్కోరు: ${score}`;
+            certRemainderElement.textContent = `${remainderProblems} (మొత్తం ${totalQuestions} లో)`;
+            certDateElement.textContent = dateStr;
+            certPraiseElement.textContent = praise;
+            finalMessageElement.textContent = `${message}`;
+            
+            celebrationElement.style.display = "flex";
+        }
+        
+        // Update UI elements
+        function updateUI() {
+            scoreElement.textContent = score;
+            correctCountElement.textContent = correctCount;
+            questionCountElement.textContent = `${currentQuestion}/${totalQuestions}`;
+            levelElement.textContent = difficultySettings[currentDifficulty].levelName;
+        }
+        
+        // Set difficulty level
+        function setDifficulty(level) {
+            currentDifficulty = level;
+            
+            // Update active button
+            difficultyButtons.forEach(btn => {
+                if (btn.dataset.level === level) {
+                    btn.classList.add("active");
+                } else {
+                    btn.classList.remove("active");
+                }
+            });
+            
+            // Update level display
+            levelElement.textContent = difficultySettings[level].levelName;
+            questionTitleElement.textContent = difficultySettings[level].title;
+            
+            // Generate new question with new difficulty
+            generateQuestion();
+        }
+        
+        // Event Listeners
+        difficultyButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                setDifficulty(button.dataset.level);
+            });
+        });
+        
+        submitBtn.addEventListener("click", checkAnswer);
+        nextBtn.addEventListener("click", nextQuestion);
+        hintBtn.addEventListener("click", showHint);
+        methodBtn.addEventListener("click", showDivisionMethod);
+        restartBtn.addEventListener("click", initGame);
+        
+        // Allow Enter key to submit answer (from quotient input)
+        quotientInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                remainderInput.focus();
+            }
+        });
+        
+        // Allow Enter key to submit answer (from remainder input)
+        remainderInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                checkAnswer();
+            }
+        });
+        
+        // Initialize the game when page loads
+        window.addEventListener("DOMContentLoaded", initGame);
+        
+        // Add button animation effects
+        document.querySelectorAll('.btn, .difficulty-btn').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.95)';
+            });
+            
+            button.addEventListener('mouseup', () => {
+                button.style.transform = '';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = '';
+            });
+        });
+        
+        // Add auto-focus to quotient input when any button is clicked (except difficulty buttons)
+        document.querySelectorAll('.btn:not(.difficulty-btn)').forEach(button => {
+            button.addEventListener('click', () => {
+                if (!quotientInput.disabled) {
+                    setTimeout(() => quotientInput.focus(), 100);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
