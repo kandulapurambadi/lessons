@@ -3,274 +3,201 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>కందులాపురం బడి</title>
+<title>కందులాపురం బడి - విద్యా వెబ్‌సైట్</title>
 
 <!-- Anek Telugu Font -->
-<link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Font Awesome -->
+<!-- Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-/* 🌤️ Sky Blue Page Background */
+/* Body */
 body{
-font-family:'Anek Telugu',sans-serif;
-background:#DCEEFF;
-color:#003B73;
-min-height:100vh;
-padding:20px;
+  background:#E6F2FF;
+  color:#0B3C5D;
+  font-family:'Anek Telugu',sans-serif;
 }
+
+/* Header */
+header{
+  text-align:center;
+  padding:30px 20px;
+  background:linear-gradient(135deg,#0B3C5D,#145DA0);
+  color:white;
+}
+
+.school-name{font-size:2.4rem;font-weight:700;}
+.subtitle{font-size:1.2rem;}
+.tagline{font-style:italic;opacity:.9;}
 
 /* Container */
 .container{
-max-width:1200px;
-margin:auto;
-padding:20px;
+  max-width:1200px;
+  margin:auto;
+  padding:20px;
 }
 
-/* 🔵 Header */
-.page-header{
-text-align:center;
-padding:25px;
-margin-bottom:40px;
-background:linear-gradient(135deg,#003B73,#005F9E);
-border-radius:15px;
-border:3px solid white;
-color:white;
+/* Welcome */
+.welcome-title{
+  text-align:center;
+  font-size:2.2rem;
+  margin:30px 0;
 }
 
-/* Back Button */
-.back-button{
-display:inline-flex;
-align-items:center;
-gap:10px;
-margin-bottom:30px;
-padding:12px 24px;
-background:linear-gradient(135deg,#003B73,#005F9E);
-color:white;
-text-decoration:none;
-border-radius:10px;
-border:2px solid white;
-font-size:1.1rem;
-transition:.3s;
+/* 🔥 BIG CLASS LINKS */
+.section-title{
+  text-align:center;
+  font-size:2rem;
+  margin:40px 0 25px;
 }
 
-.back-button:hover{
-transform:translateX(-5px);
-background:linear-gradient(135deg,#005F9E,#1E81B0);
+.class-links{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
 }
 
-/* Title */
-.lessons-title{
-text-align:center;
-font-size:2.4rem;
-font-weight:700;
-margin-bottom:40px;
-color:#003B73;
+.class-link{
+  background:linear-gradient(135deg,#145DA0,#1E81B0);
+  color:white;
+  text-decoration:none;
+  padding:45px 25px;
+  border-radius:20px;
+  text-align:center;
+  transition:.3s;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
 }
 
-/* Grid */
-.lessons-grid{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(500px,1fr));
-gap:25px;
+.class-link:hover{
+  transform:scale(1.07);
 }
 
-/* Lesson Box */
-.lesson-box{
-background:linear-gradient(135deg,#003B73,#1E81B0);
-border-radius:14px;
-padding:25px;
-display:flex;
-align-items:center;
-gap:20px;
-text-decoration:none;
-color:white;
-border:3px solid white;
-transition:.3s;
-box-shadow:0 6px 15px rgba(0,0,0,.25);
+.class-icon{
+  font-size:3.2rem;
+  margin-bottom:15px;
 }
 
-.lesson-box:hover{
-transform:translateY(-8px) scale(1.02);
-background:linear-gradient(135deg,#005F9E,#42A5F5);
+.class-link div:nth-child(2){
+  font-size:2rem;
+  font-weight:600;
 }
 
-/* Number */
-.lesson-number{
-font-size:2.6rem;
-font-weight:700;
-background:rgba(255,255,255,.2);
-padding:15px;
-border-radius:10px;
-border:2px solid white;
-min-width:60px;
-text-align:center;
+.class-english{
+  font-size:1.3rem;
+  opacity:.9;
 }
 
-/* Text */
-.lesson-title{
-font-size:1.7rem;
-font-weight:600;
+/* 🔵 Features Section → Navy */
+.features-section{
+  margin-top:60px;
+  background:linear-gradient(135deg,#0B3C5D,#145DA0);
+  padding:35px;
+  border-radius:18px;
+  color:white;
 }
 
-/* Icon */
-.lesson-icon{
-font-size:2rem;
-opacity:.9;
+.features-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:18px;
+  margin-top:20px;
 }
 
-/* 🔵 Footer */
-.page-footer{
-text-align:center;
-padding:30px;
-margin-top:60px;
-background:linear-gradient(135deg,#003B73,#005F9E);
-border-radius:15px;
-border:3px solid white;
-color:white;
+.feature-item{
+  background:rgba(255,255,255,0.12);
+  padding:18px;
+  border-radius:12px;
+  font-size:1.2rem;
 }
 
-.footer-title{
-font-size:1.8rem;
-margin-bottom:10px;
-}
-
-.footer-text{
-font-size:1.1rem;
-}
-
-.page-note{
-margin-top:15px;
-opacity:.85;
-font-style:italic;
+/* Footer */
+footer{
+  margin-top:50px;
+  background:#0B3C5D;
+  color:white;
+  text-align:center;
+  padding:20px;
 }
 
 /* Responsive */
-@media(max-width:550px){
-.lessons-grid{
-grid-template-columns:1fr;
-}
+@media(max-width:768px){
+  .class-link{padding:35px 20px;}
+  .class-icon{font-size:2.5rem;}
+  .class-link div:nth-child(2){font-size:1.6rem;}
 }
 </style>
 </head>
 
 <body>
 
+<header>
+
+  <h1 class="school-name">కందులాపురం బడి</h1>
+  <p class="subtitle">KANDULAPURAM BADI- The Good Source of Education</p>
+<h2 class="welcome-title">FOUNDATIONAL LITERACY AND NUMERACY</h2>
+
+</header>
+
 <div class="container">
 
-<a href="index.html" class="back-button">
-<i class="fas fa-arrow-left"></i>
-<span>మెయిన్ పేజీకి తిరిగి వెళ్ళండి</span>
+<!-- CLASS LINKS -->
+<h2 class="section-title"> మీ తరగతి లోనికి  ప్రవేశించండి</h2>
+
+<div class="class-links">
+
+<a href="fln.html" class="class-link">
+<div class="class-icon"></div>
+<div>TELUGU (తెలుగు)</div>
+
 </a>
 
-<h1 style="text-align:center;margin-bottom:10px;">కందులాపురం బడి</h1>
-
-<h2 class="lessons-title">FOUNDATIONAL LITERACY AND NUMERACY</h2>
-
-<div class="lessons-grid">
-
-<a href="FLN WORDS\saralapadalu.html" class="lesson-box">
-<div class="lesson-number">1</div>
-<div class="lesson-content">
-<h3 class="lesson-title">సరళ పదాలు</h3>
-</div>
-<div class="lesson-icon"><i class="fas fa-book-reader"></i></div>
+<a href="5th-class.html" class="class-link">
+<div class="class-icon"></div>
+<div>ENGLISH (ఇంగ్లీష్)</div>
 </a>
 
-<a href="FLN WORDS\gunintapadalu.html" class="lesson-box">
-<div class="lesson-number">2</div>
-<div class="lesson-content">
-<h3 class="lesson-title">గుణింత పదాలు </h3>
-</div>
-<div class="lesson-icon"><i class="fas fa-heart"></i></div>
+<a href="4th-class.html" class="class-link">
+<div class="class-icon"></div>
+<div>MATHEMATICS (గణితం)</div>
 </a>
-
-<a href="FLN WORDS\sightwords200.html" class="lesson-box">
-<div class="lesson-number">3</div>
-<div class="lesson-content">
-<h3 class="lesson-title">SIGHT WORDS</h3>
-</div>
-<div class="lesson-icon"><i class="fas fa-gem"></i></div>
-</a>
-
-<a href="FLN WORDS\sightwords-2.html" class="lesson-box">
-<div class="lesson-number">4</div>
-<div class="lesson-content">
-<h3 class="lesson-title">SIGHT WORDS -2</h3>
-</div>
-<div class="lesson-icon"><i class="fas fa-gem"></i></div>
-</a>
-
-<a href="FLN WORDS\englishwords.html" class="lesson-box">
-<div class="lesson-number">5</div>
-<div class="lesson-content">
-<h3 class="lesson-title">ఇంగ్లిష్ పదాలు</h3>
-</div>
-<div class="lesson-icon"><i class="fas fa-user-graduate"></i></div>
-</a>
-
-<a href="FLN WORDS\action_verbs.html" class="lesson-box">
-<div class="lesson-number">6</div>
-<div class="lesson-content">
-<h3 class="lesson-title">ACTION VERBS</h3>
-</div>
-<div class="lesson-icon"><i class="fas fa-crown"></i></div>
-</a>
-
-<a href="FLN WORDS\englishpronunciation.html" class="lesson-box">
-<div class="lesson-number">7</div>
-<div class="lesson-content">
-<h3 class="lesson-title">ఇంగ్లీష్ పదాల ఉచ్చారణ </h3>
-</div>
-<div class="lesson-icon"><i class="fas fa-crown"></i></div>
-</a>
-<a href="FLN WORDS\teluguwords3.html" class="lesson-box">
-<div class="lesson-number">8</div>
-<div class="lesson-content">
-<h3 class="lesson-title">మరిన్ని తెలుగు పదాలు </h3>
-</div>
-<div class="lesson-icon"><i class="fas fa-crown"></i></div>
-</a>
-
- <a href="flnmaths.html" class="lesson-box">
-<div class="lesson-number">9</div>
-<div class="lesson-content">
-<h3 class="lesson-title">గణిత ప్రక్రియలు </h3>
-</div>
-<div class="lesson-icon"><i class="fas fa-crown"></i></div>
-</a>
-<a href="FLN WORDS\flnwords.html" class="lesson-box">
-<div class="lesson-number">10</div>
-<div class="lesson-content">
-<h3 class="lesson-title"> 1000 పదాలు </h3>
-</div>
-<div class="lesson-icon"><i class="fas fa-crown"></i></div>
-</a>
-
 
  
 </div>
 
-<footer class="page-footer">
-<h3 class="footer-title">FLN (Foundational Literacy and Numeracy)</h3>
-<p class="footer-text">కందులాపురం బడి - Andhra Pradesh State Syllabus</p>
-<p class="page-note">ప్రతి పాఠం విద్యార్థులకు సులభంగా అర్థమయ్యే విధంగా రూపొందించబడింది</p>
-</footer>
+<!-- FEATURES -->
+<section class="features-section">
+
+<h2 class="section-title">మా ప్రత్యేకతలు</h2>
+
+<div class="features-grid">
+
+<div class="feature-item">✅ ఉచిత పుస్తకాలు -భోజనం</div>
+<div class="feature-item">✅ అభ్యాస పరీక్షలు</div>
+<div class="feature-item">✅ వీడియో పాఠాలు</div>
+
 
 </div>
 
+</section>
+
+</div>
+
+<!-- Footer -->
+  <footer>
+    <p class="footer-text">కందలాపురం బడి - విద్యా ప్రగతికి నిరంతరం కృషి చేస్తున్నాము</p>
+    <p class="footer-text">Kandulapuram Badi - Striving Continuously for Educational Progress</p>
+    <p class="copyright">© 2026 కందులాపురం బడి. అన్ని హక్కులు ప్రత్యేకించబడినవి</p>
+  </footer>
+
 </body>
 </html>
-
-
-
 
 
 
