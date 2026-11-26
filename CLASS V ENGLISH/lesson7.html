@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #1B5E20;
+            --primary: #1B5E20; /* Forest Green theme for Kabaddi - Our State Game */
             --secondary: #388E3C;
             --accent: #FF9800;
             --light: #E8F5E9;
@@ -16,22 +16,15 @@
             --telugu-color: #C2185B;
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Anek Telugu', sans-serif;
-            background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+            background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
             color: var(--dark);
             line-height: 1.6;
             padding: 20px;
             min-height: 100vh;
         }
-        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -50,1136 +43,928 @@
             position: relative;
             overflow: hidden;
         }
-        
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-        
-        .subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            font-weight: 300;
-        }
-        
+        h1 { font-size: 2.8rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        .subtitle { font-size: 1.4rem; margin-bottom: 15px; font-weight: 300; }
         .class-info {
-            background-color: var(--accent);
-            color: var(--dark);
-            padding: 8px 25px;
-            border-radius: 30px;
-            display: inline-block;
-            font-weight: bold;
-            font-size: 1.1rem;
+            background-color: var(--accent); color: var(--dark);
+            padding: 8px 25px; border-radius: 30px;
+            display: inline-block; font-weight: bold; font-size: 1.1rem;
         }
+        .back-link {
+            display: inline-block;
+            margin-top: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            text-decoration: none;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255,255,255,0.4);
+            transition: all 0.2s;
+        }
+        .back-link:hover { background: white; color: var(--primary); }
         
         /* Main Navigation */
         .main-nav {
-            background-color: #C8E6C9;
-            padding: 15px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            border-bottom: 3px solid var(--primary);
+            background-color: #C8E6C9; padding: 15px;
+            display: flex; flex-wrap: wrap; gap: 10px;
+            justify-content: center; border-bottom: 3px solid var(--primary);
         }
-        
         .nav-btn {
-            padding: 10px 20px;
-            background-color: white;
-            border: 2px solid var(--primary);
-            border-radius: 25px;
-            font-family: 'Anek Telugu', sans-serif;
-            font-weight: bold;
-            color: var(--dark);
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            padding: 10px 20px; background-color: white;
+            border: 2px solid var(--primary); border-radius: 25px;
+            font-family: 'Anek Telugu', sans-serif; font-weight: bold;
+            color: var(--dark); cursor: pointer; transition: all 0.3s;
+            display: flex; align-items: center; gap: 8px;
         }
-        
         .nav-btn:hover, .nav-btn.active {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-3px);
+            background-color: var(--primary); color: white; transform: translateY(-3px);
         }
         
         /* Main Content */
-        .content-area {
-            padding: 30px;
-            min-height: 600px;
-        }
-        
-        .content-section {
-            display: none;
-            animation: fadeIn 0.5s;
-        }
-        
-        .content-section.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
+        .content-area { padding: 30px; min-height: 600px; }
+        .content-section { display: none; animation: fadeIn 0.5s; }
+        .content-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         h2 {
-            color: var(--secondary);
-            border-bottom: 3px solid var(--accent);
-            padding-bottom: 10px;
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            color: var(--secondary); border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px; margin-bottom: 25px; font-size: 1.8rem;
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        /* Story */
+        .story-text { font-size: 1.15rem; line-height: 2; text-align: justify; margin-bottom: 30px; }
+        .verse-block { display: flex; gap: 15px; margin-bottom: 22px; align-items: flex-start; }
+        .verse-number {
+            flex-shrink: 0; width: 35px; height: 35px; background: var(--secondary);
+            color: white; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; font-weight: bold; font-size: 0.95rem;
+            margin-top: 4px;
+        }
+        .verse-text { flex: 1; font-size: 1.1rem; line-height: 2; }
+
+        /* Highlighted word & Tooltip */
+        .hw {
+            position: relative; cursor: pointer; color: #0D3B0D; font-weight: 600;
+            background: linear-gradient(transparent 60%, #C8E6C9 60%);
+            border-radius: 3px; padding: 0 2px; transition: all .2s;
+        }
+        .hw:hover { background: #A5D6A7; color: #0D3B0D; }
+        .hw .tip {
+            visibility: hidden; opacity: 0; position: absolute; z-index: 50;
+            bottom: 135%; left: 50%; transform: translateX(-50%);
+            background: #1a2b36; color: #fff; text-align: left;
+            padding: 10px 12px; border-radius: 10px; font-size: .82rem;
+            font-weight: 400; line-height: 1.5; width: max-content; max-width: 280px;
+            box-shadow: 0 8px 20px rgba(0,0,0,.3); transition: opacity .2s;
+            pointer-events: none; font-family: 'Anek Telugu', sans-serif;
+            white-space: normal;
+        }
+        .hw .tip::after {
+            content: ''; position: absolute; top: 100%; left: 50%;
+            transform: translateX(-50%); border: 7px solid transparent;
+            border-top-color: #1a2b36;
+        }
+        .hw:hover .tip { visibility: visible; opacity: 1; }
+        .tip .t-pos {
+            display: inline-block; background: var(--accent); color: #1a2b36;
+            font-size: .68rem; font-weight: 700; padding: 0 6px; border-radius: 6px;
+            margin-bottom: 3px; letter-spacing: .4px;
+        }
+        .tip .t-pron { color: #ffd54f; font-style: italic; display: block; margin-top: 2px; }
+        .tip .t-tel { color: #ff8a80; display: block; font-size: .9rem; font-weight: 600; margin-top: 2px; }
+        .tip .t-eng { color: #cfd8dc; display: block; font-size: .78rem; margin-top: 2px; }
+
+        /* Flash Cards (Shared) */
+        .flashcard-controls {
+            display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+            gap: 20px; margin-top: 30px; background: #E8F5E9; padding: 15px 25px;
+            border-radius: 50px; border: 2px solid var(--secondary); box-shadow: var(--shadow);
+        }
+        .nav-controls { display: flex; align-items: center; gap: 12px; }
+        .ctrl-btn {
+            background: white; border: 2px solid var(--primary); border-radius: 50px;
+            padding: 10px 22px; font-family: 'Anek Telugu', sans-serif; font-weight: 600;
+            color: var(--dark); font-size: 1rem; cursor: pointer; transition: all 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .ctrl-btn:hover:not(:disabled) { background: var(--primary); color: white; transform: translateY(-2px); }
+        .ctrl-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .page-jump { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--dark); }
+        .page-select {
+            padding: 8px 12px; border-radius: 30px; border: 2px solid var(--secondary);
+            font-family: 'Anek Telugu', sans-serif; font-size: 1rem; background: white;
+            color: var(--dark); cursor: pointer; font-weight: 600; min-width: 100px;
+        }
+        .page-indicator {
+            font-weight: 700; color: var(--primary); background: #C8E6C9;
+            padding: 5px 18px; border-radius: 30px; font-size: 1rem; white-space: nowrap;
+        }
+
+        .flashcards-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: 30px; margin-top: 10px;
+        }
+        .flashcard { perspective: 1500px; height: 280px; cursor: pointer; }
+        .flashcard-inner {
+            position: relative; width: 100%; height: 100%; transition: transform 0.7s;
+            transform-style: preserve-3d; border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(27, 94, 32, 0.2);
+        }
+        .flashcard.flipped .flashcard-inner { transform: rotateY(180deg); }
+        .flashcard-front, .flashcard-back {
+            position: absolute; width: 100%; height: 100%; backface-visibility: hidden;
+            border-radius: 20px; padding: 25px; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+        }
+        .flashcard-front {
+            background: linear-gradient(145deg, #ffffff, #E8F5E9);
+            border: 3px solid var(--secondary); color: var(--dark);
+        }
+        .flashcard-back {
+            background: linear-gradient(145deg, #1B5E20, #388E3C);
+            color: white; transform: rotateY(180deg); border: 3px solid var(--accent);
         }
         
-        h3 {
-            color: var(--primary);
-            margin: 20px 0 15px 0;
-            font-size: 1.4rem;
+        /* Specific Colors for Opposites and Singular/Plural */
+        #opposites .flashcard-front { border-color: #F44336; }
+        #opposites .flashcard-back { background: linear-gradient(145deg, #D32F2F, #E53935); border-color: var(--accent); }
+        #singular-plural .flashcard-front { border-color: #0277BD; }
+        #singular-plural .flashcard-back { background: linear-gradient(145deg, #01579B, #0288D1); border-color: var(--accent); }
+
+        .flashcard-word { font-size: 2.6rem; font-weight: 700; color: var(--primary); margin-bottom: 8px; line-height: 1.2; word-break: break-word; }
+        .flashcard-pos { display: inline-block; background: var(--accent); color: #1a2b36; font-size: 0.75rem; font-weight: 700; padding: 3px 12px; border-radius: 20px; letter-spacing: 0.5px; margin-bottom: 12px; }
+        .flashcard-pron { font-size: 1.2rem; color: #666; font-style: italic; margin-bottom: 5px; }
+        .flashcard-length { font-size: 0.85rem; background: #C8E6C9; padding: 3px 12px; border-radius: 20px; color: var(--dark); font-weight: 600; }
+        
+        .flashcard-back .flashcard-word { color: #ffd54f; font-size: 2rem; margin-bottom: 12px; }
+        .flashcard-back .flashcard-telugu { font-size: 1.8rem; color: #ffccbc; font-weight: 600; margin-bottom: 10px; line-height: 1.4; }
+        .flashcard-back .flashcard-english { font-size: 1.05rem; color: #E8F5E9; line-height: 1.5; margin-bottom: 15px; max-width: 90%; }
+        .flashcard-back .sound-btn {
+            background: var(--accent); color: var(--dark); border: none; padding: 10px 20px;
+            border-radius: 50px; font-size: 1rem; cursor: pointer; display: flex; align-items: center;
+            gap: 8px; font-family: 'Anek Telugu', sans-serif; font-weight: 600; transition: all 0.3s;
         }
-        
-        /* Story Text with Highlighted Words */
-        .story-text {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            text-align: justify;
-            margin-bottom: 30px;
-        }
-        
-        .story-text p {
-            margin-bottom: 20px;
-            text-indent: 40px;
-        }
-        
-        .highlight-word {
-            background-color: #C8E6C9;
-            padding: 2px 6px;
-            border-radius: 4px;
-            border-bottom: 2px dashed var(--primary);
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-            position: relative;
-        }
-        
-        .highlight-word:hover {
-            background-color: #A5D6A7;
-            transform: translateY(-2px);
-        }
-        
-        /* Color coding based on word length */
-        .word-3 { background-color: #FFF9C4; } /* 3 letters */
-        .word-4 { background-color: #BBDEFB; } /* 4 letters */
-        .word-5 { background-color: #FFCCBC; } /* 5 letters */
-        .word-6 { background-color: #D1C4E9; } /* 6 letters */
-        .word-7 { background-color: #E1BEE7; } /* 7+ letters */
-        
-        /* Vocabulary Cards */
-        .vocab-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .vocab-card {
-            background-color: var(--light);
-            border-radius: 12px;
-            padding: 20px;
-            border-left: 6px solid var(--secondary);
-            transition: transform 0.3s;
-            box-shadow: var(--shadow);
-        }
-        
-        .vocab-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .word-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        
-        .word {
-            font-weight: bold;
-            font-size: 1.4rem;
-            color: var(--secondary);
-        }
-        
-        .sound-btn {
-            background-color: var(--accent);
-            color: var(--dark);
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-        
-        .sound-btn:hover {
-            background-color: var(--secondary);
-            transform: scale(1.1);
-            color: white;
-        }
-        
-        .pronunciation {
-            color: #666;
-            font-style: italic;
-            margin-bottom: 8px;
-            font-size: 0.95rem;
-        }
-        
-        .telugu-meaning {
-            color: var(--telugu-color);
-            margin-bottom: 8px;
-            font-family: 'Anek Telugu', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-        
-        .english-meaning {
-            color: var(--dark);
-            margin-bottom: 5px;
-        }
-        
-        .word-length {
-            display: inline-block;
-            padding: 2px 8px;
-            background-color: var(--accent);
-            color: var(--dark);
-            border-radius: 10px;
-            font-size: 0.8rem;
-            margin-left: 8px;
-        }
-        
-        /* Grammar Tables */
+        .flashcard-back .sound-btn:hover { background: #ffb74d; transform: scale(1.05); }
+        .flashcard-hint { font-size: 0.8rem; color: #999; margin-top: 10px; font-style: italic; }
+        .flashcard-back .flashcard-hint { color: #C8E6C9; }
+
+        /* Tables */
         .grammar-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background-color: white;
-            box-shadow: var(--shadow);
-            border-radius: 8px;
-            overflow: hidden;
+            width: 100%; border-collapse: collapse; margin: 20px 0;
+            background: white; box-shadow: var(--shadow); border-radius: 8px; overflow: hidden;
         }
-        
-        .grammar-table th {
-            background-color: var(--secondary);
-            color: white;
-            padding: 15px;
-            text-align: left;
-        }
-        
-        .grammar-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .grammar-table tr:hover {
-            background-color: #f5f5f5;
-        }
-        
-        /* Word Modal */
-        .word-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-content {
-            background-color: white;
-            padding: 30px;
-            border-radius: 15px;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #777;
-        }
-        
-        .close-modal:hover {
-            color: #333;
-        }
-        
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: var(--dark);
-            color: white;
-        }
-        
-        /* Responsive Design */
+        .grammar-table th { background-color: var(--secondary); color: white; padding: 15px; text-align: left; }
+        .grammar-table td { padding: 12px 15px; border-bottom: 1px solid #ddd; }
+        .grammar-table tr:hover { background-color: #f5f5f5; }
+        .grammar-table td[data-word] { cursor: pointer; }
+
+        /* Bilingual */
+        .bilingual-container { display: flex; flex-direction: column; border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); margin-top: 10px; }
+        .bilingual-line { display: flex; flex-direction: column; padding: 10px 20px; border-bottom: 1px solid #e0e0e0; transition: background-color .2s; }
+        .bilingual-line:nth-child(odd) { background-color: #f4fbf5; }
+        .bilingual-line:nth-child(even) { background-color: #ffffff; }
+        .bilingual-line:hover { background-color: #E8F5E9; }
+        .bilingual-english { font-size: 1.1rem; color: #000080; font-weight: 500; padding: 2px 0; }
+        .bilingual-english .lang-label { font-size: .7rem; background-color: #000080; color: white; padding: 1px 10px; border-radius: 12px; margin-right: 12px; font-weight: bold; letter-spacing: .5px; display: inline-block; }
+        .bilingual-telugu { font-size: 1.2rem; color: #FF0000; font-weight: 500; padding: 2px 0 2px 40px; }
+        .bilingual-telugu .lang-label { font-size: .7rem; background-color: #FF0000; color: white; padding: 1px 10px; border-radius: 12px; margin-right: 12px; font-weight: bold; letter-spacing: .5px; display: inline-block; }
+
+        /* Modal */
+        .word-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,.7); z-index: 1000; justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 30px; border-radius: 15px; max-width: 520px; width: 90%; position: relative; max-height: 80vh; overflow-y: auto; }
+        .close-modal { position: absolute; top: 15px; right: 15px; font-size: 1.5rem; cursor: pointer; color: #777; }
+        .close-modal:hover { color: #333; }
+        .modal-pos { display: inline-block; background: var(--primary); color: #fff; font-size: .75rem; font-weight: 700; border-radius: 8px; padding: 3px 10px; margin-bottom: 12px; letter-spacing: .5px; }
+        .modal-row { margin-bottom: 8px; }
+        .modal-row strong { color: var(--secondary); }
+        .modal-row .telugu-meaning { color: var(--telugu-color); font-size: 1.2rem; }
+
+        footer { text-align: center; padding: 20px; background: var(--dark); color: white; }
+        .footer-quote { font-style: italic; margin-top: 8px; color: #A5D6A7; font-size: .95rem; }
+
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            .main-nav {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav-btn {
-                width: 90%;
-                justify-content: center;
-            }
-            
-            .vocab-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .content-area {
-                padding: 20px;
-            }
-            
-            .story-text {
-                text-indent: 20px;
-            }
+            h1 { font-size: 2.2rem; }
+            .main-nav { flex-direction: column; align-items: center; }
+            .nav-btn { width: 90%; justify-content: center; }
+            .flashcards-grid { grid-template-columns: 1fr; gap: 20px; }
+            .flashcard { height: 260px; }
+            .flashcard-word { font-size: 2.2rem; }
+            .flashcard-back .flashcard-telugu { font-size: 1.5rem; }
+            .content-area { padding: 20px; }
+            .flashcard-controls { flex-direction: column; align-items: stretch; border-radius: 25px; }
+            .nav-controls { justify-content: center; }
+            .page-jump { justify-content: center; }
+            .bilingual-telugu { padding-left: 0; }
+            .bilingual-line { padding: 8px 14px; }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .flashcards-grid { gap: 20px; }
+            .flashcard { height: 270px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>కందులాపురం బడి</h1>
-            <h1>🤼 Kabaddi - Our State Game</h1>
-            <div class="subtitle">Class V English Reader - Interactive Learning</div>
-            <div class="class-info">Class V - English with Telugu Meanings</div>
-        </header>
-        
-        <div class="navigation">
-            <a href="english-class5.html" class="nav-btn back-btn">← ఇంగ్లిష్ పాఠాల విషయసూచిక [వెనుకకు]</a>
-        </div>
+<div class="container">
+    <header>
+        <h1>కందులాపురం బడి</h1>
+        <h1>🤼 Kabaddi - Our State Game</h1>
+        <div class="subtitle">Class V English Reader - Interactive Learning</div>
+        <div class="class-info">Class V - English with Telugu Meanings</div>
+        <br>
+        <a href="english-class5.html" class="back-link"><i class="fas fa-arrow-left"></i> ఇంగ్లిష్ పాఠాల విషయసూచిక [వెనుకకు]</a>
+    </header>
 
-        <nav class="main-nav">
-            <button class="nav-btn active" data-section="story">
-                <i class="fas fa-book-open"></i> Lesson
-            </button>
-            <button class="nav-btn" data-section="vocabulary">
-                <i class="fas fa-book"></i> All Words
-            </button>
-            <button class="nav-btn" data-section="verbs">
-                <i class="fas fa-running"></i> Verbs
-            </button>
-            <button class="nav-btn" data-section="opposites">
-                <i class="fas fa-exchange-alt"></i> Opposites
-            </button>
-            <button class="nav-btn" data-section="singular-plural">
-                <i class="fas fa-copy"></i> Singular/Plural
-            </button>
-        </nav>
-        
-        <div class="content-area">
-            <!-- Story Section -->
-            <section id="story" class="content-section active">
-                <h2><i class="fas fa-book-open"></i> The Lesson</h2>
-                <div class="story-text" id="storyText">
-                    <!-- Story text will be inserted by JavaScript -->
-                </div>
-            </section>
-            
-            <!-- All Words Section -->
-            <section id="vocabulary" class="content-section">
-                <h2><i class="fas fa-book"></i> All Highlighted Words</h2>
-                <p>Words are color-coded by length: <span style="background-color:#FFF9C4; padding:2px 6px;">3 letters</span> <span style="background-color:#BBDEFB; padding:2px 6px;">4 letters</span> <span style="background-color:#FFCCBC; padding:2px 6px;">5 letters</span> <span style="background-color:#D1C4E9; padding:2px 6px;">6 letters</span> <span style="background-color:#E1BEE7; padding:2px 6px;">7+ letters</span></p>
-                
-                <div class="vocab-grid" id="allWordsGrid">
-                    <!-- All words will be inserted by JavaScript -->
-                </div>
-            </section>
-            
-            <!-- Verbs Section -->
-            <section id="verbs" class="content-section">
-                <h2><i class="fas fa-running"></i> Verbs from the Lesson</h2>
-                
-                <table class="grammar-table">
-                    <thead>
-                        <tr>
-                            <th>Verb</th>
-                            <th>Telugu Meaning</th>
-                            <th>Pronunciation</th>
-                            <th>Example from Lesson</th>
-                        </tr>
-                    </thead>
-                    <tbody id="verbsTable">
-                        <!-- Verbs will be inserted by JavaScript -->
-                    </tbody>
-                </table>
-            </section>
-            
-            <!-- Opposites Section -->
-            <section id="opposites" class="content-section">
-                <h2><i class="fas fa-exchange-alt"></i> Opposite Words</h2>
-                
-                <table class="grammar-table">
-                    <thead>
-                        <tr>
-                            <th>Word</th>
-                            <th>Telugu Meaning</th>
-                            <th>Opposite Word</th>
-                            <th>Telugu Meaning of Opposite</th>
-                        </tr>
-                    </thead>
-                    <tbody id="oppositesTable">
-                        <!-- Opposites will be inserted by JavaScript -->
-                    </tbody>
-                </table>
-            </section>
-            
-            <!-- Singular/Plural Section -->
-            <section id="singular-plural" class="content-section">
-                <h2><i class="fas fa-copy"></i> Singular and Plural Forms</h2>
-                
-                <table class="grammar-table">
-                    <thead>
-                        <tr>
-                            <th>Singular</th>
-                            <th>Telugu Meaning</th>
-                            <th>Plural</th>
-                            <th>Telugu Meaning</th>
-                        </tr>
-                    </thead>
-                    <tbody id="singularPluralTable">
-                        <!-- Singular/Plural will be inserted by JavaScript -->
-                    </tbody>
-                </table>
-            </section>
-        </div>
-        
-        <footer>
-            <p>Class V English Reader - Kabaddi: Our State Game</p>
-            <p>Interactive Learning Page with Telugu Meanings</p>
-        </footer>
-    </div>
+    <nav class="main-nav">
+        <button class="nav-btn active" data-section="story"><i class="fas fa-book-open"></i> Lesson</button>
+        <button class="nav-btn" data-section="vocabulary"><i class="fas fa-book"></i> All Words</button>
+        <button class="nav-btn" data-section="verbs"><i class="fas fa-running"></i> Verbs</button>
+        <button class="nav-btn" data-section="opposites"><i class="fas fa-exchange-alt"></i> Opposites</button>
+        <button class="nav-btn" data-section="singular-plural"><i class="fas fa-copy"></i> Singular/Plural</button>
+        <button class="nav-btn" data-section="bilingual"><i class="fas fa-language"></i> English/Telugu</button>
+    </nav>
 
-    <!-- Word Detail Modal -->
-    <div class="word-modal" id="wordModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div id="modalContent">
-                <!-- Modal content will be inserted by JavaScript -->
+    <div class="content-area">
+        <!-- LESSON -->
+        <section id="story" class="content-section active">
+            <h2><i class="fas fa-book-open"></i> The Lesson</h2>
+            <p style="margin-bottom:18px;color:#555;font-size:.95rem;">
+                <i class="fas fa-info-circle" style="color:var(--secondary);"></i>
+                Hover / tap any <strong>highlighted word</strong> to see its pronunciation, Telugu meaning, English meaning and part of speech.
+            </p>
+            <div class="story-text" id="storyText"></div>
+        </section>
+
+        <!-- ALL WORDS -->
+        <section id="vocabulary" class="content-section">
+            <h2><i class="fas fa-book"></i> All Highlighted Words — Flash Cards</h2>
+            <p style="margin-bottom:18px;color:#555;">
+                <i class="fas fa-hand-pointer" style="color:var(--secondary);"></i>
+                Click any card to <strong>flip it</strong>. Use the controls at the bottom to navigate pages (4 words per page).
+            </p>
+            <div class="flashcards-grid" id="flashcardsGrid"></div>
+            
+            <div class="flashcard-controls">
+                <div class="nav-controls">
+                    <button class="ctrl-btn" id="prevPageBtn" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                    <button class="ctrl-btn" id="nextPageBtn">Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="page-jump">
+                    <label for="pageSelect"><i class="fas fa-arrow-right-to-bracket"></i> Jump to page:</label>
+                    <select id="pageSelect" class="page-select"></select>
+                </div>
+                <div class="page-indicator" id="pageIndicator">Page 1 of 1</div>
             </div>
-        </div>
+        </section>
+
+        <!-- VERBS -->
+        <section id="verbs" class="content-section">
+            <h2><i class="fas fa-running"></i> Verbs from the Lesson</h2>
+            <table class="grammar-table">
+                <thead><tr><th>Verb</th><th>Telugu Meaning</th><th>Pronunciation</th><th>Example from Lesson</th></tr></thead>
+                <tbody id="verbsTable"></tbody>
+            </table>
+        </section>
+
+        <!-- OPPOSITES -->
+        <section id="opposites" class="content-section">
+            <h2><i class="fas fa-exchange-alt"></i> Opposite Words — Flash Cards</h2>
+            <p style="margin-bottom:18px;color:#555;">
+                <i class="fas fa-hand-pointer" style="color:var(--secondary);"></i>
+                Click any card to reveal its <strong>opposite word</strong>. Use the controls at the bottom to navigate pages (4 words per page).
+            </p>
+            <div class="flashcards-grid" id="oppositesGrid"></div>
+            
+            <div class="flashcard-controls">
+                <div class="nav-controls">
+                    <button class="ctrl-btn" id="prevOppositeBtn" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                    <button class="ctrl-btn" id="nextOppositeBtn">Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="page-jump">
+                    <label for="oppositePageSelect"><i class="fas fa-arrow-right-to-bracket"></i> Jump to page:</label>
+                    <select id="oppositePageSelect" class="page-select"></select>
+                </div>
+                <div class="page-indicator" id="oppositePageIndicator">Page 1 of 1</div>
+            </div>
+        </section>
+
+        <!-- SINGULAR / PLURAL -->
+        <section id="singular-plural" class="content-section">
+            <h2><i class="fas fa-copy"></i> Singular and Plural — Flash Cards</h2>
+            <p style="margin-bottom:18px;color:#555;">
+                <i class="fas fa-hand-pointer" style="color:var(--secondary);"></i>
+                Click any card to reveal its <strong>plural form</strong>. Use the controls at the bottom to navigate pages (4 words per page).
+            </p>
+            <div class="flashcards-grid" id="singularPluralGrid"></div>
+            
+            <div class="flashcard-controls">
+                <div class="nav-controls">
+                    <button class="ctrl-btn" id="prevSingPlurBtn" disabled><i class="fas fa-chevron-left"></i> Previous</button>
+                    <button class="ctrl-btn" id="nextSingPlurBtn">Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+                <div class="page-jump">
+                    <label for="singPlurPageSelect"><i class="fas fa-arrow-right-to-bracket"></i> Jump to page:</label>
+                    <select id="singPlurPageSelect" class="page-select"></select>
+                </div>
+                <div class="page-indicator" id="singPlurPageIndicator">Page 1 of 1</div>
+            </div>
+        </section>
+
+        <!-- BILINGUAL -->
+        <section id="bilingual" class="content-section">
+            <h2><i class="fas fa-language"></i> 📝 Line by Line — English &amp; Telugu</h2>
+            <p style="margin-bottom: 20px; color: #555;">
+                <i class="fas fa-info-circle" style="color: var(--secondary);"></i>
+                <span style="color:#000080;font-weight:bold;">English</span> in Navy Blue &nbsp;|&nbsp;
+                <span style="color:#FF0000;font-weight:bold;">Telugu</span> in Red
+            </p>
+            <div class="bilingual-container" id="bilingualContainer"></div>
+        </section>
     </div>
 
-    <script>
-        // Lesson text
-        const storyText = `We can hear the chant 'Kabaddi... kabaddi... kabaddi...' mostly in the villages
-of India. Children play this game in schools, small grounds and even in the shade
-of trees. It is the game of all age groups. Both the boys and girls like this game very
-much. During the festivals and fairs, some organizations conduct kabaddi
-competitions. The game is widely played in Andhra Pradesh. It is also known as
-chedugudu. Kabaddi is the official game of our state.
-The game requires no specific sporting equipment. A small space with an
-even surface is just enough to play the game. Only two things are required to play
-this game, one is physical strength and the other is mental sharpness and quickness.
-The game is played with the combination and cooperation of the body and the
-mind. It's known for its agility, lung activity, muscular coordination, presence of
-mind and quick responses. Apart from this, much team management is required.
-The game promotes mental and physical strength.
+    <footer>
+        <p>Class V English Reader - Kabaddi: Our State Game</p>
+        <p>Interactive Learning Page with Telugu Meanings</p>
+        <div class="footer-quote">"Kabaddi is played with the combination and cooperation of the body and the mind."</div>
+    </footer>
+</div>
 
-Kabaddi is a team game. It is played between two teams of seven players each.
-A court is designed on the ground with prescribed measurements. The court is
-divided into two equal parts with a centre line. A seven-member team on one side
-and another seven-member team on the other side take positions in the court. Team
-members of both the sides take turns to play the game in the court of their
-opponents. The player who crosses the centre line is called the raider. The raider
-holds his breath and chants, 'Kabaddi... Kabaddi... Kabaddi...' during the whole
-ride. The raider rides to tag (touch) the members of the other team, whereas the
-other team members try to tackle the raider. When the raider comes back, another
-raider from the opposite side comes and plays in his opponent's court.
-Players are declared 'out' if they are tagged or tackled. And they are taken out
-of the game. However, for each point scored by the team, a player who has been
-taken out, comes back to play.
-The game is played in two halves of twenty minutes each. In between the halves,
-there is a five-minute break. After the first half, the players exchange their sides.
+<div class="word-modal" id="wordModal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div id="modalContent"></div>
+    </div>
+</div>
 
-It is learnt that the game had been played in pre-historic time in different
-forms. But, modern kabaddi game started all over India in 1930. It is a favourite
-game in South Asian countries. It is the national game of Bangladesh. It is also
-played in most of the Asian countries. Now-a-days Pro-Kabaddi (Professional
-level Kabaddi) has become very popular and is dearly watched on the television
-by all walks of people.
-The game is played in the 'Asian Games' also and it may one day be included
-in the Olympics too.`;
+<script>
+/* ============================================================
+   DATA
+   ============================================================ */
+const storyVerses = [
+ { num: 1, text: "We can hear the chant 'Kabaddi... kabaddi... kabaddi...' mostly in the villages of India. Children play this game in schools, small grounds and even in the shade of trees. It is the game of all age groups. Both the boys and girls like this game very much. During the festivals and fairs, some organizations conduct kabaddi competitions. The game is widely played in Andhra Pradesh. It is also known as chedugudu. Kabaddi is the official game of our state." },
+ { num: 2, text: "The game requires no specific sporting equipment. A small space with an even surface is just enough to play the game. Only two things are required to play this game, one is physical strength and the other is mental sharpness and quickness. The game is played with the combination and cooperation of the body and the mind. It's known for its agility, lung activity, muscular coordination, presence of mind and quick responses. Apart from this, much team management is required. The game promotes mental and physical strength." },
+ { num: 3, text: "Kabaddi is a team game. It is played between two teams of seven players each. A court is designed on the ground with prescribed measurements. The court is divided into two equal parts with a centre line. A seven-member team on one side and another seven-member team on the other side take positions in the court. Team members of both the sides take turns to play the game in the court of their opponents. The player who crosses the centre line is called the raider. The raider holds his breath and chants, 'Kabaddi... Kabaddi... Kabaddi...' during the whole ride. The raider rides to tag (touch) the members of the other team, whereas the other team members try to tackle the raider. When the raider comes back, another raider from the opposite side comes and plays in his opponent's court." },
+ { num: 4, text: "Players are declared 'out' if they are tagged or tackled. And they are taken out of the game. However, for each point scored by the team, a player who has been taken out, comes back to play." },
+ { num: 5, text: "The game is played in two halves of twenty minutes each. In between the halves, there is a five-minute break. After the first half, the players exchange their sides." },
+ { num: 6, text: "It is learnt that the game had been played in pre-historic time in different forms. But, modern kabaddi game started all over India in 1930. It is a favourite game in South Asian countries. It is the national game of Bangladesh. It is also played in most of the Asian countries. Now-a-days Pro-Kabaddi (Professional level Kabaddi) has become very popular and is dearly watched on the television by all walks of people." },
+ { num: 7, text: "The game is played in the 'Asian Games' also and it may one day be included in the Olympics too." }
+];
 
-        // Vocabulary data with Telugu meanings and pronunciation
-        const vocabulary = [
-            // 3-letter words
-            { word: "can", length: 3, pronunciation: "/kæn/", teluguMeaning: "చేయగల", englishMeaning: "to be able to" },
-            { word: "the", length: 3, pronunciation: "/ðə/", teluguMeaning: "", englishMeaning: "definite article" },
-            { word: "and", length: 3, pronunciation: "/ænd/", teluguMeaning: "మరియు", englishMeaning: "together with" },
-            { word: "in", length: 2, pronunciation: "/ɪn/", teluguMeaning: "లో", englishMeaning: "inside" },
-            { word: "of", length: 2, pronunciation: "/əv/", teluguMeaning: "యొక్క", englishMeaning: "belonging to" },
-            { word: "it", length: 2, pronunciation: "/ɪt/", teluguMeaning: "అది", englishMeaning: "that thing" },
-            { word: "is", length: 2, pronunciation: "/ɪz/", teluguMeaning: "ఉంది", englishMeaning: "exists" },
-            { word: "all", length: 3, pronunciation: "/ɔːl/", teluguMeaning: "అన్ని", englishMeaning: "every one" },
-            { word: "age", length: 3, pronunciation: "/eɪdʒ/", teluguMeaning: "వయస్సు", englishMeaning: "length of life" },
-            { word: "boys", length: 4, pronunciation: "/bɔɪz/", teluguMeaning: "బాలురు", englishMeaning: "male children" },
-            { word: "girls", length: 5, pronunciation: "/ɡɜːrlz/", teluguMeaning: "బాలికలు", englishMeaning: "female children" },
-            { word: "like", length: 4, pronunciation: "/laɪk/", teluguMeaning: "ఇష్టం", englishMeaning: "enjoy" },
-            { word: "very", length: 4, pronunciation: "/ˈveri/", teluguMeaning: "చాలా", englishMeaning: "extremely" },
-            { word: "much", length: 4, pronunciation: "/mʌtʃ/", teluguMeaning: "చాలా", englishMeaning: "a lot" },
-            { word: "our", length: 3, pronunciation: "/aʊər/", teluguMeaning: "మా", englishMeaning: "belonging to us" },
-            { word: "no", length: 2, pronunciation: "/noʊ/", teluguMeaning: "లేదు", englishMeaning: "not any" },
-            { word: "an", length: 2, pronunciation: "/æn/", teluguMeaning: "ఒక", englishMeaning: "indefinite article" },
-            { word: "one", length: 3, pronunciation: "/wʌn/", teluguMeaning: "ఒకటి", englishMeaning: "number 1" },
-            { word: "two", length: 3, pronunciation: "/tuː/", teluguMeaning: "రెండు", englishMeaning: "number 2" },
-            { word: "are", length: 3, pronunciation: "/ɑːr/", teluguMeaning: "ఉన్నాయి", englishMeaning: "present tense of be" },
-            { word: "out", length: 3, pronunciation: "/aʊt/", teluguMeaning: "బయట", englishMeaning: "outside" },
-            { word: "day", length: 3, pronunciation: "/deɪ/", teluguMeaning: "రోజు", englishMeaning: "24-hour period" },
-            { word: "too", length: 3, pronunciation: "/tuː/", teluguMeaning: "కూడా", englishMeaning: "also" },
-            
-            // 4-letter words and longer
-            { word: "We", length: 2, pronunciation: "/wiː/", teluguMeaning: "మేము", englishMeaning: "myself and others" },
-            { word: "hear", length: 4, pronunciation: "/hɪər/", teluguMeaning: "వినండి", englishMeaning: "perceive sound" },
-            { word: "chant", length: 5, pronunciation: "/tʃænt/", teluguMeaning: "పలకడం", englishMeaning: "repeated rhythmic phrase" },
-            { word: "Kabaddi", length: 7, pronunciation: "/kəˈbɑːdi/", teluguMeaning: "కబడ్డీ", englishMeaning: "Indian contact sport" },
-            { word: "mostly", length: 6, pronunciation: "/ˈmoʊstli/", teluguMeaning: "ఎక్కువగా", englishMeaning: "mainly" },
-            { word: "villages", length: 8, pronunciation: "/ˈvɪlɪdʒɪz/", teluguMeaning: "గ్రామాలు", englishMeaning: "small rural communities" },
-            { word: "India", length: 5, pronunciation: "/ˈɪndiə/", teluguMeaning: "భారతదేశం", englishMeaning: "country in South Asia" },
-            { word: "Children", length: 8, pronunciation: "/ˈtʃɪldrən/", teluguMeaning: "పిల్లలు", englishMeaning: "young humans" },
-            { word: "play", length: 4, pronunciation: "/pleɪ/", teluguMeaning: "ఆడండి", englishMeaning: "engage in activity for enjoyment" },
-            { word: "this", length: 4, pronunciation: "/ðɪs/", teluguMeaning: "ఇది", englishMeaning: "referring to something near" },
-            { word: "game", length: 4, pronunciation: "/ɡeɪm/", teluguMeaning: "ఆట", englishMeaning: "activity for amusement" },
-            { word: "schools", length: 7, pronunciation: "/skuːlz/", teluguMeaning: "పాఠశాలలు", englishMeaning: "educational institutions" },
-            { word: "small", length: 5, pronunciation: "/smɔːl/", teluguMeaning: "చిన్న", englishMeaning: "little in size" },
-            { word: "grounds", length: 7, pronunciation: "/ɡraʊndz/", teluguMeaning: "మైదానాలు", englishMeaning: "areas of land" },
-            { word: "even", length: 4, pronunciation: "/ˈiːvn/", teluguMeaning: "కూడా", englishMeaning: "also" },
-            { word: "shade", length: 5, pronunciation: "/ʃeɪd/", teluguMeaning: "నీడ", englishMeaning: "area sheltered from sun" },
-            { word: "trees", length: 5, pronunciation: "/triːz/", teluguMeaning: "చెట్లు", englishMeaning: "woody plants" },
-            { word: "groups", length: 6, pronunciation: "/ɡruːps/", teluguMeaning: "గుంపులు", englishMeaning: "collections of people" },
-            { word: "Both", length: 4, pronunciation: "/boʊθ/", teluguMeaning: "రెండూ", englishMeaning: "the two" },
-            { word: "During", length: 6, pronunciation: "/ˈdjʊərɪŋ/", teluguMeaning: "సమయంలో", englishMeaning: "throughout the course of" },
-            { word: "festivals", length: 9, pronunciation: "/ˈfestɪvlz/", teluguMeaning: "పండుగలు", englishMeaning: "celebratory events" },
-            { word: "fairs", length: 5, pronunciation: "/feərz/", teluguMeaning: "జాతరలు", englishMeaning: "public gatherings" },
-            { word: "some", length: 4, pronunciation: "/sʌm/", teluguMeaning: "కొన్ని", englishMeaning: "an unspecified amount" },
-            { word: "organizations", length: 13, pronunciation: "/ˌɔːrɡənəˈzeɪʃnz/", teluguMeaning: "సంస్థలు", englishMeaning: "organized groups" },
-            { word: "conduct", length: 7, pronunciation: "/kənˈdʌkt/", teluguMeaning: "నిర్వహించండి", englishMeaning: "organize and carry out" },
-            { word: "competitions", length: 12, pronunciation: "/ˌkɒmpəˈtɪʃnz/", teluguMeaning: "పోటీలు", englishMeaning: "contests" },
-            { word: "widely", length: 6, pronunciation: "/ˈwaɪdli/", teluguMeaning: "విస్తృతంగా", englishMeaning: "over a large area" },
-            { word: "played", length: 6, pronunciation: "/pleɪd/", teluguMeaning: "ఆడారు", englishMeaning: "participated in game" },
-            { word: "Andhra", length: 6, pronunciation: "/ˈændrə/", teluguMeaning: "ఆంధ్ర", englishMeaning: "state in India" },
-            { word: "Pradesh", length: 7, pronunciation: "/prəˈdeɪʃ/", teluguMeaning: "ప్రదేశ్", englishMeaning: "state/region" },
-            { word: "also", length: 4, pronunciation: "/ˈɔːlsoʊ/", teluguMeaning: "కూడా", englishMeaning: "in addition" },
-            { word: "known", length: 5, pronunciation: "/noʊn/", teluguMeaning: "తెలిసిన", englishMeaning: "recognized" },
-            { word: "chedugudu", length: 9, pronunciation: "/tʃeɪduːɡuːduː/", teluguMeaning: "చెడుగుడు", englishMeaning: "Telugu name for kabaddi" },
-            { word: "official", length: 8, pronunciation: "/əˈfɪʃl/", teluguMeaning: "అధికారిక", englishMeaning: "authorized" },
-            { word: "state", length: 5, pronunciation: "/steɪt/", teluguMeaning: "రాష్ట్రం", englishMeaning: "regional division" },
-            { word: "requires", length: 8, pronunciation: "/rɪˈkwaɪərz/", teluguMeaning: "అవసరం", englishMeaning: "needs" },
-            { word: "specific", length: 8, pronunciation: "/spəˈsɪfɪk/", teluguMeaning: "నిర్దిష్ట", englishMeaning: "particular" },
-            { word: "sporting", length: 8, pronunciation: "/ˈspɔːrtɪŋ/", teluguMeaning: "క్రీడా", englishMeaning: "related to sports" },
-            { word: "equipment", length: 9, pronunciation: "/ɪˈkwɪpmənt/", teluguMeaning: "పరికరాలు", englishMeaning: "tools needed" },
-            { word: "space", length: 5, pronunciation: "/speɪs/", teluguMeaning: "స్థలం", englishMeaning: "area" },
-            { word: "with", length: 4, pronunciation: "/wɪð/", teluguMeaning: "తో", englishMeaning: "accompanied by" },
-            { word: "even", length: 4, pronunciation: "/ˈiːvn/", teluguMeaning: "సమాన", englishMeaning: "level" },
-            { word: "surface", length: 7, pronunciation: "/ˈsɜːrfɪs/", teluguMeaning: "ఉపరితలం", englishMeaning: "outer layer" },
-            { word: "just", length: 4, pronunciation: "/dʒʌst/", teluguMeaning: "కేవలం", englishMeaning: "only" },
-            { word: "enough", length: 6, pronunciation: "/ɪˈnʌf/", teluguMeaning: "తగినంత", englishMeaning: "sufficient" },
-            { word: "things", length: 6, pronunciation: "/θɪŋz/", teluguMeaning: "విషయాలు", englishMeaning: "items or matters" },
-            { word: "required", length: 8, pronunciation: "/rɪˈkwaɪərd/", teluguMeaning: "అవసరమైన", englishMeaning: "necessary" },
-            { word: "physical", length: 8, pronunciation: "/ˈfɪzɪkl/", teluguMeaning: "భౌతిక", englishMeaning: "relating to body" },
-            { word: "strength", length: 8, pronunciation: "/streŋθ/", teluguMeaning: "బలం", englishMeaning: "power" },
-            { word: "other", length: 5, pronunciation: "/ˈʌðər/", teluguMeaning: "ఇతర", englishMeaning: "different" },
-            { word: "mental", length: 6, pronunciation: "/ˈmentl/", teluguMeaning: "మానసిక", englishMeaning: "relating to mind" },
-            { word: "sharpness", length: 9, pronunciation: "/ˈʃɑːrpnəs/", teluguMeaning: "పదును", englishMeaning: "keenness" },
-            { word: "quickness", length: 9, pronunciation: "/ˈkwɪknəs/", teluguMeaning: "వేగం", englishMeaning: "speed" },
-            { word: "combination", length: 11, pronunciation: "/ˌkɒmbɪˈneɪʃn/", teluguMeaning: "సంయోగం", englishMeaning: "mixture" },
-            { word: "cooperation", length: 11, pronunciation: "/koʊˌɒpəˈreɪʃn/", teluguMeaning: "సహకారం", englishMeaning: "working together" },
-            { word: "body", length: 4, pronunciation: "/ˈbɒdi/", teluguMeaning: "శరీరం", englishMeaning: "physical structure" },
-            { word: "mind", length: 4, pronunciation: "/maɪnd/", teluguMeaning: "మనస్సు", englishMeaning: "thinking faculty" },
-            { word: "known", length: 5, pronunciation: "/noʊn/", teluguMeaning: "తెలిసిన", englishMeaning: "familiar" },
-            { word: "agility", length: 7, pronunciation: "/əˈdʒɪləti/", teluguMeaning: "చురుకుదనం", englishMeaning: "ability to move quickly" },
-            { word: "lung", length: 4, pronunciation: "/lʌŋ/", teluguMeaning: "ఊపిరితిత్తులు", englishMeaning: "respiratory organ" },
-            { word: "activity", length: 8, pronunciation: "/ækˈtɪvəti/", teluguMeaning: "కార్యాచరణ", englishMeaning: "action" },
-            { word: "muscular", length: 8, pronunciation: "/ˈmʌskjələr/", teluguMeaning: "కండర", englishMeaning: "relating to muscles" },
-            { word: "coordination", length: 12, pronunciation: "/koʊˌɔːrdɪˈneɪʃn/", teluguMeaning: "సమన్వయం", englishMeaning: "organization of different elements" },
-            { word: "presence", length: 8, pronunciation: "/ˈprezns/", teluguMeaning: "ఉనికి", englishMeaning: "existence" },
-            { word: "responses", length: 9, pronunciation: "/rɪˈspɒnsɪz/", teluguMeaning: "ప్రతిస్పందనలు", englishMeaning: "reactions" },
-            { word: "Apart", length: 5, pronunciation: "/əˈpɑːrt/", teluguMeaning: "దూరంగా", englishMeaning: "separated" },
-            { word: "team", length: 4, pronunciation: "/tiːm/", teluguMeaning: "టీమ్", englishMeaning: "group of players" },
-            { word: "management", length: 10, pronunciation: "/ˈmænɪdʒmənt/", teluguMeaning: "నిర్వహణ", englishMeaning: "control and organization" },
-            { word: "promotes", length: 8, pronunciation: "/prəˈmoʊts/", teluguMeaning: "ప్రోత్సహిస్తుంది", englishMeaning: "encourages" },
-            { word: "between", length: 7, pronunciation: "/bɪˈtwiːn/", teluguMeaning: "మధ్య", englishMeaning: "in the middle of" },
-            { word: "seven", length: 5, pronunciation: "/ˈsevn/", teluguMeaning: "ఏడు", englishMeaning: "number 7" },
-            { word: "players", length: 7, pronunciation: "/ˈpleɪərz/", teluguMeaning: "క్రీడాకారులు", englishMeaning: "people who play a game" },
-            { word: "each", length: 4, pronunciation: "/iːtʃ/", teluguMeaning: "ప్రతి", englishMeaning: "every one" },
-            { word: "court", length: 5, pronunciation: "/kɔːrt/", teluguMeaning: "కోర్టు", englishMeaning: "playing area" },
-            { word: "designed", length: 8, pronunciation: "/dɪˈzaɪnd/", teluguMeaning: "రూపకల్పన చేయబడింది", englishMeaning: "planned" },
-            { word: "ground", length: 6, pronunciation: "/ɡraʊnd/", teluguMeaning: "మైదానం", englishMeaning: "land area" },
-            { word: "prescribed", length: 10, pronunciation: "/prɪˈskraɪbd/", teluguMeaning: "నిర్దేశించబడిన", englishMeaning: "officially set" },
-            { word: "measurements", length: 12, pronunciation: "/ˈmeʒərmənts/", teluguMeaning: "కొలతలు", englishMeaning: "dimensions" },
-            { word: "divided", length: 7, pronunciation: "/dɪˈvaɪdɪd/", teluguMeaning: "విభజించబడింది", englishMeaning: "separated into parts" },
-            { word: "equal", length: 5, pronunciation: "/ˈiːkwəl/", teluguMeaning: "సమాన", englishMeaning: "same in size/amount" },
-            { word: "parts", length: 5, pronunciation: "/pɑːrts/", teluguMeaning: "భాగాలు", englishMeaning: "sections" },
-            { word: "centre", length: 6, pronunciation: "/ˈsentər/", teluguMeaning: "కేంద్రం", englishMeaning: "middle point" },
-            { word: "line", length: 4, pronunciation: "/laɪn/", teluguMeaning: "లైన్", englishMeaning: "long narrow mark" },
-            { word: "member", length: 6, pronunciation: "/ˈmembər/", teluguMeaning: "సభ్యుడు", englishMeaning: "person belonging to group" },
-            { word: "side", length: 4, pronunciation: "/saɪd/", teluguMeaning: "వైపు", englishMeaning: "position" },
-            { word: "another", length: 7, pronunciation: "/əˈnʌðər/", teluguMeaning: "మరొక", englishMeaning: "one more" },
-            { word: "take", length: 4, pronunciation: "/teɪk/", teluguMeaning: "తీసుకోండి", englishMeaning: "acquire" },
-            { word: "positions", length: 9, pronunciation: "/pəˈzɪʃnz/", teluguMeaning: "స్థానాలు", englishMeaning: "locations" },
-            { word: "members", length: 7, pronunciation: "/ˈmembərz/", teluguMeaning: "సభ్యులు", englishMeaning: "people in a group" },
-            { word: "sides", length: 5, pronunciation: "/saɪdz/", teluguMeaning: "వైపులా", englishMeaning: "positions to left or right" },
-            { word: "turns", length: 5, pronunciation: "/tɜːrnz/", teluguMeaning: "మలుపులు", englishMeaning: "opportunities" },
-            { word: "opponents", length: 9, pronunciation: "/əˈpoʊnənts/", teluguMeaning: "ప్రత్యర్థులు", englishMeaning: "people competing against" },
-            { word: "player", length: 6, pronunciation: "/ˈpleɪər/", teluguMeaning: "క్రీడాకారుడు", englishMeaning: "person who plays" },
-            { word: "who", length: 3, pronunciation: "/huː/", teluguMeaning: "ఎవరు", englishMeaning: "which person" },
-            { word: "crosses", length: 7, pronunciation: "/ˈkrɒsɪz/", teluguMeaning: "దాటుతుంది", englishMeaning: "goes across" },
-            { word: "called", length: 6, pronunciation: "/kɔːld/", teluguMeaning: "అంటారు", englishMeaning: "named" },
-            { word: "raider", length: 6, pronunciation: "/ˈreɪdər/", teluguMeaning: "దాడి చేసేవాడు", englishMeaning: "attacking player in kabaddi" },
-            { word: "holds", length: 5, pronunciation: "/hoʊldz/", teluguMeaning: "పట్టుకుంటాడు", englishMeaning: "grips" },
-            { word: "breath", length: 6, pronunciation: "/breθ/", teluguMeaning: "ఊపిరి", englishMeaning: "air taken into lungs" },
-            { word: "chants", length: 6, pronunciation: "/tʃænts/", teluguMeaning: "పలుకుతాడు", englishMeaning: "says rhythmically" },
-            { word: "whole", length: 5, pronunciation: "/hoʊl/", teluguMeaning: "మొత్తం", englishMeaning: "entire" },
-            { word: "ride", length: 4, pronunciation: "/raɪd/", teluguMeaning: "సవారి", englishMeaning: "act of riding" },
-            { word: "rides", length: 5, pronunciation: "/raɪdz/", teluguMeaning: "స్వారీ చేస్తాడు", englishMeaning: "goes on a journey" },
-            { word: "tag", length: 3, pronunciation: "/tæɡ/", teluguMeaning: "ట్యాగ్ చేయండి", englishMeaning: "touch in game" },
-            { word: "touch", length: 5, pronunciation: "/tʌtʃ/", teluguMeaning: "తాకండి", englishMeaning: "make physical contact" },
-            { word: "whereas", length: 7, pronunciation: "/werˈæz/", teluguMeaning: "అయితే", englishMeaning: "in contrast" },
-            { word: "try", length: 3, pronunciation: "/traɪ/", teluguMeaning: "ప్రయత్నించండి", englishMeaning: "attempt" },
-            { word: "tackle", length: 6, pronunciation: "/ˈtækl/", teluguMeaning: "ట్యాకిల్ చేయండి", englishMeaning: "confront physically" },
-            { word: "comes", length: 5, pronunciation: "/kʌmz/", teluguMeaning: "వస్తాడు", englishMeaning: "arrives" },
-            { word: "back", length: 4, pronunciation: "/bæk/", teluguMeaning: "తిరిగి", englishMeaning: "return" },
-            { word: "opposite", length: 8, pronunciation: "/ˈɒpəzɪt/", teluguMeaning: "వ్యతిరేక", englishMeaning: "completely different" },
-            { word: "declared", length: 8, pronunciation: "/dɪˈkleərd/", teluguMeaning: "ప్రకటించబడింది", englishMeaning: "announced officially" },
-            { word: "if", length: 2, pronunciation: "/ɪf/", teluguMeaning: "ఉంటే", englishMeaning: "on condition that" },
-            { word: "taken", length: 5, pronunciation: "/ˈteɪkən/", teluguMeaning: "తీసుకోబడింది", englishMeaning: "removed" },
-            { word: "However", length: 7, pronunciation: "/haʊˈevər/", teluguMeaning: "అయితే", englishMeaning: "nevertheless" },
-            { word: "point", length: 5, pronunciation: "/pɔɪnt/", teluguMeaning: "పాయింట్", englishMeaning: "unit of scoring" },
-            { word: "scored", length: 6, pronunciation: "/skɔːrd/", teluguMeaning: "స్కోర్ చేయబడింది", englishMeaning: "earned points" },
-            { word: "halves", length: 6, pronunciation: "/hævz/", teluguMeaning: "సగాలు", englishMeaning: "two equal parts" },
-            { word: "twenty", length: 6, pronunciation: "/ˈtwenti/", teluguMeaning: "ఇరవై", englishMeaning: "number 20" },
-            { word: "minutes", length: 7, pronunciation: "/ˈmɪnɪts/", teluguMeaning: "నిమిషాలు", englishMeaning: "units of time" },
-            { word: "between", length: 7, pronunciation: "/bɪˈtwiːn/", teluguMeaning: "మధ్య", englishMeaning: "in the space separating" },
-            { word: "five", length: 4, pronunciation: "/faɪv/", teluguMeaning: "ఐదు", englishMeaning: "number 5" },
-            { word: "minute", length: 6, pronunciation: "/ˈmɪnɪt/", teluguMeaning: "నిమిషం", englishMeaning: "60 seconds" },
-            { word: "break", length: 5, pronunciation: "/breɪk/", teluguMeaning: "విరామం", englishMeaning: "pause" },
-            { word: "After", length: 5, pronunciation: "/ˈæftər/", teluguMeaning: "తర్వాత", englishMeaning: "following" },
-            { word: "first", length: 5, pronunciation: "/fɜːrst/", teluguMeaning: "మొదటి", englishMeaning: "coming before others" },
-            { word: "exchange", length: 8, pronunciation: "/ɪksˈtʃeɪndʒ/", teluguMeaning: "మార్పిడి", englishMeaning: "swap" },
-            { word: "learnt", length: 6, pronunciation: "/lɜːrnt/", teluguMeaning: "తెలుసుకున్నారు", englishMeaning: "discovered" },
-            { word: "pre-historic", length: 12, pronunciation: "/ˌpriːhɪˈstɒrɪk/", teluguMeaning: "ప్రాచీన", englishMeaning: "before written history" },
-            { word: "time", length: 4, pronunciation: "/taɪm/", teluguMeaning: "సమయం", englishMeaning: "period" },
-            { word: "different", length: 9, pronunciation: "/ˈdɪfrənt/", teluguMeaning: "భిన్నమైన", englishMeaning: "not the same" },
-            { word: "forms", length: 5, pronunciation: "/fɔːrmz/", teluguMeaning: "రూపాలు", englishMeaning: "types" },
-            { word: "modern", length: 6, pronunciation: "/ˈmɒdərn/", teluguMeaning: "ఆధునిక", englishMeaning: "relating to present" },
-            { word: "started", length: 7, pronunciation: "/ˈstɑːrtɪd/", teluguMeaning: "ప్రారంభమైంది", englishMeaning: "began" },
-            { word: "over", length: 4, pronunciation: "/ˈoʊvər/", teluguMeaning: "పైన", englishMeaning: "above" },
-            { word: "favourite", length: 9, pronunciation: "/ˈfeɪvərɪt/", teluguMeaning: "ఇష్టమైన", englishMeaning: "preferred" },
-            { word: "South", length: 5, pronunciation: "/saʊθ/", teluguMeaning: "దక్షిణ", englishMeaning: "direction" },
-            { word: "Asian", length: 5, pronunciation: "/ˈeɪʒn/", teluguMeaning: "ఏషియన్", englishMeaning: "from Asia" },
-            { word: "countries", length: 9, pronunciation: "/ˈkʌntriz/", teluguMeaning: "దేశాలు", englishMeaning: "nations" },
-            { word: "national", length: 8, pronunciation: "/ˈnæʃnəl/", teluguMeaning: "జాతీయ", englishMeaning: "relating to a nation" },
-            { word: "Bangladesh", length: 10, pronunciation: "/ˌbæŋɡləˈdeʃ/", teluguMeaning: "బంగ్లాదేశ్", englishMeaning: "country in South Asia" },
-            { word: "most", length: 4, pronunciation: "/moʊst/", teluguMeaning: "చాలా", englishMeaning: "greatest amount" },
-            { word: "Now-a-days", length: 10, pronunciation: "/ˈnaʊədeɪz/", teluguMeaning: "ఈ రోజుల్లో", englishMeaning: "at the present time" },
-            { word: "Pro-Kabaddi", length: 11, pronunciation: "/proʊ kəˈbɑːdi/", teluguMeaning: "ప్రో-కబడ్డీ", englishMeaning: "professional kabaddi" },
-            { word: "Professional", length: 12, pronunciation: "/prəˈfeʃənl/", teluguMeaning: "వృత్తిపరమైన", englishMeaning: "engaged in as paid work" },
-            { word: "level", length: 5, pronunciation: "/ˈlevl/", teluguMeaning: "స్థాయి", englishMeaning: "standard" },
-            { word: "become", length: 6, pronunciation: "/bɪˈkʌm/", teluguMeaning: "అయింది", englishMeaning: "come to be" },
-            { word: "popular", length: 7, pronunciation: "/ˈpɒpjələr/", teluguMeaning: "ప్రసిద్ధ", englishMeaning: "liked by many" },
-            { word: "dearly", length: 6, pronunciation: "/ˈdɪərli/", teluguMeaning: "ప్రేమతో", englishMeaning: "with affection" },
-            { word: "watched", length: 7, pronunciation: "/wɒtʃt/", teluguMeaning: "చూసారు", englishMeaning: "looked at" },
-            { word: "television", length: 10, pronunciation: "/ˈtelɪvɪʒn/", teluguMeaning: "టెలివిజన్", englishMeaning: "TV" },
-            { word: "walks", length: 5, pronunciation: "/wɔːks/", teluguMeaning: "నడకలు", englishMeaning: "ways of living" },
-            { word: "people", length: 6, pronunciation: "/ˈpiːpl/", teluguMeaning: "ప్రజలు", englishMeaning: "human beings" },
-            { word: "Asian", length: 5, pronunciation: "/ˈeɪʒn/", teluguMeaning: "ఏషియన్", englishMeaning: "from Asia" },
-            { word: "Games", length: 5, pronunciation: "/ɡeɪmz/", teluguMeaning: "ఆటలు", englishMeaning: "sporting events" },
-            { word: "may", length: 3, pronunciation: "/meɪ/", teluguMeaning: "కావచ్చు", englishMeaning: "possible" },
-            { word: "included", length: 8, pronunciation: "/ɪnˈkluːdɪd/", teluguMeaning: "చేర్చబడింది", englishMeaning: "made part of" },
-            { word: "Olympics", length: 8, pronunciation: "/əˈlɪmpɪks/", teluguMeaning: "ఒలింపిక్స్", englishMeaning: "international sporting event" }
-        ];
+const bilingualLines = [
+ { english: "KABADDI — OUR STATE GAME", telugu: "కబడ్డీ — మన రాష్ట్ర క్రీడ" },
+ { english: "We can hear the chant 'Kabaddi... kabaddi... kabaddi...' mostly in the villages of India.", telugu: "భారతదేశంలోని గ్రామాలలో మనం ఎక్కువగా 'కబడ్డీ... కబడ్డీ... కబడ్డీ...' అనే కూతను వింటూ ఉంటాము." },
+ { english: "Children play this game in schools, small grounds and even in the shade of trees.", telugu: "పిల్లలు ఈ ఆటను పాఠశాలల్లో, చిన్న మైదానాల్లో, చెట్ల నీడలో కూడా ఆడతారు." },
+ { english: "It is the game of all age groups. Both the boys and girls like this game very much.", telugu: "ఇది అన్ని వయసుల వారి ఆట. బాలురు, బాలికలు ఇద్దరూ ఈ ఆటను ఎంతో ఇష్టపడతారు." },
+ { english: "During the festivals and fairs, some organizations conduct kabaddi competitions.", telugu: "పండుగలు, జాతరల సమయంలో కొన్ని సంస్థలు కబడ్డీ పోటీలను నిర్వహిస్తాయి." },
+ { english: "The game is widely played in Andhra Pradesh. It is also known as chedugudu.", telugu: "ఈ ఆటను ఆంధ్రప్రదేశ్‌లో విస్తృతంగా ఆడతారు. దీనిని 'చెడుగుడు' అని కూడా పిలుస్తారు." },
+ { english: "Kabaddi is the official game of our state.", telugu: "కబడ్డీ మన రాష్ట్ర అధికారిక క్రీడ." },
+ { english: "The game requires no specific sporting equipment.", telugu: "ఈ ఆట ఆడటానికి ప్రత్యేకమైన క్రీడా పరికరాలు ఏవీ అవసరం లేదు." },
+ { english: "A small space with an even surface is just enough to play the game.", telugu: "సమానమైన ఉపరితలం ఉన్న చిన్న స్థలం ఈ ఆట ఆడటానికి సరిపోతుంది." },
+ { english: "Only two things are required to play this game, one is physical strength and the other is mental sharpness and quickness.", telugu: "ఈ ఆట ఆడటానికి రెండే విషయాలు అవసరం: ఒకటి శారీరక బలం, మరొకటి మానసిక చురుకుదనం మరియు వేగం." },
+ { english: "The game is played with the combination and cooperation of the body and the mind.", telugu: "ఈ ఆట శరీరం మరియు మనస్సు యొక్క కలయిక, సహకారంతో ఆడతారు." },
+ { english: "It's known for its agility, lung activity, muscular coordination, presence of mind and quick responses.", telugu: "ఇది చురుకుదనం, ఊపిరితిత్తుల సామర్థ్యం, కండరాల సమన్వయం, సమయస్ఫూర్తి మరియు వేగవంతమైన ప్రతిస్పందనలకు ప్రసిద్ధి చెందింది." },
+ { english: "Apart from this, much team management is required. The game promotes mental and physical strength.", telugu: "వీటితో పాటు, జట్టు నిర్వహణ కూడా ఎంతో అవసరం. ఈ ఆట మానసిక, శారీరక బలాన్ని పెంపొందిస్తుంది." },
+ { english: "Kabaddi is a team game. It is played between two teams of seven players each.", telugu: "కబడ్డీ ఒక జట్టు ఆట. దీనిని ఒక్కొక్క జట్టులో ఏడుగురు క్రీడాకారులు చొప్పున రెండు జట్ల మధ్య ఆడతారు." },
+ { english: "A court is designed on the ground with prescribed measurements. The court is divided into two equal parts with a centre line.", telugu: "నిర్దేశిత కొలతలతో మైదానంలో కోర్టును గీస్తారు. కోర్టును మధ్య గీతతో రెండు సమాన భాగాలుగా విభజిస్తారు." },
+ { english: "A seven-member team on one side and another seven-member team on the other side take positions in the court.", telugu: "ఒక వైపు ఏడుగురు సభ్యుల జట్టు, మరొక వైపు మరో ఏడుగురు సభ్యుల జట్టు కోర్టులో తమ స్థానాల్లో నిలబడతారు." },
+ { english: "Team members of both the sides take turns to play the game in the court of their opponents.", telugu: "రెండు వైపులా ఉన్న జట్టు సభ్యులు వంతులవారీగా తమ ప్రత్యర్థుల కోర్టులోకి వెళ్లి ఆడతారు." },
+ { english: "The player who crosses the centre line is called the raider. The raider holds his breath and chants, 'Kabaddi... Kabaddi... Kabaddi...' during the whole ride.", telugu: "మధ్య గీతను దాటి వెళ్లే క్రీడాకారుడిని 'రైడర్' అంటారు. రైడర్ తన ఊపిరి బిగబట్టి, ఆట పూర్తయ్యే వరకు 'కబడ్డీ... కబడ్డీ... కబడ్డీ...' అని కూత పెడుతూ ఉంటాడు." },
+ { english: "The raider rides to tag (touch) the members of the other team, whereas the other team members try to tackle the raider.", telugu: "రైడర్ అవతలి జట్టు సభ్యులను తాకడానికి (ట్యాగ్ చేయడానికి) ప్రయత్నిస్తాడు, కాగా అవతలి జట్టు సభ్యులు రైడర్‌ను పట్టుకోవడానికి (ట్యాకిల్ చేయడానికి) ప్రయత్నిస్తారు." },
+ { english: "When the raider comes back, another raider from the opposite side comes and plays in his opponent's court.", telugu: "రైడర్ తిరిగి వచ్చినప్పుడు, ఎదుటి జట్టు నుండి మరొక రైడర్ వచ్చి తన ప్రత్యర్థి కోర్టులో ఆడతాడు." },
+ { english: "Players are declared 'out' if they are tagged or tackled. And they are taken out of the game.", telugu: "క్రీడాకారులు తాకబడినా లేదా పట్టుకోబడినా 'అవుట్' అయినట్లు ప్రకటిస్తారు. వారిని ఆట నుండి బయటకు పంపిస్తారు." },
+ { english: "However, for each point scored by the team, a player who has been taken out, comes back to play.", telugu: "అయితే, జట్టు సాధించే ప్రతి పాయింట్‌కు, అంతకుముందు అవుట్ అయిన ఒక క్రీడాకారుడు తిరిగి ఆటలోకి వస్తాడు." },
+ { english: "The game is played in two halves of twenty minutes each. In between the halves, there is a five-minute break.", telugu: "ఈ ఆటను ఒక్కొక్కటి ఇరవై నిమిషాల చొప్పున రెండు సగాలుగా (హాఫ్స్) ఆడతారు. రెండు సగాల మధ్య ఐదు నిమిషాల విరామం ఉంటుంది." },
+ { english: "After the first half, the players exchange their sides.", telugu: "మొదటి సగం పూర్తయిన తర్వాత, క్రీడాకారులు తమ వైపులను మార్చుకుంటారు." },
+ { english: "It is learnt that the game had been played in pre-historic time in different forms. But, modern kabaddi game started all over India in 1930.", telugu: "చరిత్ర పూర్వ కాలంలోనే ఈ ఆటను వివిధ రూపాల్లో ఆడేవారని తెలుస్తోంది. కానీ ఆధునిక కబడ్డీ ఆట 1930లో భారతదేశం అంతటా ప్రారంభమైంది." },
+ { english: "It is a favourite game in South Asian countries. It is the national game of Bangladesh. It is also played in most of the Asian countries.", telugu: "ఇది దక్షిణాసియా దేశాలలో ఇష్టమైన క్రీడ. ఇది బంగ్లాదేశ్ జాతీయ క్రీడ. చాలా ఆసియా దేశాలలో కూడా దీనిని ఆడతారు." },
+ { english: "Now-a-days Pro-Kabaddi (Professional level Kabaddi) has become very popular and is dearly watched on the television by all walks of people.", telugu: "ఈ రోజుల్లో ప్రో-కబడ్డీ (వృత్తిపరమైన స్థాయి కబడ్డీ) బాగా ప్రాచుర్యం పొందింది మరియు అన్ని వర్గాల ప్రజలు దీనిని టెలివిజన్‌లో ఎంతో ఆసక్తిగా చూస్తున్నారు." },
+ { english: "The game is played in the 'Asian Games' also and it may one day be included in the Olympics too.", telugu: "ఈ ఆటను 'ఆసియా క్రీడలలో' కూడా ఆడతారు మరియు ఏదో ఒక రోజు దీనిని ఒలింపిక్స్‌లో కూడా చేర్చవచ్చు." }
+];
 
-        // Verbs data
-        const verbs = [
-            { verb: "can", telugu: "చేయగల", pronunciation: "/kæn/", example: "We can hear the chant" },
-            { verb: "hear", telugu: "వినండి", pronunciation: "/hɪər/", example: "hear the chant" },
-            { verb: "play", telugu: "ఆడండి", pronunciation: "/pleɪ/", example: "Children play this game" },
-            { word: "is", telugu: "ఉంది", pronunciation: "/ɪz/", example: "It is the game" },
-            { verb: "like", telugu: "ఇష్టం", pronunciation: "/laɪk/", example: "girls like this game" },
-            { verb: "conduct", telugu: "నిర్వహించండి", pronunciation: "/kənˈdʌkt/", example: "organizations conduct competitions" },
-            { verb: "played", telugu: "ఆడారు", pronunciation: "/pleɪd/", example: "widely played in Andhra Pradesh" },
-            { verb: "known", telugu: "తెలిసిన", pronunciation: "/noʊn/", example: "also known as chedugudu" },
-            { verb: "requires", telugu: "అవసరం", pronunciation: "/rɪˈkwaɪərz/", example: "game requires no equipment" },
-            { verb: "required", telugu: "అవసరమైన", pronunciation: "/rɪˈkwaɪərd/", example: "things are required" },
-            { verb: "played", telugu: "ఆడారు", pronunciation: "/pleɪd/", example: "game is played" },
-            { verb: "known", telugu: "తెలిసిన", pronunciation: "/noʊn/", example: "It's known for its agility" },
-            { verb: "required", telugu: "అవసరమైన", pronunciation: "/rɪˈkwaɪərd/", example: "management is required" },
-            { verb: "promotes", telugu: "ప్రోత్సహిస్తుంది", pronunciation: "/prəˈmoʊts/", example: "promotes mental strength" },
-            { verb: "designed", telugu: "రూపకల్పన చేయబడింది", pronunciation: "/dɪˈzaɪnd/", example: "court is designed" },
-            { verb: "divided", telugu: "విభజించబడింది", pronunciation: "/dɪˈvaɪdɪd/", example: "court is divided" },
-            { verb: "take", telugu: "తీసుకోండి", pronunciation: "/teɪk/", example: "take positions in the court" },
-            { verb: "crosses", telugu: "దాటుతుంది", pronunciation: "/ˈkrɒsɪz/", example: "player who crosses the line" },
-            { verb: "called", telugu: "అంటారు", pronunciation: "/kɔːld/", example: "is called the raider" },
-            { verb: "holds", telugu: "పట్టుకుంటాడు", pronunciation: "/hoʊldz/", example: "holds his breath" },
-            { verb: "chants", telugu: "పలుకుతాడు", pronunciation: "/tʃænts/", example: "chants 'Kabaddi'" },
-            { verb: "rides", telugu: "స్వారీ చేస్తాడు", pronunciation: "/raɪdz/", example: "raider rides to tag" },
-            { verb: "tag", telugu: "ట్యాగ్ చేయండి", pronunciation: "/tæɡ/", telugu: "ట్యాగ్ చేయండి", example: "to tag the members" },
-            { verb: "touch", telugu: "తాకండి", pronunciation: "/tʌtʃ/", example: "to touch the members" },
-            { verb: "try", telugu: "ప్రయత్నించండి", pronunciation: "/traɪ/", example: "try to tackle the raider" },
-            { verb: "tackle", telugu: "ట్యాకిల్ చేయండి", pronunciation: "/ˈtækl/", example: "to tackle the raider" },
-            { verb: "comes", telugu: "వస్తాడు", pronunciation: "/kʌmz/", example: "When the raider comes back" },
-            { verb: "declared", telugu: "ప్రకటించబడింది", pronunciation: "/dɪˈkleərd/", example: "are declared 'out'" },
-            { verb: "taken", telugu: "తీసుకోబడింది", pronunciation: "/ˈteɪkən/", example: "taken out of the game" },
-            { verb: "scored", telugu: "స్కోర్ చేయబడింది", pronunciation: "/skɔːrd/", example: "point scored by the team" },
-            { verb: "comes", telugu: "వస్తాడు", pronunciation: "/kʌmz/", example: "comes back to play" },
-            { verb: "exchange", telugu: "మార్పిడి", pronunciation: "/ɪksˈtʃeɪndʒ/", example: "players exchange their sides" },
-            { verb: "learnt", telugu: "తెలుసుకున్నారు", pronunciation: "/lɜːrnt/", example: "It is learnt that" },
-            { verb: "played", telugu: "ఆడారు", pronunciation: "/pleɪd/", example: "had been played" },
-            { verb: "started", telugu: "ప్రారంభమైంది", pronunciation: "/ˈstɑːrtɪd/", example: "game started all over India" },
-            { verb: "become", telugu: "అయింది", pronunciation: "/bɪˈkʌm/", example: "has become very popular" },
-            { verb: "watched", telugu: "చూసారు", pronunciation: "/wɒtʃt/", example: "watched on television" },
-            { verb: "played", telugu: "ఆడారు", pronunciation: "/pleɪd/", example: "played in Asian Games" },
-            { verb: "included", telugu: "చేర్చబడింది", pronunciation: "/ɪnˈkluːdɪd/", example: "be included in Olympics" }
-        ];
+const vocabulary = [
+    { word: "hear", length: 4, pronunciation: "/hɪr/", teluguMeaning: "విను", englishMeaning: "perceive sound with the ear", pos: "verb" },
+    { word: "chant", length: 5, pronunciation: "/tʃænt/", teluguMeaning: "కూత / పలకడం", englishMeaning: "a repeated rhythmic phrase or shout", pos: "noun" },
+    { word: "mostly", length: 6, pronunciation: "/ˈmoʊstli/", teluguMeaning: "ఎక్కువగా", englishMeaning: "mainly or for the most part", pos: "adverb" },
+    { word: "villages", length: 8, pronunciation: "/ˈvɪlɪdʒɪz/", teluguMeaning: "గ్రామాలు", englishMeaning: "small rural communities", pos: "noun" },
+    { word: "children", length: 8, pronunciation: "/ˈtʃɪldrən/", teluguMeaning: "పిల్లలు", englishMeaning: "young human beings", pos: "noun" },
+    { word: "schools", length: 7, pronunciation: "/skuːlz/", teluguMeaning: "పాఠశాలలు", englishMeaning: "institutions for educating children", pos: "noun" },
+    { word: "grounds", length: 7, pronunciation: "/ɡraʊndz/", teluguMeaning: "మైదానాలు", englishMeaning: "open areas of land for sports", pos: "noun" },
+    { word: "shade", length: 5, pronunciation: "/ʃeɪd/", teluguMeaning: "నీడ", englishMeaning: "cool area sheltered from direct sunlight", pos: "noun" },
+    { word: "trees", length: 5, pronunciation: "/triːz/", teluguMeaning: "చెట్లు", englishMeaning: "tall woody perennial plants", pos: "noun" },
+    { word: "groups", length: 6, pronunciation: "/ɡruːps/", teluguMeaning: "సమూహాలు / వర్గాలు", englishMeaning: "collections of people classed together", pos: "noun" },
+    { word: "festivals", length: 9, pronunciation: "/ˈfestɪvlz/", teluguMeaning: "పండుగలు", englishMeaning: "days or periods of celebration", pos: "noun" },
+    { word: "fairs", length: 5, pronunciation: "/ferz/", teluguMeaning: "జాతరలు", englishMeaning: "public gatherings for entertainment and trade", pos: "noun" },
+    { word: "organizations", length: 13, pronunciation: "/ˌɔːrɡənəˈzeɪʃnz/", teluguMeaning: "సంస్థలు", englishMeaning: "organized bodies of people with a purpose", pos: "noun" },
+    { word: "conduct", length: 7, pronunciation: "/kənˈdʌkt/", teluguMeaning: "నిర్వహించు", englishMeaning: "organize and carry out", pos: "verb" },
+    { word: "competitions", length: 12, pronunciation: "/ˌkɑːmpəˈtɪʃnz/", teluguMeaning: "పోటీలు", englishMeaning: "events or contests in which people compete", pos: "noun" },
+    { word: "widely", length: 6, pronunciation: "/ˈwaɪdli/", teluguMeaning: "విస్తృతంగా", englishMeaning: "by many people or over a large area", pos: "adverb" },
+    { word: "official", length: 8, pronunciation: "/əˈfɪʃl/", teluguMeaning: "అధికారిక", englishMeaning: "approved or recognized by authority", pos: "adjective" },
+    { word: "state", length: 5, pronunciation: "/steɪt/", teluguMeaning: "రాష్ట్రం", englishMeaning: "a territory forming part of a country", pos: "noun" },
+    { word: "requires", length: 8, pronunciation: "/rɪˈkwaɪərz/", teluguMeaning: "అవసరమవుతుంది", englishMeaning: "needs for a particular purpose", pos: "verb" },
+    { word: "specific", length: 8, pronunciation: "/spəˈsɪfɪk/", teluguMeaning: "నిర్దిష్టమైన", englishMeaning: "clearly defined or identified", pos: "adjective" },
+    { word: "sporting", length: 8, pronunciation: "/ˈspɔːrtɪŋ/", teluguMeaning: "క్రీడా సంబంధమైన", englishMeaning: "connected with or used in sports", pos: "adjective" },
+    { word: "equipment", length: 9, pronunciation: "/ɪˈkwɪpmənt/", teluguMeaning: "పరికరాలు", englishMeaning: "necessary items for a particular purpose", pos: "noun" },
+    { word: "space", length: 5, pronunciation: "/speɪs/", teluguMeaning: "స్థలం", englishMeaning: "an open or unoccupied area", pos: "noun" },
+    { word: "even", length: 4, pronunciation: "/ˈiːvn/", teluguMeaning: "సమానమైన", englishMeaning: "flat and smooth", pos: "adjective" },
+    { word: "surface", length: 7, pronunciation: "/ˈsɜːrfɪs/", teluguMeaning: "ఉపరితలం", englishMeaning: "the outside or top layer of ground", pos: "noun" },
+    { word: "enough", length: 6, pronunciation: "/ɪˈnʌf/", teluguMeaning: "సరిపోతుంది", englishMeaning: "as much or as many as required", pos: "determiner" },
+    { word: "physical", length: 8, pronunciation: "/ˈfɪzɪkl/", teluguMeaning: "శారీరక", englishMeaning: "relating to the body", pos: "adjective" },
+    { word: "strength", length: 8, pronunciation: "/streŋθ/", teluguMeaning: "బలం / శక్తి", englishMeaning: "the quality or state of being strong", pos: "noun" },
+    { word: "mental", length: 6, pronunciation: "/ˈmentl/", teluguMeaning: "మానసిక", englishMeaning: "relating to the mind", pos: "adjective" },
+    { word: "sharpness", length: 9, pronunciation: "/ˈʃɑːrpnəs/", teluguMeaning: "చురుకుదనం / పదును", englishMeaning: "quickness of perception or thought", pos: "noun" },
+    { word: "quickness", length: 9, pronunciation: "/ˈkwɪknəs/", teluguMeaning: "వేగం", englishMeaning: "speed in moving or reacting", pos: "noun" },
+    { word: "combination", length: 11, pronunciation: "/ˌkɑːmbɪˈneɪʃn/", teluguMeaning: "కలయిక", englishMeaning: "a joining or merging of different parts", pos: "noun" },
+    { word: "cooperation", length: 11, pronunciation: "/koʊˌɑːpəˈreɪʃn/", teluguMeaning: "సహకారం", englishMeaning: "the process of working together", pos: "noun" },
+    { word: "agility", length: 7, pronunciation: "/əˈdʒɪləti/", teluguMeaning: "చురుకుదనం", englishMeaning: "ability to move quickly and easily", pos: "noun" },
+    { word: "lung", length: 4, pronunciation: "/lʌŋ/", teluguMeaning: "ఊపిరితిత్తి", englishMeaning: "organ used for breathing", pos: "noun" },
+    { word: "activity", length: 8, pronunciation: "/ækˈtɪvəti/", teluguMeaning: "కార్యాచరణ / సామర్థ్యం", englishMeaning: "the condition in which things are happening", pos: "noun" },
+    { word: "muscular", length: 8, pronunciation: "/ˈmʌskjələr/", teluguMeaning: "కండరాల", englishMeaning: "relating to the muscles", pos: "adjective" },
+    { word: "coordination", length: 12, pronunciation: "/koʊˌɔːrdɪˈneɪʃn/", teluguMeaning: "సమన్వయం", englishMeaning: "ability to use body parts together smoothly", pos: "noun" },
+    { word: "presence", length: 8, pronunciation: "/ˈprezns/", teluguMeaning: "సమయస్ఫూర్తి / ఉనికి", englishMeaning: "alertness and quick thinking (presence of mind)", pos: "noun" },
+    { word: "responses", length: 9, pronunciation: "/rɪˈspɑːnsɪz/", teluguMeaning: "ప్రతిస్పందనలు", englishMeaning: "reactions to something", pos: "noun" },
+    { word: "management", length: 10, pronunciation: "/ˈmænɪdʒmənt/", teluguMeaning: "నిర్వహణ", englishMeaning: "the process of organizing and controlling", pos: "noun" },
+    { word: "promotes", length: 8, pronunciation: "/prəˈmoʊts/", teluguMeaning: "పెంపొందిస్తుంది / ప్రోత్సహిస్తుంది", englishMeaning: "supports or actively encourages", pos: "verb" },
+    { word: "court", length: 5, pronunciation: "/kɔːrt/", teluguMeaning: "ఆట స్థలం (కోర్టు)", englishMeaning: "marked area where a game is played", pos: "noun" },
+    { word: "designed", length: 8, pronunciation: "/dɪˈzaɪnd/", teluguMeaning: "రూపొందించబడింది", englishMeaning: "planned and drawn out", pos: "verb" },
+    { word: "prescribed", length: 10, pronunciation: "/prɪˈskraɪbd/", teluguMeaning: "నిర్దేశించబడిన", englishMeaning: "stated officially as a rule", pos: "adjective" },
+    { word: "measurements", length: 12, pronunciation: "/ˈmeʒərmənts/", teluguMeaning: "కొలతలు", englishMeaning: "exact sizes or dimensions", pos: "noun" },
+    { word: "divided", length: 7, pronunciation: "/dɪˈvaɪdɪd/", teluguMeaning: "విభజించబడింది", englishMeaning: "separated into parts", pos: "verb" },
+    { word: "equal", length: 5, pronunciation: "/ˈiːkwəl/", teluguMeaning: "సమాన", englishMeaning: "being the same in size or quantity", pos: "adjective" },
+    { word: "centre", length: 6, pronunciation: "/ˈsentər/", teluguMeaning: "మధ్య / కేంద్రం", englishMeaning: "the middle point or line", pos: "noun" },
+    { word: "positions", length: 9, pronunciation: "/pəˈzɪʃnz/", teluguMeaning: "స్థానాలు", englishMeaning: "places where players are located", pos: "noun" },
+    { word: "opponents", length: 9, pronunciation: "/əˈpoʊnənts/", teluguMeaning: "ప్రత్యర్థులు", englishMeaning: "people competing against each other", pos: "noun" },
+    { word: "crosses", length: 7, pronunciation: "/ˈkrɔːsɪz/", teluguMeaning: "దాటుతాడు", englishMeaning: "goes across a line or boundary", pos: "verb" },
+    { word: "raider", length: 6, pronunciation: "/ˈreɪdər/", teluguMeaning: "రైడర్ (దాడి చేసేవాడు)", englishMeaning: "attacking player who enters opponent court", pos: "noun" },
+    { word: "holds", length: 5, pronunciation: "/hoʊldz/", teluguMeaning: "పట్టుకుంటాడు / బిగబడతాడు", englishMeaning: "keeps or retains", pos: "verb" },
+    { word: "breath", length: 6, pronunciation: "/breθ/", teluguMeaning: "ఊపిరి", englishMeaning: "air taken into or expelled from lungs", pos: "noun" },
+    { word: "tag", length: 3, pronunciation: "/tæɡ/", teluguMeaning: "తాకు (ట్యాగ్ చేయు)", englishMeaning: "touch a player in a game", pos: "verb" },
+    { word: "whereas", length: 7, pronunciation: "/ˌwerˈæz/", teluguMeaning: "అయితే / కాగా", englishMeaning: "in contrast or comparison with", pos: "conjunction" },
+    { word: "tackle", length: 6, pronunciation: "/ˈtækl/", teluguMeaning: "పట్టుకొను (ట్యాకిల్ చేయు)", englishMeaning: "seize and stop an attacking player", pos: "verb" },
+    { word: "opposite", length: 8, pronunciation: "/ˈɑːpəzɪt/", teluguMeaning: "ఎదుటి / వ్యతిరేక", englishMeaning: "facing or on the other side", pos: "adjective" },
+    { word: "declared", length: 8, pronunciation: "/dɪˈklerd/", teluguMeaning: "ప్రకటించబడతారు", englishMeaning: "announced officially", pos: "verb" },
+    { word: "scored", length: 6, pronunciation: "/skɔːrd/", teluguMeaning: "సాధించిన (స్కోర్ చేసిన)", englishMeaning: "gained a point in a game", pos: "verb" },
+    { word: "halves", length: 6, pronunciation: "/hævz/", teluguMeaning: "సగభాగాలు", englishMeaning: "two equal periods of a game", pos: "noun" },
+    { word: "exchange", length: 8, pronunciation: "/ɪksˈtʃeɪndʒ/", teluguMeaning: "మార్చుకుంటారు", englishMeaning: "give and receive reciprocally; swap", pos: "verb" },
+    { word: "learnt", length: 6, pronunciation: "/lɜːrnt/", teluguMeaning: "తెలుస్తోంది / నేర్చుకున్నారు", englishMeaning: "acquired knowledge or information", pos: "verb" },
+    { word: "pre-historic", length: 12, pronunciation: "/ˌpriːhɪˈstɔːrɪk/", teluguMeaning: "చరిత్ర పూర్వ", englishMeaning: "relating to the period before written records", pos: "adjective" },
+    { word: "modern", length: 6, pronunciation: "/ˈmɑːdərn/", teluguMeaning: "ఆధునిక", englishMeaning: "relating to the present or recent times", pos: "adjective" },
+    { word: "favourite", length: 9, pronunciation: "/ˈfeɪvərɪt/", teluguMeaning: "ఇష్టమైన", englishMeaning: "preferred before all others", pos: "adjective" },
+    { word: "countries", length: 9, pronunciation: "/ˈkʌntriz/", teluguMeaning: "దేశాలు", englishMeaning: "nations with their own governments", pos: "noun" },
+    { word: "national", length: 8, pronunciation: "/ˈnæʃnəl/", teluguMeaning: "జాతీయ", englishMeaning: "relating to a whole nation", pos: "adjective" },
+    { word: "popular", length: 7, pronunciation: "/ˈpɑːpjələr/", teluguMeaning: "ప్రాచుర్యం పొందిన", englishMeaning: "liked or admired by many people", pos: "adjective" },
+    { word: "dearly", length: 6, pronunciation: "/ˈdɪrli/", teluguMeaning: "ఎంతో ఆసక్తిగా / ప్రేమతో", englishMeaning: "very much; with deep affection", pos: "adverb" },
+    { word: "television", length: 10, pronunciation: "/ˈtelɪvɪʒn/", teluguMeaning: "టెలివిజన్", englishMeaning: "device for receiving broadcast programs", pos: "noun" },
+    { word: "included", length: 8, pronunciation: "/ɪnˈkluːdɪd/", teluguMeaning: "చేర్చబడింది", englishMeaning: "contained as part of a whole", pos: "verb" }
+];
 
-        // Opposites data
-        const opposites = [
-            { word: "hear", telugu: "వినండి", opposite: "ignore", teluguOpposite: "పట్టించుకోకుండా" },
-            { word: "mostly", telugu: "ఎక్కువగా", opposite: "rarely", teluguOpposite: "అరుదుగా" },
-            { word: "villages", telugu: "గ్రామాలు", opposite: "cities", teluguOpposite: "నగరాలు" },
-            { word: "small", telugu: "చిన్న", opposite: "large", teluguOpposite: "పెద్ద" },
-            { word: "shade", telugu: "నీడ", opposite: "sunlight", teluguOpposite: "సూర్యకాంతి" },
-            { word: "all", telugu: "అన్ని", opposite: "none", teluguOpposite: "ఏదీ లేదు" },
-            { word: "boys", telugu: "బాలురు", opposite: "girls", teluguOpposite: "బాలికలు" },
-            { word: "girls", telugu: "బాలికలు", opposite: "boys", teluguOpposite: "బాలురు" },
-            { word: "like", telugu: "ఇష్టం", opposite: "dislike", teluguOpposite: "ఇష్టం లేదు" },
-            { word: "much", telugu: "చాలా", opposite: "little", teluguOpposite: "కొద్దిగా" },
-            { word: "widely", telugu: "విస్తృతంగా", opposite: "narrowly", teluguOpposite: "ఇరుకుగా" },
-            { word: "official", telugu: "అధికారిక", opposite: "unofficial", teluguOpposite: "అనధికారిక" },
-            { word: "requires", telugu: "అవసరం", opposite: "avoids", teluguOpposite: "తప్పించుకుంటుంది" },
-            { word: "no", telugu: "లేదు", opposite: "yes", teluguOpposite: "అవును" },
-            { word: "specific", telugu: "నిర్దిష్ట", opposite: "general", teluguOpposite: "సాధారణ" },
-            { word: "small", telugu: "చిన్న", opposite: "big", teluguOpposite: "పెద్ద" },
-            { word: "even", telugu: "సమాన", opposite: "uneven", teluguOpposite: "అసమాన" },
-            { word: "enough", telugu: "తగినంత", opposite: "insufficient", teluguOpposite: "తగినంత లేదు" },
-            { word: "physical", telugu: "భౌతిక", opposite: "mental", teluguOpposite: "మానసిక" },
-            { word: "strength", telugu: "బలం", opposite: "weakness", teluguOpposite: "బలహీనత" },
-            { word: "mental", telugu: "మానసిక", opposite: "physical", teluguOpposite: "భౌతిక" },
-            { word: "sharpness", telugu: "పదును", opposite: "dullness", teluguOpposite: "మొద్దుబారిన" },
-            { word: "quickness", telugu: "వేగం", opposite: "slowness", teluguOpposite: "నెమ్మది" },
-            { word: "combination", telugu: "సంయోగం", opposite: "separation", teluguOpposite: "విభజన" },
-            { word: "cooperation", telugu: "సహకారం", opposite: "opposition", teluguOpposite: "విరోధం" },
-            { word: "body", telugu: "శరీరం", opposite: "mind", teluguOpposite: "మనస్సు" },
-            { word: "mind", telugu: "మనస్సు", opposite: "body", teluguOpposite: "శరీరం" },
-            { word: "equal", telugu: "సమాన", opposite: "unequal", teluguOpposite: "అసమాన" },
-            { word: "centre", telugu: "కేంద్రం", opposite: "edge", teluguOpposite: "అంచు" },
-            { word: "holds", telugu: "పట్టుకుంటాడు", opposite: "releases", teluguOpposite: "విడుదల చేస్తుంది" },
-            { word: "whole", telugu: "మొత్తం", opposite: "part", teluguOpposite: "భాగం" },
-            { word: "tag", telugu: "ట్యాగ్ చేయండి", opposite: "avoid", teluguOpposite: "తప్పించుకోండి" },
-            { word: "touch", telugu: "తాకండి", opposite: "avoid", teluguOpposite: "తప్పించుకోండి" },
-            { word: "back", telugu: "తిరిగి", opposite: "forward", teluguOpposite: "ముందుకు" },
-            { word: "opposite", telugu: "వ్యతిరేక", opposite: "same", teluguOpposite: "అదే" },
-            { word: "out", telugu: "బయట", opposite: "in", teluguOpposite: "లోపల" },
-            { word: "first", telugu: "మొదటి", opposite: "last", teluguOpposite: "చివరి" },
-            { word: "modern", telugu: "ఆధునిక", opposite: "ancient", teluguOpposite: "పురాతన" },
-            { word: "favourite", telugu: "ఇష్టమైన", opposite: "hated", teluguOpposite: "ద్వేషించబడిన" },
-            { word: "popular", telugu: "ప్రసిద్ధ", opposite: "unpopular", teluguOpposite: "ప్రసిద్ధి చెందని" }
-        ];
+const verbs = [
+    { verb: "hear", telugu: "విను", pronunciation: "/hɪr/", example: "We can hear the chant" },
+    { verb: "play", telugu: "ఆడతారు", pronunciation: "/pleɪ/", example: "Children play this game in schools" },
+    { verb: "conduct", telugu: "నిర్వహిస్తాయి", pronunciation: "/kənˈdʌkt/", example: "organizations conduct kabaddi competitions" },
+    { verb: "played", telugu: "ఆడతారు / ఆడబడింది", pronunciation: "/pleɪd/", example: "widely played in Andhra Pradesh" },
+    { verb: "known", telugu: "పిలుస్తారు / తెలిసిన", pronunciation: "/noʊn/", example: "It is also known as chedugudu" },
+    { verb: "requires", telugu: "అవసరమవుతుంది", pronunciation: "/rɪˈkwaɪərz/", example: "game requires no specific equipment" },
+    { verb: "promotes", telugu: "పెంపొందిస్తుంది", pronunciation: "/prəˈmoʊts/", example: "promotes mental and physical strength" },
+    { verb: "designed", telugu: "రూపొందించబడింది", pronunciation: "/dɪˈzaɪnd/", example: "A court is designed on the ground" },
+    { verb: "divided", telugu: "విభజించబడింది", pronunciation: "/dɪˈvaɪdɪd/", example: "court is divided into two equal parts" },
+    { verb: "crosses", telugu: "దాటుతాడు", pronunciation: "/ˈkrɔːsɪz/", example: "player who crosses the centre line" },
+    { verb: "holds", telugu: "బిగబడతాడు / పట్టుకుంటాడు", pronunciation: "/hoʊldz/", example: "holds his breath and chants" },
+    { verb: "chants", telugu: "కూత పెడతాడు", pronunciation: "/tʃænts/", example: "chants 'Kabaddi... Kabaddi...'" },
+    { verb: "rides", telugu: "దాడికి వెళ్తాడు", pronunciation: "/raɪdz/", example: "raider rides to tag the members" },
+    { verb: "tag", telugu: "తాకు", pronunciation: "/tæɡ/", example: "to tag (touch) the members" },
+    { verb: "tackle", telugu: "పట్టుకొను", pronunciation: "/ˈtækl/", example: "try to tackle the raider" },
+    { verb: "declared", telugu: "ప్రకటించబడతారు", pronunciation: "/dɪˈklerd/", example: "Players are declared 'out'" },
+    { verb: "scored", telugu: "సాధించిన", pronunciation: "/skɔːrd/", example: "for each point scored by the team" },
+    { verb: "exchange", telugu: "మార్చుకుంటారు", pronunciation: "/ɪksˈtʃeɪndʒ/", example: "players exchange their sides" },
+    { verb: "learnt", telugu: "తెలుస్తోంది", pronunciation: "/lɜːrnt/", example: "It is learnt that the game" },
+    { verb: "started", telugu: "ప్రారంభమైంది", pronunciation: "/ˈstɑːrtɪd/", example: "modern kabaddi game started" },
+    { verb: "watched", telugu: "చూస్తున్నారు", pronunciation: "/wɑːtʃt/", example: "dearly watched on the television" },
+    { verb: "included", telugu: "చేర్చబడింది", pronunciation: "/ɪnˈkluːdɪd/", example: "be included in the Olympics too" }
+];
 
-        // Singular/Plural data
-        const singularPlural = [
-            { singular: "chant", teluguSingular: "పలకడం", plural: "chants", teluguPlural: "పలకడాలు" },
-            { singular: "village", teluguSingular: "గ్రామం", plural: "villages", teluguPlural: "గ్రామాలు" },
-            { singular: "child", teluguSingular: "బిడ్డ", plural: "children", teluguPlural: "పిల్లలు" },
-            { singular: "school", teluguSingular: "పాఠశాల", plural: "schools", teluguPlural: "పాఠశాలలు" },
-            { singular: "ground", teluguSingular: "మైదానం", plural: "grounds", teluguPlural: "మైదానాలు" },
-            { singular: "tree", teluguSingular: "చెట్టు", plural: "trees", teluguPlural: "చెట్లు" },
-            { singular: "game", teluguSingular: "ఆట", plural: "games", teluguPlural: "ఆటలు" },
-            { singular: "group", teluguSingular: "గుంపు", plural: "groups", teluguPlural: "గుంపులు" },
-            { singular: "boy", teluguSingular: "బాలుడు", plural: "boys", teluguPlural: "బాలురు" },
-            { singular: "girl", teluguSingular: "బాలిక", plural: "girls", teluguPlural: "బాలికలు" },
-            { singular: "festival", teluguSingular: "పండుగ", plural: "festivals", teluguPlural: "పండుగలు" },
-            { singular: "fair", teluguSingular: "జాతర", plural: "fairs", teluguPlural: "జాతరలు" },
-            { singular: "organization", teluguSingular: "సంస్థ", plural: "organizations", teluguPlural: "సంస్థలు" },
-            { singular: "competition", teluguSingular: "పోటీ", plural: "competitions", teluguPlural: "పోటీలు" },
-            { singular: "thing", teluguSingular: "విషయం", plural: "things", teluguPlural: "విషయాలు" },
-            { singular: "team", teluguSingular: "టీమ్", plural: "teams", teluguPlural: "టీమ్లు" },
-            { singular: "player", teluguSingular: "క్రీడాకారుడు", plural: "players", teluguPlural: "క్రీడాకారులు" },
-            { singular: "court", teluguSingular: "కోర్టు", plural: "courts", teluguPlural: "కోర్టులు" },
-            { singular: "measurement", teluguSingular: "కొలత", plural: "measurements", teluguPlural: "కొలతలు" },
-            { singular: "part", teluguSingular: "భాగం", plural: "parts", teluguPlural: "భాగాలు" },
-            { singular: "line", teluguSingular: "లైన్", plural: "lines", teluguPlural: "లైన్లు" },
-            { singular: "member", teluguSingular: "సభ్యుడు", plural: "members", teluguPlural: "సభ్యులు" },
-            { singular: "side", teluguSingular: "వైపు", plural: "sides", teluguPlural: "వైపులా" },
-            { singular: "opponent", teluguSingular: "ప్రత్యర్థి", plural: "opponents", teluguPlural: "ప్రత్యర్థులు" },
-            { singular: "raider", teluguSingular: "దాడి చేసేవాడు", plural: "raiders", teluguPlural: "దాడి చేసేవాళ్ళు" },
-            { singular: "half", teluguSingular: "సగం", plural: "halves", teluguPlural: "సగాలు" },
-            { singular: "minute", teluguSingular: "నిమిషం", plural: "minutes", teluguPlural: "నిమిషాలు" },
-            { singular: "form", teluguSingular: "రూపం", plural: "forms", teluguPlural: "రూపాలు" },
-            { singular: "country", teluguSingular: "దేశం", plural: "countries", teluguPlural: "దేశాలు" },
-            { singular: "person", teluguSingular: "వ్యక్తి", plural: "people", teluguPlural: "ప్రజలు" }
-        ];
+const opposites = [
+    { word: "mostly", telugu: "ఎక్కువగా", opposite: "rarely", teluguOpposite: "అరుదుగా" },
+    { word: "villages", telugu: "గ్రామాలు", opposite: "cities", teluguOpposite: "నగరాలు" },
+    { word: "small", telugu: "చిన్న", opposite: "large", teluguOpposite: "పెద్ద" },
+    { word: "shade", telugu: "నీడ", opposite: "sunlight", teluguOpposite: "సూర్యకాంతి" },
+    { word: "boys", telugu: "బాలురు", opposite: "girls", teluguOpposite: "బాలికలు" },
+    { word: "like", telugu: "ఇష్టపడతారు", opposite: "dislike", teluguOpposite: "ఇష్టపడరు" },
+    { word: "widely", telugu: "విస్తృతంగా", opposite: "narrowly", teluguOpposite: "పరిమితంగా" },
+    { word: "official", telugu: "అధికారిక", opposite: "unofficial", teluguOpposite: "అనధికారిక" },
+    { word: "specific", telugu: "నిర్దిష్టమైన", opposite: "general", teluguOpposite: "సాధారణ" },
+    { word: "even", telugu: "సమానమైన", opposite: "uneven", teluguOpposite: "ఎత్తుపల్లాల" },
+    { word: "enough", telugu: "సరిపోతుంది", opposite: "insufficient", teluguOpposite: "సరిపోని" },
+    { word: "physical", telugu: "శారీరక", opposite: "mental", teluguOpposite: "మానసిక" },
+    { word: "strength", telugu: "బలం", opposite: "weakness", teluguOpposite: "బలహీనత" },
+    { word: "sharpness", telugu: "చురుకుదనం", opposite: "dullness", teluguOpposite: "మందకొడితనం" },
+    { word: "quickness", telugu: "వేగం", opposite: "slowness", teluguOpposite: "నెమ్మది" },
+    { word: "combination", telugu: "కలయిక", opposite: "separation", teluguOpposite: "విభజన" },
+    { word: "cooperation", telugu: "సహకారం", opposite: "opposition", teluguOpposite: "వ్యతిరేకత" },
+    { word: "equal", telugu: "సమాన", opposite: "unequal", teluguOpposite: "అసమాన" },
+    { word: "centre", telugu: "మధ్య", opposite: "edge", teluguOpposite: "అంచు" },
+    { word: "holds", telugu: "పట్టుకుంటాడు", opposite: "releases", teluguOpposite: "విడుదల చేస్తాడు" },
+    { word: "whole", telugu: "మొత్తం", opposite: "part", teluguOpposite: "భాగం" },
+    { word: "opposite", telugu: "ఎదుటి / వ్యతిరేక", opposite: "same", teluguOpposite: "అదే" },
+    { word: "first", telugu: "మొదటి", opposite: "last", teluguOpposite: "చివరి" },
+    { word: "modern", telugu: "ఆధునిక", opposite: "ancient", teluguOpposite: "పురాతన" },
+    { word: "favourite", telugu: "ఇష్టమైన", opposite: "hated", teluguOpposite: "ద్వేషించబడిన" },
+    { word: "popular", telugu: "ప్రాచుర్యం పొందిన", opposite: "unpopular", teluguOpposite: "ప్రాచుర్యం లేని" }
+];
 
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Display story with highlighted words
-            displayStory();
+const singularPlural = [
+    { singular: "chant", teluguSingular: "కూత", plural: "chants", teluguPlural: "కూతలు" },
+    { singular: "village", teluguSingular: "గ్రామం", plural: "villages", teluguPlural: "గ్రామాలు" },
+    { singular: "child", teluguSingular: "బిడ్డ", plural: "children", teluguPlural: "పిల్లలు" },
+    { singular: "school", teluguSingular: "పాఠశాల", plural: "schools", teluguPlural: "పాఠశాలలు" },
+    { singular: "ground", teluguSingular: "మైదానం", plural: "grounds", teluguPlural: "మైదానాలు" },
+    { singular: "tree", teluguSingular: "చెట్టు", plural: "trees", teluguPlural: "చెట్లు" },
+    { singular: "game", teluguSingular: "ఆట", plural: "games", teluguPlural: "ఆటలు" },
+    { singular: "group", teluguSingular: "వర్గం", plural: "groups", teluguPlural: "వర్గాలు" },
+    { singular: "boy", teluguSingular: "బాలుడు", plural: "boys", teluguPlural: "బాలురు" },
+    { singular: "girl", teluguSingular: "బాలిక", plural: "girls", teluguPlural: "బాలికలు" },
+    { singular: "festival", teluguSingular: "పండుగ", plural: "festivals", teluguPlural: "పండుగలు" },
+    { singular: "fair", teluguSingular: "జాతర", plural: "fairs", teluguPlural: "జాతరలు" },
+    { singular: "organization", teluguSingular: "సంస్థ", plural: "organizations", teluguPlural: "సంస్థలు" },
+    { singular: "competition", teluguSingular: "పోటీ", plural: "competitions", teluguPlural: "పోటీలు" },
+    { singular: "thing", teluguSingular: "విషయం", plural: "things", teluguPlural: "విషయాలు" },
+    { singular: "response", teluguSingular: "ప్రతిస్పందన", plural: "responses", teluguPlural: "ప్రతిస్పందనలు" },
+    { singular: "team", teluguSingular: "జట్టు", plural: "teams", teluguPlural: "జట్లు" },
+    { singular: "player", teluguSingular: "క్రీడాకారుడు", plural: "players", teluguPlural: "క్రీడాకారులు" },
+    { singular: "court", teluguSingular: "కోర్టు", plural: "courts", teluguPlural: "కోర్టులు" },
+    { singular: "measurement", teluguSingular: "కొలత", plural: "measurements", teluguPlural: "కొలతలు" },
+    { singular: "part", teluguSingular: "భాగం", plural: "parts", teluguPlural: "భాగాలు" },
+    { singular: "member", teluguSingular: "సభ్యుడు", plural: "members", teluguPlural: "సభ్యులు" },
+    { singular: "side", teluguSingular: "వైపు", plural: "sides", teluguPlural: "వైపులు" },
+    { singular: "opponent", teluguSingular: "ప్రత్యర్థి", plural: "opponents", teluguPlural: "ప్రత్యర్థులు" },
+    { singular: "raider", teluguSingular: "రైడర్", plural: "raiders", teluguPlural: "రైడర్లు" },
+    { singular: "half", teluguSingular: "సగం", plural: "halves", teluguPlural: "సగభాగాలు" },
+    { singular: "minute", teluguSingular: "నిమిషం", plural: "minutes", teluguPlural: "నిమిషాలు" },
+    { singular: "form", teluguSingular: "రూపం", plural: "forms", teluguPlural: "రూపాలు" },
+    { singular: "country", teluguSingular: "దేశం", plural: "countries", teluguPlural: "దేశాలు" },
+    { singular: "person", teluguSingular: "వ్యక్తి", plural: "people", teluguPlural: "ప్రజలు" }
+];
+
+const vocabMap = {};
+vocabulary.forEach(v => { vocabMap[v.word.toLowerCase()] = v; });
+
+/* ============================================================
+   FLASHCARD STATE
+   ============================================================ */
+const WORDS_PER_PAGE = 4;
+
+const pageManagers = {
+    vocabulary: { current: 0, total: Math.ceil(vocabulary.length / WORDS_PER_PAGE) },
+    opposites: { current: 0, total: Math.ceil(opposites.length / WORDS_PER_PAGE) },
+    singularPlural: { current: 0, total: Math.ceil(singularPlural.length / WORDS_PER_PAGE) }
+};
+
+/* ============================================================
+   INIT
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+    renderStory();
+    renderVerbs();
+    renderBilingual();
+
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(this.getAttribute('data-section')).classList.add('active');
             
-            // Display all words
-            displayAllWords();
-            
-            // Display verbs table
-            displayVerbs();
-            
-            // Display opposites table
-            displayOpposites();
-            
-            // Display singular/plural table
-            displaySingularPlural();
-            
-            // Setup navigation
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    document.querySelectorAll('.nav-btn').forEach(b => {
-                        b.classList.remove('active');
-                    });
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Hide all content sections
-                    document.querySelectorAll('.content-section').forEach(section => {
-                        section.classList.remove('active');
-                    });
-                    
-                    // Show selected section
-                    const sectionId = this.getAttribute('data-section');
-                    document.getElementById(sectionId).classList.add('active');
-                });
-            });
-            
-            // Setup modal close button
-            document.querySelector('.close-modal').addEventListener('click', function() {
-                document.getElementById('wordModal').style.display = 'none';
-            });
-            
-            // Close modal when clicking outside
-            document.getElementById('wordModal').addEventListener('click', function(e) {
-                if (e.target === this) {
-                    this.style.display = 'none';
-                }
-            });
+            const section = this.getAttribute('data-section');
+            if (section === 'vocabulary') updateVocabPage();
+            if (section === 'opposites') updateOppositesPage();
+            if (section === 'singular-plural') updateSingPlurPage();
         });
-        
-        // Function to display story with highlighted words
-        function displayStory() {
-            const storyElement = document.getElementById('storyText');
-            
-            // Process the story text
-            const paragraphs = storyText.split('\n\n');
-            let formattedStory = '';
-            
-            // Sort vocabulary by word length (longest first) to avoid partial highlighting
-            const sortedVocab = [...vocabulary].sort((a, b) => b.word.length - a.word.length);
-            
-            // Create a map for quick lookup
-            const vocabMap = {};
-            sortedVocab.forEach(item => {
-                vocabMap[item.word.toLowerCase()] = item;
-            });
-            
-            paragraphs.forEach(paragraph => {
-                if (paragraph.trim()) {
-                    formattedStory += `<p>${highlightWordsInText(paragraph, vocabMap)}</p>`;
-                }
-            });
-            
-            storyElement.innerHTML = formattedStory;
-            
-            // Add click event to highlighted words
-            document.querySelectorAll('.highlight-word').forEach(word => {
-                word.addEventListener('click', function() {
-                    const wordText = this.getAttribute('data-word');
-                    showWordDetails(wordText);
-                });
-            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        document.getElementById('wordModal').style.display = 'none';
+    });
+    document.getElementById('wordModal').addEventListener('click', function(e) {
+        if (e.target === this) this.style.display = 'none';
+    });
+
+    initVocabControls();
+    initOppositesControls();
+    initSingPlurControls();
+});
+
+/* ============================================================
+   STORY RENDER
+   ============================================================ */
+function renderStory() {
+    const container = document.getElementById('storyText');
+    let html = '';
+    storyVerses.forEach(v => {
+        html += `
+            <div class="verse-block">
+                <span class="verse-number">${v.num}</span>
+                <span class="verse-text">${highlightWords(v.text)}</span>
+            </div>`;
+    });
+    container.innerHTML = html;
+}
+
+function highlightWords(text) {
+    const parts = text.split(/(\s+)/);
+    return parts.map(part => {
+        const clean = part.toLowerCase().replace(/[.,!?"':;-]/g, '');
+        if (clean && vocabMap[clean]) {
+            const v = vocabMap[clean];
+            return `<span class="hw" data-word="${v.word}">${part}` +
+                `<span class="tip">` +
+                    `<span class="t-pos">${v.pos}</span>` +
+                    `<span class="t-pron">${v.pronunciation || ''}</span>` +
+                    `<span class="t-tel">${v.teluguMeaning}</span>` +
+                    `<span class="t-eng">${v.englishMeaning}</span>` +
+                `</span></span>`;
         }
+        return part;
+    }).join('');
+}
+
+document.addEventListener('click', function(e) {
+    const hw = e.target.closest('.hw');
+    if (hw) {
+        showWordDetails(hw.getAttribute('data-word'));
+    }
+});
+
+/* ============================================================
+   VERBS TABLE
+   ============================================================ */
+function renderVerbs() {
+    const tbody = document.getElementById('verbsTable');
+    let html = '';
+    verbs.forEach(v => {
+        html += `<tr style="border-bottom: 1px solid #ddd;">
+            <td style="padding: 12px 15px;" data-word="${v.verb}"><strong>${v.verb}</strong></td>
+            <td style="padding: 12px 15px;">${v.telugu}</td>
+            <td style="padding: 12px 15px;">${v.pronunciation}</td>
+            <td style="padding: 12px 15px;">${v.example}</td>
+        </tr>`;
+    });
+    tbody.innerHTML = html;
+    tbody.querySelectorAll('td[data-word]').forEach(td => {
+        td.addEventListener('click', () => showWordDetails(td.getAttribute('data-word')));
+    });
+}
+
+/* ============================================================
+   VOCABULARY FLASHCARDS
+   ============================================================ */
+function initVocabControls() {
+    const prevBtn = document.getElementById('prevPageBtn');
+    const nextBtn = document.getElementById('nextPageBtn');
+    const pageSelect = document.getElementById('pageSelect');
+    const indicator = document.getElementById('pageIndicator');
+    const grid = document.getElementById('flashcardsGrid');
+
+    let options = '';
+    for (let i = 1; i <= pageManagers.vocabulary.total; i++) {
+        options += `<option value="${i}">Page ${i}</option>`;
+    }
+    pageSelect.innerHTML = options;
+
+    const update = () => {
+        const state = pageManagers.vocabulary;
+        const start = state.current * WORDS_PER_PAGE;
+        const pageWords = vocabulary.slice(start, start + WORDS_PER_PAGE);
         
-        // Helper function to highlight words in text
-        function highlightWordsInText(text, vocabMap) {
-            const words = text.split(/(\s+)/);
-            return words.map(word => {
-                const cleanWord = word.toLowerCase().replace(/[.,!?"':;-]/g, '');
-                if (vocabMap[cleanWord] && cleanWord.length >= 3) {
-                    const wordData = vocabMap[cleanWord];
-                    const lengthClass = `word-${Math.min(wordData.length, 7)}`; // Cap at 7+
-                    return `<span class="highlight-word ${lengthClass}" data-word="${wordData.word}">${word}</span>`;
-                }
-                return word;
-            }).join('');
-        }
-        
-        // Function to display all words
-        function displayAllWords() {
-            const grid = document.getElementById('allWordsGrid');
-            grid.innerHTML = '';
-            
-            // Group words by length
-            const wordsByLength = {};
-            vocabulary.forEach(word => {
-                if (!wordsByLength[word.length]) {
-                    wordsByLength[word.length] = [];
-                }
-                wordsByLength[word.length].push(word);
-            });
-            
-            // Sort lengths and display
-            const sortedLengths = Object.keys(wordsByLength).sort((a, b) => a - b);
-            
-            sortedLengths.forEach(length => {
-                // Create section for each length
-                const section = document.createElement('div');
-                section.style.gridColumn = '1 / -1';
-                section.style.marginTop = '20px';
-                section.innerHTML = `<h3>${length}-letter words</h3>`;
-                grid.appendChild(section);
-                
-                // Create cards for words of this length
-                wordsByLength[length].forEach(wordData => {
-                    const card = document.createElement('div');
-                    card.className = 'vocab-card';
-                    
-                    // Determine color class based on length
-                    const lengthClass = `word-${Math.min(wordData.length, 7)}`;
-                    
-                    card.innerHTML = `
-                        <div class="word-header">
-                            <div class="word">${wordData.word} <span class="word-length">${wordData.length} letters</span></div>
-                            <button class="sound-btn" data-word="${wordData.word}">
-                                <i class="fas fa-volume-up"></i>
+        let html = '';
+        pageWords.forEach(w => {
+            html += `
+                <div class="flashcard" data-word="${w.word}">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="flashcard-word">${w.word}</div>
+                            <div class="flashcard-pos">${w.pos}</div>
+                            <div class="flashcard-pron">${w.pronunciation || ''}</div>
+                            <div class="flashcard-length">${w.length} letters</div>
+                            <div class="flashcard-hint"><i class="fas fa-hand-pointer"></i> Click to flip</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="flashcard-word">${w.word}</div>
+                            <div class="flashcard-telugu">${w.teluguMeaning}</div>
+                            <div class="flashcard-english">${w.englishMeaning}</div>
+                            <button class="sound-btn" onclick="event.stopPropagation(); speakWord('${w.word}');">
+                                <i class="fas fa-volume-up"></i> Hear
                             </button>
                         </div>
-                        <div class="pronunciation">${wordData.pronunciation}</div>
-                        <div class="telugu-meaning">${wordData.teluguMeaning}</div>
-                        <div class="english-meaning">${wordData.englishMeaning}</div>
-                    `;
-                    
-                    grid.appendChild(card);
-                    
-                    // Add sound functionality
-                    card.querySelector('.sound-btn').addEventListener('click', function(e) {
-                        e.stopPropagation();
-                        speakWord(wordData.word);
-                    });
-                    
-                    // Add click functionality to whole card
-                    card.addEventListener('click', function() {
-                        showWordDetails(wordData.word);
-                    });
-                });
-            });
-        }
-        
-        // Function to display verbs table
-        function displayVerbs() {
-            const table = document.getElementById('verbsTable');
-            table.innerHTML = '';
-            
-            verbs.forEach(verb => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td><strong>${verb.verb}</strong></td>
-                    <td>${verb.telugu}</td>
-                    <td>${verb.pronunciation}</td>
-                    <td>${verb.example}</td>
-                `;
-                table.appendChild(row);
-                
-                // Add click functionality
-                row.addEventListener('click', function() {
-                    showWordDetails(verb.verb);
-                });
-            });
-        }
-        
-        // Function to display opposites table
-        function displayOpposites() {
-            const table = document.getElementById('oppositesTable');
-            table.innerHTML = '';
-            
-            opposites.forEach(pair => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td><strong>${pair.word}</strong></td>
-                    <td>${pair.telugu}</td>
-                    <td>${pair.opposite}</td>
-                    <td>${pair.teluguOpposite}</td>
-                `;
-                table.appendChild(row);
-                
-                // Add click functionality for the word
-                row.cells[0].addEventListener('click', function() {
-                    showWordDetails(pair.word);
-                });
-                
-                // Add click functionality for the opposite word
-                row.cells[2].addEventListener('click', function() {
-                    showWordDetails(pair.opposite);
-                });
-            });
-        }
-        
-        // Function to display singular/plural table
-        function displaySingularPlural() {
-            const table = document.getElementById('singularPluralTable');
-            table.innerHTML = '';
-            
-            singularPlural.forEach(item => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
-                    <td><strong>${item.singular}</strong></td>
-                    <td>${item.teluguSingular}</td>
-                    <td><strong>${item.plural}</strong></td>
-                    <td>${item.teluguPlural}</td>
-                `;
-                table.appendChild(row);
-                
-                // Add click functionality for singular
-                row.cells[0].addEventListener('click', function() {
-                    showWordDetails(item.singular);
-                });
-                
-                // Add click functionality for plural
-                row.cells[2].addEventListener('click', function() {
-                    showWordDetails(item.plural);
-                });
-            });
-        }
-        
-        // Function to show word details in modal
-        function showWordDetails(word) {
-            // Find word in vocabulary
-            const wordData = vocabulary.find(item => item.word.toLowerCase() === word.toLowerCase());
-            
-            // Find if it's a verb
-            const verbData = verbs.find(item => item.verb.toLowerCase() === word.toLowerCase());
-            
-            // Find if it has an opposite
-            const oppositeData = opposites.find(item => 
-                item.word.toLowerCase() === word.toLowerCase() || 
-                item.opposite.toLowerCase() === word.toLowerCase()
-            );
-            
-            // Find if it's in singular/plural
-            const singularPluralData = singularPlural.find(item => 
-                item.singular.toLowerCase() === word.toLowerCase() || 
-                item.plural.toLowerCase() === word.toLowerCase()
-            );
-            
-            const modalContent = document.getElementById('modalContent');
-            let html = `<div style="font-size: 1.8rem; font-weight: bold; color: var(--secondary); margin-bottom: 15px;">${word}</div>`;
-            
-            if (wordData) {
-                html += `
-                    <div style="margin-bottom: 10px;">
-                        <div><strong>Length:</strong> ${wordData.length} letters</div>
-                        <div><strong>Pronunciation:</strong> ${wordData.pronunciation}</div>
-                        <div class="telugu-meaning"><strong>Telugu Meaning:</strong> ${wordData.teluguMeaning}</div>
-                        <div><strong>English Meaning:</strong> ${wordData.englishMeaning}</div>
                     </div>
-                `;
-            }
-            
-            if (verbData) {
-                html += `
-                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #eee;">
-                        <div style="color: var(--primary); font-weight: bold; margin-bottom: 8px;">Verb Information:</div>
-                        <div><strong>Telugu:</strong> ${verbData.telugu}</div>
-                        <div><strong>Example:</strong> "${verbData.example}"</div>
-                    </div>
-                `;
-            }
-            
-            if (oppositeData) {
-                const isWord = oppositeData.word.toLowerCase() === word.toLowerCase();
-                const oppositeWord = isWord ? oppositeData.opposite : oppositeData.word;
-                const oppositeTelugu = isWord ? oppositeData.teluguOpposite : oppositeData.telugu;
-                
-                html += `
-                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #eee;">
-                        <div style="color: var(--accent); font-weight: bold; margin-bottom: 8px;">Opposite Word:</div>
-                        <div><strong>${oppositeWord}</strong> - ${oppositeTelugu}</div>
-                    </div>
-                `;
-            }
-            
-            if (singularPluralData) {
-                const isSingular = singularPluralData.singular.toLowerCase() === word.toLowerCase();
-                const singular = singularPluralData.singular;
-                const plural = singularPluralData.plural;
-                
-                html += `
-                    <div style="margin-top: 15px; padding-top: 15px; border-top: 2px solid #eee;">
-                        <div style="color: var(--telugu-color); font-weight: bold; margin-bottom: 8px;">Singular/Plural:</div>
-                        <div><strong>Singular:</strong> ${singular} (${singularPluralData.teluguSingular})</div>
-                        <div><strong>Plural:</strong> ${plural} (${singularPluralData.teluguPlural})</div>
-                    </div>
-                `;
-            }
-            
+                </div>`;
+        });
+        grid.innerHTML = html;
+
+        grid.querySelectorAll('.flashcard').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.sound-btn')) return;
+                this.classList.toggle('flipped');
+            });
+        });
+
+        prevBtn.disabled = state.current === 0;
+        nextBtn.disabled = state.current === state.total - 1;
+        indicator.textContent = `Page ${state.current + 1} of ${state.total}`;
+        pageSelect.value = state.current + 1;
+    };
+
+    prevBtn.addEventListener('click', () => { pageManagers.vocabulary.current--; update(); });
+    nextBtn.addEventListener('click', () => { pageManagers.vocabulary.current++; update(); });
+    pageSelect.addEventListener('change', (e) => {
+        pageManagers.vocabulary.current = parseInt(e.target.value) - 1;
+        update();
+    });
+
+    window.updateVocabPage = update;
+    update();
+}
+
+/* ============================================================
+   OPPOSITES FLASHCARDS
+   ============================================================ */
+function initOppositesControls() {
+    const prevBtn = document.getElementById('prevOppositeBtn');
+    const nextBtn = document.getElementById('nextOppositeBtn');
+    const pageSelect = document.getElementById('oppositePageSelect');
+    const indicator = document.getElementById('oppositePageIndicator');
+    const grid = document.getElementById('oppositesGrid');
+
+    let options = '';
+    for (let i = 1; i <= pageManagers.opposites.total; i++) {
+        options += `<option value="${i}">Page ${i}</option>`;
+    }
+    pageSelect.innerHTML = options;
+
+    const update = () => {
+        const state = pageManagers.opposites;
+        const start = state.current * WORDS_PER_PAGE;
+        const pageWords = opposites.slice(start, start + WORDS_PER_PAGE);
+
+        let html = '';
+        pageWords.forEach(o => {
             html += `
-                <button class="sound-btn" style="margin-top: 20px; padding: 10px 20px; font-size: 1rem;" data-word="${word}">
-                    <i class="fas fa-volume-up"></i> Hear Pronunciation
-                </button>
-            `;
-            
-            modalContent.innerHTML = html;
-            
-            // Show modal
-            document.getElementById('wordModal').style.display = 'flex';
-            
-            // Add event listener to modal sound button
-            modalContent.querySelector('.sound-btn').addEventListener('click', function() {
-                speakWord(word);
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="flashcard-word">${o.word}</div>
+                            <div class="flashcard-telugu">${o.telugu}</div>
+                            <div class="flashcard-hint" style="margin-top:20px;"><i class="fas fa-hand-pointer"></i> Click to flip</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="flashcard-word">${o.opposite}</div>
+                            <div class="flashcard-telugu">${o.teluguOpposite}</div>
+                            <div class="flashcard-hint"><i class="fas fa-sync-alt"></i> Click to flip back</div>
+                        </div>
+                    </div>
+                </div>`;
+        });
+        grid.innerHTML = html;
+
+        grid.querySelectorAll('.flashcard').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('flipped');
             });
-        }
-        
-        // Function to speak a word
-        function speakWord(word) {
-            if ('speechSynthesis' in window) {
-                speechSynthesis.cancel();
-                
-                const utterance = new SpeechSynthesisUtterance(word);
-                utterance.rate = 0.8;
-                utterance.pitch = 1;
-                utterance.volume = 1;
-                
-                speechSynthesis.speak(utterance);
-            } else {
-                alert("Your browser doesn't support text-to-speech. Try Chrome or Edge.");
-            }
-        }
-    </script>
+        });
+
+        prevBtn.disabled = state.current === 0;
+        nextBtn.disabled = state.current === state.total - 1;
+        indicator.textContent = `Page ${state.current + 1} of ${state.total}`;
+        pageSelect.value = state.current + 1;
+    };
+
+    prevBtn.addEventListener('click', () => { pageManagers.opposites.current--; update(); });
+    nextBtn.addEventListener('click', () => { pageManagers.opposites.current++; update(); });
+    pageSelect.addEventListener('change', (e) => {
+        pageManagers.opposites.current = parseInt(e.target.value) - 1;
+        update();
+    });
+
+    window.updateOppositesPage = update;
+    update();
+}
+
+/* ============================================================
+   SINGULAR / PLURAL FLASHCARDS
+   ============================================================ */
+function initSingPlurControls() {
+    const prevBtn = document.getElementById('prevSingPlurBtn');
+    const nextBtn = document.getElementById('nextSingPlurBtn');
+    const pageSelect = document.getElementById('singPlurPageSelect');
+    const indicator = document.getElementById('singPlurPageIndicator');
+    const grid = document.getElementById('singularPluralGrid');
+
+    let options = '';
+    for (let i = 1; i <= pageManagers.singularPlural.total; i++) {
+        options += `<option value="${i}">Page ${i}</option>`;
+    }
+    pageSelect.innerHTML = options;
+
+    const update = () => {
+        const state = pageManagers.singularPlural;
+        const start = state.current * WORDS_PER_PAGE;
+        const pageWords = singularPlural.slice(start, start + WORDS_PER_PAGE);
+
+        let html = '';
+        pageWords.forEach(s => {
+            html += `
+                <div class="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front">
+                            <div class="flashcard-word">${s.singular}</div>
+                            <div class="flashcard-telugu">${s.teluguSingular}</div>
+                            <div class="flashcard-hint" style="margin-top:20px;"><i class="fas fa-hand-pointer"></i> Click to flip</div>
+                        </div>
+                        <div class="flashcard-back">
+                            <div class="flashcard-word">${s.plural}</div>
+                            <div class="flashcard-telugu">${s.teluguPlural}</div>
+                            <div class="flashcard-hint"><i class="fas fa-sync-alt"></i> Click to flip back</div>
+                        </div>
+                    </div>
+                </div>`;
+        });
+        grid.innerHTML = html;
+
+        grid.querySelectorAll('.flashcard').forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('flipped');
+            });
+        });
+
+        prevBtn.disabled = state.current === 0;
+        nextBtn.disabled = state.current === state.total - 1;
+        indicator.textContent = `Page ${state.current + 1} of ${state.total}`;
+        pageSelect.value = state.current + 1;
+    };
+
+    prevBtn.addEventListener('click', () => { pageManagers.singularPlural.current--; update(); });
+    nextBtn.addEventListener('click', () => { pageManagers.singularPlural.current++; update(); });
+    pageSelect.addEventListener('change', (e) => {
+        pageManagers.singularPlural.current = parseInt(e.target.value) - 1;
+        update();
+    });
+
+    window.updateSingPlurPage = update;
+    update();
+}
+
+/* ============================================================
+   BILINGUAL RENDER
+   ============================================================ */
+function renderBilingual() {
+    const container = document.getElementById('bilingualContainer');
+    let html = '';
+    bilingualLines.forEach((pair, i) => {
+        const isTitle = i === 0;
+        html += `<div class="bilingual-line">
+            <div class="bilingual-english">
+                <span class="lang-label"><i class="fas fa-flag-usa"></i> EN</span>
+                <span style="${isTitle ? 'font-size:1.3rem;font-weight:bold;' : ''}">${pair.english}</span>
+            </div>
+            <div class="bilingual-telugu">
+                <span class="lang-label"><i class="fas fa-language"></i> TE</span>
+                <span style="${isTitle ? 'font-size:1.3rem;font-weight:bold;' : ''}">${pair.telugu}</span>
+            </div>
+        </div>`;
+    });
+    container.innerHTML = html;
+}
+
+/* ============================================================
+   WORD MODAL & SPEECH
+   ============================================================ */
+function showWordDetails(word) {
+    const w = vocabMap[word.toLowerCase()];
+    if (!w) return;
+
+    let html = `
+        <div style="font-size:1.8rem;font-weight:bold;color:var(--secondary);margin-bottom:6px;">${w.word}</div>
+        <span class="modal-pos">${w.pos}</span>
+        <div class="modal-row"><strong>Pronunciation:</strong> <em>${w.pronunciation || ''}</em></div>
+        <div class="modal-row"><strong>Telugu Meaning:</strong> <span class="telugu-meaning">${w.teluguMeaning}</span></div>
+        <div class="modal-row"><strong>English Meaning:</strong> ${w.englishMeaning}</div>
+        <div class="modal-row"><strong>Length:</strong> ${w.length} letters</div>
+        <button class="sound-btn" style="margin-top:18px;padding:10px 20px;font-size:1rem;width:auto;background:var(--accent);border:none;border-radius:50px;cursor:pointer;font-family:'Anek Telugu',sans-serif;font-weight:600;" data-word="${w.word}">
+            <i class="fas fa-volume-up"></i> Hear Pronunciation
+        </button>`;
+    document.getElementById('modalContent').innerHTML = html;
+    document.getElementById('wordModal').style.display = 'flex';
+    document.querySelector('#modalContent .sound-btn').addEventListener('click', () => speakWord(w.word));
+}
+
+function speakWord(word) {
+    if ('speechSynthesis' in window) {
+        speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(word);
+        u.rate = 0.8; u.pitch = 1; u.volume = 1;
+        speechSynthesis.speak(u);
+    } else {
+        alert("Your browser doesn't support text-to-speech. Try Chrome or Edge.");
+    }
+}
+</script>
 </body>
 </html>
