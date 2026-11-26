@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3వ తరగతి - కందులాపురం బడి</title>
+
+<!-- Anek Telugu Font -->
+<link href="https://fonts.googleapis.com/css2?family=Anek+Telugu:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  background:#E6F2FF;
+  color:#0B3C5D;
+  font-family:'Anek Telugu',sans-serif;
+}
+
+/* Header */
+header{
+  text-align:center;
+  padding:30px 20px;
+  background:linear-gradient(135deg,#0B3C5D,#145DA0);
+  color:white;
+}
+
+.school-name{font-size:2.2rem;font-weight:700;}
+.subtitle{font-size:1.1rem;opacity:.95;}
+.class-title{
+  font-size:2.4rem;
+  margin-top:15px;
+  font-weight:700;
+}
+.class-subtitle{
+  font-size:1.2rem;
+  opacity:.9;
+  font-style:italic;
+}
+
+/* Back link */
+.back-link{
+  display:inline-block;
+  margin:20px;
+  padding:10px 20px;
+  background:#0B3C5D;
+  color:white;
+  text-decoration:none;
+  border-radius:10px;
+  font-size:1rem;
+  transition:.2s;
+}
+.back-link:hover{
+  background:#145DA0;
+  transform:translateX(-3px);
+}
+
+/* Container */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:20px 20px 40px;
+}
+
+/* Section title */
+.section-title{
+  text-align:center;
+  font-size:2rem;
+  margin:30px 0 25px;
+}
+
+/* Subject cards grid */
+.subject-links{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+  margin-bottom:50px;
+}
+
+.subject-link{
+  background:linear-gradient(135deg,#145DA0,#1E81B0);
+  color:white;
+  text-decoration:none;
+  padding:45px 25px;
+  border-radius:20px;
+  text-align:center;
+  transition:.3s;
+  box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+
+.subject-link:hover{
+  transform:scale(1.05);
+}
+
+.subject-icon{
+  font-size:3.2rem;
+  margin-bottom:15px;
+}
+
+.subject-name{
+  font-size:2rem;
+  font-weight:600;
+}
+
+.subject-english{
+  font-size:1.3rem;
+  opacity:.9;
+  margin-top:5px;
+}
+
+/* Info / lesson sections */
+.lesson-section{
+  background:white;
+  border-radius:18px;
+  padding:30px;
+  margin-bottom:30px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  border-left:8px solid #145DA0;
+}
+
+.lesson-title{
+  font-size:1.7rem;
+  color:#0B3C5D;
+  margin-bottom:15px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.lesson-title .icon{
+  font-size:1.9rem;
+}
+
+.lesson-list{
+  list-style:none;
+  padding-left:0;
+}
+
+.lesson-list li{
+  padding:12px 15px;
+  background:#F0F8FF;
+  border-radius:10px;
+  margin-bottom:10px;
+  font-size:1.1rem;
+  border-left:4px solid #1E81B0;
+}
+
+.lesson-list li strong{
+  color:#0B3C5D;
+}
+
+/* Quick tips box */
+.tip-box{
+  background:linear-gradient(135deg,#0B3C5D,#145DA0);
+  color:white;
+  padding:25px;
+  border-radius:18px;
+  margin:40px 0;
+}
+
+.tip-box h3{
+  font-size:1.5rem;
+  margin-bottom:15px;
+}
+
+.tip-box ul{
+  list-style:none;
+}
+
+.tip-box li{
+  padding:8px 0;
+  font-size:1.1rem;
+}
+
+/* Footer */
+footer{
+  margin-top:50px;
+  background:#0B3C5D;
+  color:white;
+  text-align:center;
+  padding:20px;
+  font-size:.95rem;
+}
+
+footer p + p{
+  margin-top:5px;
+}
+
+.copyright{
+  opacity:.85;
+  font-size:.9em;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .class-title{font-size:1.9rem;}
+  .subject-link{padding:35px 20px;}
+  .subject-icon{font-size:2.5rem;}
+  .subject-name{font-size:1.6rem;}
+  .lesson-section{padding:20px;}
+  .lesson-title{font-size:1.4rem;}
+  .section-title{font-size:1.6rem;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1 class="school-name">కందులాపురం బడి</h1>
+  <p class="subtitle">KANDULAPURAM BADI - The Good Source of Education</p>
+  <h2 class="class-title">3వ తరగతి</h2>
+  <p class="class-subtitle">Class III - Learning Portal</p>
+</header>
+
+<div class="container">
+
+  <!-- Back to home -->
+  <a href="index.html" class="back-link">← హోమ్‌కు తిరిగి వెళ్లండి</a>
+
+  <!-- SUBJECT LINKS -->
+  <h2 class="section-title">మీ సబ్జెక్టును ఎంచుకోండి</h2>
+
+  <div class="subject-links">
+
+    <a href="#english" class="subject-link">
+      <div class="subject-icon">🔤</div>
+      <div class="subject-name">English</div>
+      <div class="subject-english">ఆంగ్లం</div>
+    </a>
+
+    <a href="#maths" class="subject-link">
+      <div class="subject-icon">🔢</div>
+      <div class="subject-name">Maths</div>
+      <div class="subject-english">గణితం</div>
+    </a>
+
+    <a href="#telugu" class="subject-link">
+      <div class="subject-icon">📝</div>
+      <div class="subject-name">తెలుగు</div>
+      <div class="subject-english">Telugu</div>
+    </a>
+
+  </div>
+
+  <!-- TIPS BOX -->
+  <div class="tip-box">
+    <h3>📌 నేర్చుకునే చిట్కాలు | Learning Tips</h3>
+    <ul>
+      <li>✅ రోజూ 30 నిమిషాలు చదవండి | Read 30 minutes daily</li>
+      <li>✅ వారానికి ఒకసారి పునశ్చరణ చేయండి | Revise once a week</li>
+      <li>✅ ఉపాధ్యాయులను ప్రశ్నలు అడగండి | Ask teachers questions</li>
+      <li>✅ ఇంటి పని సకాలంలో పూర్తి చేయండి | Complete homework on time</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>కందులాపురం బడి - విద్యా ప్రగతికి నిరంతరం కృషి చేస్తున్నాము</p>
+  <p>Kandulapuram Badi - Striving Continuously for Educational Progress</p>
+  <p class="copyright">© 2026 కందులాపురం బడి. అన్ని హక్కులు ప్రత్యేకించబడినవి</p>
+</footer>
+
+</body>
+</html>
